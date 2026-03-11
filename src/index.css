@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&family=Cinzel:wght@400..900&family=Poppins:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-display: "Cinzel", serif;
+  --font-poppins: "Poppins", sans-serif;
+
+  --color-primary: #0F766E;
+  --color-primary-dark: #0B5E55;
+  --color-accent: #C8A95A;
+  --color-accent-soft: #E6D3A3;
+  --color-bg-premium: #F9F8F4;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-premium text-slate-900 font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+.glass-nav {
+  @apply bg-white/80 backdrop-blur-md border-b border-white/20;
+}
+
+.premium-card {
+  @apply bg-white/40 backdrop-blur-sm border border-white/40 shadow-sm hover:shadow-xl transition-all duration-500 rounded-2xl;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #C8A95A 0%, #E6D3A3 100%);
+}
+
+.teal-gradient {
+  background: linear-gradient(135deg, #0F766E 0%, #0B5E55 100%);
+}
+
+/* Custom SVG Patterns */
+.bg-pattern-academic {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f766e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.bg-pattern-mandala {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8a95a' fill-opacity='0.05'%3E%3Cpath d='M40 40c0-11.046-8.954-20-20-20S0 28.954 0 40s8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
