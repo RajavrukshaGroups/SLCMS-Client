@@ -34,7 +34,7 @@ export default function Facilities() {
               whileHover={{ scale: 1.02 }}
               className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex gap-6 items-start group"
             >
-              <div className="w-14 h-14 shrink-0 rounded-2xl bg-primary/5 flex items-center justify-center text-primary group-hover:teal-gradient group-hover:text-white transition-all duration-500">
+              <div className="w-14 h-14 shrink-0 rounded-2xl bg-primary/5 flex items-center justify-center text-primary group-hover:teal-gradient group-hover:text-accent transition-all duration-500">
                 <item.icon className="w-7 h-7" />
               </div>
               <div>
