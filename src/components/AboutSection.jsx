@@ -4,6 +4,7 @@ import { GraduationCap, BookOpen, Users, Trophy, ChevronRight } from 'lucide-rea
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import founder from "../assets/founder.jpg"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,9 +44,9 @@ export default function AboutSection() {
         <div className="about-image relative">
           <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
             <img
-              src="https://images.unsplash.com/photo-1523050335392-9bc567597280?auto=format&fit=crop&q=80&w=1000"
+              src={founder}
               alt="Campus Life"
-              className="w-full aspect-[4/3] object-cover hover:scale-105 transition-transform duration-700"
+              className="w-full aspect-4/3 object-cover hover:scale-105 transition-transform duration-700"
               referrerPolicy="no-referrer"
             />
           </div>

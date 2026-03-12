@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { GraduationCap, Menu, X, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
-import SlCMSLogo from '../../public/assets/slcms_logo.png'
+import SlCMSLogo from '../assets/slcms_logo.png'
 
 const navLinks = [
   { name: 'Home', path: '/' },

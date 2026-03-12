@@ -7,6 +7,9 @@ import Facilities from '../components/Facilities';
 import AdmissionCTA from '../components/AdmissionCTA';
 import { motion } from 'motion/react';
 import { TrendingUp, Users, Award, Building } from 'lucide-react';
+import classImg from "../assets/Ba-sl-clg.jpeg"
+import event1Img from "../assets/event-1.jpeg"
+import BBAImg from "../assets/BBA.jpeg"
 
 export default function Home() {
   return (
@@ -70,11 +73,11 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=400" className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
-                <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=400" className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
+                <img src={classImg} className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
               </div>
               <div className="pt-12 space-y-4">
-                <img src="https://images.unsplash.com/photo-1525921429624-479b6a29d84c?auto=format&fit=crop&q=80&w=400" className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
-                <img src="https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&q=80&w=400" className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
+                <img src={event1Img} className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
+                <img src={BBAImg} className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
               </div>
             </div>
           </div>

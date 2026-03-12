@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { ChevronRight, Play, Award, BookOpen, Users } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import collegeImage from "../assets/srilakshmi-degree-clg-building.jpg"
 
 export default function Hero() {
   const containerRef = useRef(null);
@@ -21,7 +22,7 @@ export default function Hero() {
     <section ref={containerRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-bg-premium">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-pattern-academic opacity-10" />
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent/5 to-transparent" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-accent/5 to-transparent" />
       
       {/* Animated Circles */}
       <motion.div
@@ -87,11 +88,11 @@ export default function Hero() {
             transition={{ duration: 1.2, ease: 'easeOut' }}
             className="relative z-10"
           >
-            <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
+            <div className="aspect-4/5 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
               <img
-                src="https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&q=80&w=1000"
+                src={collegeImage}
                 alt="University Campus"
-                className="w-full h-full object-cover"
+                className="w-full h-full "
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -100,7 +101,7 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute -bottom-10 -left-10 premium-card p-6 max-w-[240px]"
+              className="absolute -bottom-10 -left-10 premium-card p-6 max-w-60"
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
@@ -125,7 +126,7 @@ export default function Hero() {
 
       {/* Wave Divider */}
       <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[60px] fill-white">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-15 fill-white">
           <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V120c67.81-23.09,144.29-30.52,214.34-12C241.25,112.5,273.63,103.4,321.39,56.44Z"></path>
         </svg>
       </div>
