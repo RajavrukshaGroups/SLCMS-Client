@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Star, Quote } from 'lucide-react';
+import unknown from '../assets/unknown.webp'
+
 
 const toppers = [
   {
@@ -57,7 +59,8 @@ export default function ToppersCarousel() {
               
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-lg">
-                  <img src={topper.image} alt={topper.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  {/* <img src={topper.image} alt={topper.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" /> */}
+                   <img src={unknown} alt={topper.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </div>
                 <div>
                   <h4 className="font-bold text-slate-900 text-lg">{topper.name}</h4>

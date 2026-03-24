@@ -586,12 +586,27 @@ const steps = [
   { id: 4, title: 'Review & Submit', icon: CheckCircle2 },
 ];
 
+// const courses = [
+//   'Bachelor of Business Administration (BBA)',
+//   'Bachelor of Computer Applications (BCA)',
+//   'Bachelor of Commerce (B.Com)',
+//   'Bachelor of Science (B.Sc) - Physics',
+//   'Bachelor of Science (B.Sc) - Chemistry',
+// ];
 const courses = [
+  // Bachelor Courses
   'Bachelor of Business Administration (BBA)',
   'Bachelor of Computer Applications (BCA)',
   'Bachelor of Commerce (B.Com)',
   'Bachelor of Science (B.Sc) - Physics',
   'Bachelor of Science (B.Sc) - Chemistry',
+
+  // Master Courses
+  'Master of Business Administration (MBA)',
+  'Master of Computer Applications (MCA)',
+  'Master of Commerce (M.Com)',
+  'Master of Science (M.Sc) - Physics',
+  'Master of Science (M.Sc) - Chemistry'
 ];
 
 export default function AdmissionForm({ onComplete }) {

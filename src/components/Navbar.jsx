@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
 import SlCMSLogo from '../assets/slcms_logo.png'
 
+
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About Us', path: '/about' },

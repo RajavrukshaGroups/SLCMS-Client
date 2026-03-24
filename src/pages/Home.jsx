@@ -10,6 +10,8 @@ import { TrendingUp, Users, Award, Building } from 'lucide-react';
 import classImg from "../assets/Ba-sl-clg.jpeg"
 import event1Img from "../assets/event-1.jpeg"
 import BBAImg from "../assets/BBA.jpeg"
+import Carousel from '../components/Carousel'
+import unknown from '../assets/unknown.webp'
 
 export default function Home() {
   return (
@@ -83,6 +85,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Carousel />
 
       <Facilities />
       

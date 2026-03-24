@@ -1,22 +1,35 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ChevronRight } from 'lucide-react';
+import backgroundImage from "../assets/backgroundImage.webp"
 
 export default function AdmissionCTA() {
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 teal-gradient" />
-      <div className="absolute inset-0 bg-pattern-academic opacity-10 pointer-events-none" />
-      
+    <section className="py-24 relative overflow-hidden"
+       style={{
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    opacity :"0.5px"
+  }}
+    >
+      <div className="absolute inset-0 bg-black/60" />
+                                      {/* teal-gradient */}
+      <div className="absolute inset-0 bg-pattern-academic opacity-10 pointer-events-none" /> 
+       
       {/* Decorative Circles */}
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
       <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
-
-      <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
+      <div
+        className="max-w-5xl mx-auto px-6 relative z-10 text-center"
+        
+      >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="space-y-8"
+          
         >
           <span className="text-accent-soft font-bold uppercase tracking-[0.4em] text-xs">Admissions Open 2024-25</span>
           <h2 className="text-4xl md:text-6xl font-display font-bold text-white leading-tight">

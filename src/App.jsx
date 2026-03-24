@@ -7,7 +7,7 @@ import Admissions from './pages/Admissions';
 import Courses from './pages/Courses';
 import PlaceholderPage from './pages/PlaceholderPage';
 import { useEffect } from 'react';
-
+import Gallery from './pages/Gallery'
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -22,14 +22,14 @@ export default function App() {
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow">
+        <main className="grow">
           <AnimatePresence mode="wait">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<PlaceholderPage title="About Us" />} />
               <Route path="/courses" element={<Courses />} />
               <Route path="/admissions" element={<Admissions />} />
-              <Route path="/gallery" element={<PlaceholderPage title="Campus Gallery" />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="/placements" element={<PlaceholderPage title="Placements" />} />
               <Route path="/e-library" element={<PlaceholderPage title="E-Library" />} />
               <Route path="/aicte" element={<PlaceholderPage title="AICTE Information" />} />
