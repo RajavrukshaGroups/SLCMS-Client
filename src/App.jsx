@@ -8,6 +8,11 @@ import Courses from './pages/Courses';
 import PlaceholderPage from './pages/PlaceholderPage';
 import { useEffect } from 'react';
 import Gallery from './pages/Gallery'
+import AboutPage from './pages/AboutPage'
+import IASKS from './pages/IASKSPage';
+import IASKSPage from './pages/IASKSPage';
+
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -26,7 +31,8 @@ export default function App() {
           <AnimatePresence mode="wait">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/about" element={<PlaceholderPage title="About Us" />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path='/iaskas' element={<IASKSPage />} />
               <Route path="/courses" element={<Courses />} />
               <Route path="/admissions" element={<Admissions />} />
               <Route path="/gallery" element={<Gallery />} />
