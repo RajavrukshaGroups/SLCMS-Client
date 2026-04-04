@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { GraduationCap, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, ChevronRight } from 'lucide-react';
-import SlCMSLogo from '../assets/slcms_logo.png'
+import SlCMSLogo from '../assets/slcms_logo.webp'
 
 export default function Footer() {
   return (

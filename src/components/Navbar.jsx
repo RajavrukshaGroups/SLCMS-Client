@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { GraduationCap, Menu, X, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
-import SlCMSLogo from '../assets/slcms_logo.png'
+import SlCMSLogo from '../assets/slcms_logo.webp'
 
 
 const navLinks = [
@@ -47,7 +47,7 @@ export default function Navbar() {
     <nav
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-        scrolled ? 'glass-nav py-3' : 'bg-transparent py-6' //: 'bg-transparent py-6
+        scrolled ? 'glass-nav py-3' : 'bg-transparent py-2 md:py-6' //: 'bg-transparent py-6
       )}
     >
    
