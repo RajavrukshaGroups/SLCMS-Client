@@ -272,7 +272,7 @@ const steps = [
     year: "Year 1",
     subtitle: "Phase 1",
     title: "NCERTs & Basics",
-    description: "Focus on NCERTs (6th-12th) and basic concepts to build a strong starting point.",
+    description: "Focus on NCERTs Text Book (6th-12th) and basic concepts to build a strong starting point.",
     color: "bg-[#F59E0B]", // Orange
     icon: BookOpen
   },
@@ -280,7 +280,7 @@ const steps = [
     year: "Year 1",
     subtitle: "Phase 2",
     title: "Core Subjects",
-    description: "Building a strong foundation in core subjects like History, Geography, and Polity.",
+    description: "Building a strong foundation in General Studies Subjects.",
     color: "bg-[#B91C1C]", // Red
     icon: Search
   },
@@ -288,7 +288,7 @@ const steps = [
     year: "Year 1",
     subtitle: "Phase 3",
     title: "Foundation Check",
-    description: "Consolidating basic knowledge and starting to read newspapers for current affairs.",
+    description: "Consolidating basic knowledge and starting to analyze newspapers for current affairs.",
     color: "bg-[#1E1B4B]", // Dark Blue
     icon: CheckCircle
   },
@@ -296,7 +296,7 @@ const steps = [
     year: "Year 2",
     subtitle: "Phase 1",
     title: "GS Papers",
-    description: "Deep dive into General Studies papers (GS 1, 2, 3, and 4) with detailed study.",
+    description: "Deep dive into General Studies papers (GS 1, GS 2, GS 3, and GS 4) with detailed study.",
     color: "bg-[#F59E0B]",
     icon: ClipboardList
   },
@@ -304,7 +304,7 @@ const steps = [
     year: "Year 2",
     subtitle: "Phase 2",
     title: "Optional Subject",
-    description: "Selecting and preparing your optional subject thoroughly alongside GS papers.",
+    description: "Selecting and preparing your optional subject thoroughly along with GS papers.",
     color: "bg-[#B91C1C]",
     icon: Target
   },
@@ -312,7 +312,7 @@ const steps = [
     year: "Year 2",
     subtitle: "Phase 3",
     title: "Answer Writing",
-    description: "Daily answer writing practice with expert feedback to improve presentation and speed.",
+    description: "Daily answer writing practice and Experts feedback to improve Content presentation and speed.",
     color: "bg-[#1E1B4B]",
     icon: PenTool
   },
@@ -320,7 +320,7 @@ const steps = [
     year: "Year 3",
     subtitle: "Phase 1",
     title: "Intensive Mocks",
-    description: "Regular mock tests for both Prelims and Mains to build exam-day confidence.",
+    description: "Regular weekly mock tests for both Prelims and Mains to build exam-day confidence.",
     color: "bg-[#F59E0B]",
     icon: Award
   },
@@ -328,15 +328,15 @@ const steps = [
     year: "Year 3",
     subtitle: "Phase 2",
     title: "Revision",
-    description: "Intensive current affairs revision and consolidating all subjects for the final push.",
+    description: "Intensive subject concept revision and integrating along with current affairs for the final push.",
     color: "bg-[#B91C1C]",
     icon: Users
   },
   {
     year: "Year 3",
     subtitle: "Phase 3",
-    title: "Interview Prep",
-    description: "Personality development and mock interviews for the final personality test stage.",
+    title: "Personality Test Guideance",
+    description: "Personality development and mock interviews for the final personality test.",
     color: "bg-[#1E1B4B]",
     icon: GraduationCap
   }

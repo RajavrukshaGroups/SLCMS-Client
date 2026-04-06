@@ -20,7 +20,7 @@ const cards = [
   {
     icon: <PenTool className="w-8 h-8 text-electric-blue" />,
     title: "Build Discipline Early",
-    description: "Develop the critical thinking, analytical mindset, and answer-writing skills required for the mains exam."
+    description: "Develop the critical thinking, analytical mindset, and answer-writing practice skills required for the mains exam."
   }
 ];
 

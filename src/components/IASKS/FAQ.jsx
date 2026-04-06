@@ -4,20 +4,20 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    question: "Can I manage IAS preparation with my college degree?",
-    answer: "Absolutely! Our 3-year integrated program is specifically designed to complement your UG/PG studies. We focus on building a strong foundation in the first two years, allowing you to balance both effectively."
+    question: "Can I manage IAS preparation along with my college degree?",
+    answer: "Absolutely. Our 3-year integrated program is thoughtfully designed to complement your UG/PG studies. We focus on building a strong conceptual foundation in the initial years, enabling you to effectively balance both your academics and Civil Services preparation with ease."
   },
   {
     question: "Is this program suitable for complete beginners?",
-    answer: "Yes, our Foundation Course starts from the very basics (NCERTs). We assume no prior knowledge and guide you through every step of the civil services journey."
+    answer: "Yes. Our Foundation Course is specifically designed for beginners, starting from NCERT fundamentals. We do not require any prior knowledge and provide clear, structured, step-by-step guidance to support you throughout your entire civil services preparation journey."
   },
   {
-    question: "Are online classes available if I can't attend offline?",
-    answer: "We offer a hybrid model. All our classes are streamed live and recorded, giving you the flexibility to learn from anywhere while still having access to our physical centers for mentorship."
+    question: "Are online classes available if I’m unable to attend offline sessions?",
+    answer: "Yes. We offer a flexible hybrid learning model where all classes are conducted live online and also recorded for later access. This ensures you can learn from anywhere at your convenience, while still benefiting from in-person mentorship and support at our physical centers."
   },
   {
     question: "What is the total duration of the integrated course?",
-    answer: "The integrated course spans 3 years, aligning with your graduation. However, we also offer 1-year and 2-year intensive programs for those who have already started their degree."
+    answer: "The integrated program is designed to span 3 years, aligned with your graduation timeline. Additionally, we offer 1-year and 2-year intensive programs for students who have already begun their degree and wish to accelerate their preparation."
   }
 ];
 

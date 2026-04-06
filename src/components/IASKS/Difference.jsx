@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { CheckCircle2, ShieldCheck, Zap, TrendingUp, Users, Globe } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Zap, TrendingUp, Users, Globe, Clock } from "lucide-react";
 import iasksStructure from "../../assets/iasks-structure.png";
 
 const points = [
@@ -8,7 +8,8 @@ const points = [
   { icon: <TrendingUp className="w-6 h-6 text-gold" />, text: "Daily Mentorship & Doubt Clearing" },
   { icon: <CheckCircle2 className="w-6 h-6 text-gold" />, text: "Personal Progress Tracking Dashboard" },
   { icon: <Users className="w-6 h-6 text-gold" />, text: "Small Batch Size for Individual Attention" },
-  { icon: <Globe className="w-6 h-6 text-gold" />, text: "Seamless Offline + Online Support" }
+  { icon: <Globe className="w-6 h-6 text-gold" />, text: "Seamless Offline + Online Support" },
+  { icon: <Clock className="w-6 h-6 text-gold" />, text: "24/7 Library Facility" }
 ];
 
 export default function Difference() {

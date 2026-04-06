@@ -9,7 +9,7 @@ import SlCMSLogo from '../assets/slcms_logo.webp'
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About Us', path: '/about' },
-  { name: 'IASKAS', path: '/iaskas' },
+  { name: 'IAS/KAS', path: '/iaskas' },
   { name: 'Courses', path: '/courses' },
   // { name: 'Admissions', path: '/admissions' },
   { name: 'Gallery', path: '/gallery' },

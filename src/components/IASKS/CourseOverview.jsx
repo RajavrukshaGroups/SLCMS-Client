@@ -1,31 +1,36 @@
 import { motion } from "motion/react";
-import { BookOpen, Award, Newspaper, Edit3, Users } from "lucide-react";
+import { BookOpen, Award, Newspaper, Edit3, Users,Building  } from "lucide-react";
 
 const courses = [
   {
     icon: <BookOpen className="w-8 h-8 text-gold" />,
     title: "Foundation Course",
-    bullets: ["NCERT Basics", "Core Concepts", "Subject Introduction"]
+    bullets: ["NCERT Basics", "Subject Introduction", "Core Concepts"]
   },
   {
     icon: <Award className="w-8 h-8 text-electric-blue" />,
     title: "Advanced Preparation",
-    bullets: ["GS Paper 1-4", "Optional Subjects", "Ethics & Integrity"]
+    bullets: ["General Studies Papers 1-4","SA Preparation" ,"Optional Subjects"]
   },
   {
     icon: <Newspaper className="w-8 h-8 text-gold" />,
     title: "Current Affairs",
-    bullets: ["Daily News Analysis", "Monthly Magazines", "Editorial Discussions"]
+    bullets: ["Daily News Analysis",  "Editorial Discussions","Monthly Magazines",]
   },
   {
     icon: <Edit3 className="w-8 h-8 text-electric-blue" />,
     title: "Answer Writing",
-    bullets: ["Mains Practice", "Feedback Sessions", "Structure Building"]
+    bullets: ["Mains Answer Writing Practice", "Answer Writing Feedback Sessions"] //, "Structure Building"
   },
   {
     icon: <Users className="w-8 h-8 text-gold" />,
     title: "Mock Tests & Interview",
-    bullets: ["Prelims Series", "Mains Mock", "Personality Guidance"]
+    bullets: ["Prelims Test Series", "Mains Test Series", "Personality Test Guidance"]
+  },
+   {
+    icon: <Building className="w-8 h-8 text-gold" />,
+    title: "Facilities",
+    bullets: ["Study Materials", "24/7 Library Access", "Hostel Facility"]
   }
 ];
 
