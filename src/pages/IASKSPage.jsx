@@ -19,7 +19,7 @@ const IASKSPage = () => {
       <Difference />
       <Timeline />
       <Trust />
-      <Faculty />
+      {/* <Faculty /> */}
       <StudyMaterials />
       <Testimonials />
       <FAQ />

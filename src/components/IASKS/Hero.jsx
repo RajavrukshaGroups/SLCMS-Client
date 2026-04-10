@@ -132,10 +132,10 @@ import iasksBanner from "../../assets/iasks-banner.mp4";
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[45vh] sm:h-[50vh] sm:py-0 md:h-[80vh] lg:h-screen md:overflow-hidden">
+    <section className="relative w-full h-[25vh] sm:h-[50vh]  md:h-[80vh] lg:h-screen md:overflow-hidden">
 
       {/* 🎥 Full Width + Full Height Video */}
-      <div className="absolute inset-0 w-full -mb-13 md:-mb-0">
+      <div className="absolute inset-0 w-full left-0">
         <video
           autoPlay
           loop
@@ -155,14 +155,14 @@ export default function Hero() {
 
         {/* Glow Effects */}
         <div className="hidden md:block absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-40 sm:w-72 md:w-96 h-40 sm:h-72 md:h-96 bg-primary/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-40 sm:w-72 md:w-96 h-40 sm:h-72 md:h-96 bg-accent/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/4 left-1/4 w-40 sm:w-72 md:w-96 h-40 sm:h-72 md:h-96 bg-primary/10 rounded-full blur-[100px]" />
+        <div className="absolute top-1/4 right-1/4 w-40 sm:w-72 md:w-96 h-40 sm:h-72 md:h-96 bg-accent/10 rounded-full blur-[100px]" />
         
         {/* Texture */}
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]" />
 
         {/* 🔥 Only Top Fade */}
-        <div className="absolute top-0 left-0 w-full h-16 sm:h-24 bg-gradient-to-b from-black/80 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-16 sm:h-20 bg-linear-to-t from-primary/80 to-transparent" />
       </div>
       </div>
 
@@ -209,7 +209,7 @@ export default function Hero() {
 
       {/* ⬇ Scroll Indicator */}
       <motion.div
-        className="absolute bottom-6 sm:bottom-6 left-1/2 -translate-x-1/2 z-20"
+        className="absolute md:bottom-6 bottom-1 left-1/2 -translate-x-1/2 z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
@@ -218,7 +218,7 @@ export default function Hero() {
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
-          <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 text-primary/70" />
+          <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 md:text-gold text-primary/80" />
         </motion.div>
       </motion.div>
 

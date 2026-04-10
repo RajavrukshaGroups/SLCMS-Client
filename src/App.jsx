@@ -11,6 +11,13 @@ import Gallery from './pages/Gallery'
 import AboutPage from './pages/AboutPage'
 import IASKS from './pages/IASKSPage';
 import IASKSPage from './pages/IASKSPage';
+import Overview from './components/AboutUs/Overview';
+import Administration from './components/AboutUs/Administration';
+import ChairmansMessage from './components/AboutUs/ChairmansMessage';
+import College from './components/AboutUs/College';
+import CoursePage from './pages/CoursePage.jsx'
+import CourseDetailPage from './components/CourseDetailPage.jsx';
+import PlacementsPage from './pages/Placements.jsx';
 
 
 function ScrollToTop() {
@@ -32,11 +39,16 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/about/overview" element={<Overview />} />
+              <Route path="/about/administration" element={<Administration />} />
+              <Route path="/about/chairmans-message" element={<ChairmansMessage />} />
+              <Route path="/about/college" element={<College />} />
               <Route path='/iaskas' element={<IASKSPage />} />
-              <Route path="/courses" element={<Courses />} />
+              <Route path="/courses" element={<CoursePage />} />
+              <Route path="/course/:courseId" element={<CourseDetailPage />} />
               <Route path="/admissions" element={<Admissions />} />
               <Route path="/gallery" element={<Gallery />} />
-              <Route path="/placements" element={<PlaceholderPage title="Placements" />} />
+              <Route path="/placements" element={<PlacementsPage />} />
               <Route path="/e-library" element={<PlaceholderPage title="E-Library" />} />
               <Route path="/aicte" element={<PlaceholderPage title="AICTE Information" />} />
               <Route path="/contact" element={<PlaceholderPage title="Contact Us" />} />

@@ -26,7 +26,7 @@ const cards = [
 
 export default function WhyStart() {
   return (
-    <section className="md:py-24 sm:py-0 px-6 relative overflow-hidden">
+    <section className="md:py-24 py-12 px-6 relative overflow-hidden">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
