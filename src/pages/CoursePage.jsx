@@ -1108,8 +1108,98 @@ import cloudComputing from '../assets/cloudComputing.jpg';
 import communicationSkills from '../assets/communicationSkills.jpg';
 import foreignLanguage from '../assets/foreignLanguage.jpg';
 import campusStory from '../assets/srilakshmi-degree-clg-building.jpg';
+import MCAImg from '../assets/MCA.jpg';
+import MBAImg from '../assets/MBA.webp';
+//import CourseBanner from '../assets/course-banner.jpg';
 
 // Course Data with storytelling elements
+// const coursesData = [
+//   { 
+//     id: 1, 
+//     title: "B.Com", 
+//     slug: "bcom",
+//     category: "ug", 
+//     duration: "3 Years", 
+//     creds: "180 Credits",
+//     desc: "Master the language of commerce — finance, taxation, and real-world accounting. GST-integrated training with industry practitioners.", 
+//     longDesc: "A legacy program that transforms you into a financial architect. Specializations in Taxation, Corporate Accounting, and Financial Analytics.",
+//     img: BCOMImg, 
+//     badge: "Legacy Program",
+//     color: "from-amber-500 to-orange-600",
+//     outcomes: ["GST Certification", "Tally Proficiency", "Financial Modeling"]
+//   },
+//   { 
+//     id: 2, 
+//     title: "BBA", 
+//     slug: "bba",
+//     category: "ug", 
+//     duration: "3 Years", 
+//     creds: "180 Credits",
+//     desc: "Leadership, strategy & entrepreneurship. Develop business acumen through case studies and live projects.", 
+//     longDesc: "Build the mindset of tomorrow's leaders. Focus on Marketing, HR Analytics, and Family Business Management.",
+//     img: BBAImg, 
+//     badge: "Top Rated",
+//     color: "from-emerald-500 to-teal-600",
+//     outcomes: ["Project Management", "Leadership Skills", "Business Analytics"]
+//   },
+//   { 
+//     id: 3, 
+//     title: "BCA", 
+//     slug: "bca",
+//     category: "ug", 
+//     duration: "3 Years", 
+//     creds: "180 Credits",
+//     desc: "Build digital tomorrow. Cloud computing, full-stack & AI foundations — code with creativity.", 
+//     longDesc: "Industry-aligned curriculum with specializations in Cloud Computing, Cybersecurity, and Full-Stack Development.",
+//     img: BCAImg, 
+//     badge: "Tech Forward",
+//     color: "from-purple-500 to-pink-600",
+//     outcomes: ["Cloud Computing", "Full-Stack Dev", "AI Fundamentals"]
+//   },
+//   { 
+//     id: 4, 
+//     title: "B.Sc (CBZ)", 
+//     slug: "bsc-cbz",
+//     category: "ug", 
+//     duration: "3 Years", 
+//     creds: "180 Credits",
+//     desc: "Explore life sciences with research labs, field projects & holistic approach to biology.", 
+//     longDesc: "Comprehensive curriculum in Chemistry, Botany, Zoology with research opportunities and industry collaborations.",
+//     img: BscImg, 
+//     badge: "Research Hub",
+//     color: "from-blue-500 to-cyan-600",
+//     outcomes: ["Lab Research", "Field Studies", "Environmental Science"]
+//   },
+//   { 
+//     id: 5, 
+//     title: "BA Journalism", 
+//     slug: "ba-journalism",
+//     category: "ug", 
+//     duration: "3 Years", 
+//     creds: "180 Credits",
+//     desc: "Storytelling for the media age. Digital journalism, ethics, and communication mastery.", 
+//     longDesc: "New-age media training covering digital storytelling, broadcast journalism, and content strategy.",
+//     img: BAImg, 
+//     badge: "Creative Edge",
+//     color: "from-rose-500 to-red-600",
+//     outcomes: ["Digital Media", "Content Strategy", "Broadcast Skills"]
+//   },
+//   { 
+//     id: 6, 
+//     title: "M.Com", 
+//     slug: "mcom",
+//     category: "pg", 
+//     duration: "2 Years", 
+//     creds: "120 Credits",
+//     desc: "Advanced financial strategy, analytics & corporate leadership. Elevate your commerce career.", 
+//     longDesc: "Postgraduate excellence with focus on International Finance, Strategic Management, and Research Methodology.",
+//     img: MCOMImg, 
+//     badge: "Postgraduate Excellence",
+//     color: "from-slate-600 to-gray-800",
+//     outcomes: ["Corporate Finance", "Strategic Leadership", "Research Skills"]
+//   }
+// ];
+
 const coursesData = [
   { 
     id: 1, 
@@ -1194,9 +1284,37 @@ const coursesData = [
     badge: "Postgraduate Excellence",
     color: "from-slate-600 to-gray-800",
     outcomes: ["Corporate Finance", "Strategic Leadership", "Research Skills"]
+  },
+  // ----- NEW COURSES ADDED BELOW -----
+  { 
+    id: 7, 
+    title: "MBA", 
+    slug: "mba",
+    category: "pg", 
+    duration: "2 Years", 
+    creds: "120 Credits",
+    desc: "Strategic leadership, data-driven decisions & global business mindset. Transform into a corporate leader.", 
+    longDesc: "Flagship postgraduate program with specializations in Marketing, Finance, HR, Operations, and Business Analytics. Live capstone projects and industry mentorship.",
+    img: MBAImg,   // ensure this variable is defined/imported
+    badge: "Leadership Program",
+    color: "from-indigo-500 to-blue-700",
+    outcomes: ["Strategic Thinking", "Leadership Skills", "Business Analytics", "Global Mindset"]
+  },
+  { 
+    id: 8, 
+    title: "MCA", 
+    slug: "mca",
+    category: "pg", 
+    duration: "2 Years", 
+    creds: "120 Credits",
+    desc: "Master software architecture, AI, cloud & full-stack development. Become a tech leader.", 
+    longDesc: "Advanced computing program covering AI/ML, Cloud Computing, Cybersecurity, and Full-Stack Development. Industry-driven curriculum with major project work.",
+    img: MCAImg,   // ensure this variable is defined/imported
+    badge: "Tech Leadership",
+    color: "from-cyan-500 to-blue-600",
+    outcomes: ["Full-Stack Development", "Cloud & DevOps", "AI/ML Foundations", "System Architecture"]
   }
 ];
-
 // Value Added Courses
 const valueAddedCourses = [
   { name: "GST Certification", icon: FileText, desc: "Practical training for B.Com students", color: "bg-amber-50 text-amber-600", delay: 0, img: GSTImg },

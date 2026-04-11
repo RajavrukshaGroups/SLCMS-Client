@@ -2,44 +2,169 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Book, Code, Briefcase, Microscope, Laptop, Calculator, GraduationCap, Globe, Users, Award } from 'lucide-react';
 
+// const departments = [
+//   {
+//     title: 'Department of Management',
+//     icon: Briefcase,
+//     color: 'bg-blue-500',
+//     courses: ['BBA (Bachelor of Business Administration)', 'MBA (Master of Business Administration) - Coming Soon'],
+//     desc: 'Preparing future business leaders with a focus on innovation, ethics, and strategic thinking.',
+//   },
+//   {
+//     title: 'Department of Computer Science',
+//     icon: Laptop,
+//     color: 'bg-emerald-500',
+//     courses: ['BCA (Bachelor of Computer Applications)', 'B.Sc (Computer Science)'],
+//     desc: 'Empowering students with cutting-edge technical skills in software, AI, and data science.',
+//   },
+//   {
+//     title: 'Department of Commerce',
+//     icon: Calculator,
+//     color: 'bg-amber-500',
+//     courses: ['B.Com (General)', 'B.Com (Accounting & Finance)', 'B.Com (Computer Applications)'],
+//     desc: 'Providing a strong foundation in financial accounting, taxation, and business laws.',
+//   },
+//   {
+//     title: 'Department of Science',
+//     icon: Microscope,
+//     color: 'bg-rose-500',
+//     courses: ['B.Sc (Physics)', 'B.Sc (Chemistry)', 'B.Sc (Mathematics)'],
+//     desc: 'Fostering scientific inquiry and research excellence in fundamental sciences.',
+//   },
+//   {
+//     title: 'Department of Humanities',
+//     icon: Globe,
+//     color: 'bg-indigo-500',
+//     courses: ['BA (English Literature)', 'BA (Economics)'],
+//     desc: 'Developing critical thinking and cultural awareness through the study of literature and society.',
+//   },
+// ];
+
 const departments = [
   {
     title: 'Department of Management',
     icon: Briefcase,
     color: 'bg-blue-500',
-    courses: ['BBA (Bachelor of Business Administration)', 'MBA (Master of Business Administration) - Coming Soon'],
+    courseNames: ['BBA', 'MBA'],
+    coursesDetail: [
+      {
+        name: 'BBA (Bachelor of Business Administration)',
+        duration: '3 years',
+        eligibility: '10+2 from any stream',
+        description: 'Foundation in management, marketing, finance, and HR.',
+      },
+      {
+        name: 'MBA (Master of Business Administration)',
+        duration: '2 years',
+        eligibility: 'Bachelor’s degree with 50% + entrance exam',
+        description: 'Advanced leadership, strategy, and business analytics.',
+      },
+    ],
     desc: 'Preparing future business leaders with a focus on innovation, ethics, and strategic thinking.',
   },
   {
     title: 'Department of Computer Science',
     icon: Laptop,
     color: 'bg-emerald-500',
-    courses: ['BCA (Bachelor of Computer Applications)', 'B.Sc (Computer Science)'],
+    courseNames: ['BCA', 'B.Sc (CS)', 'MCA'],
+    coursesDetail: [
+      {
+        name: 'BCA (Bachelor of Computer Applications)',
+        duration: '3 years',
+        eligibility: '10+2 with Mathematics',
+        description: 'Programming, databases, web development, and software engineering.',
+      },
+      {
+        name: 'B.Sc (Computer Science)',
+        duration: '3 years',
+        eligibility: '10+2 with Mathematics/CS',
+        description: 'Algorithms, data structures, operating systems, and theoretical CS.',
+      },
+      {
+        name: 'MCA (Master of Computer Applications)',
+        duration: '2 years',
+        eligibility: 'BCA or B.Sc (CS) with 50%',
+        description: 'Advanced software development, AI/ML, cloud computing, and project management.',
+      },
+    ],
     desc: 'Empowering students with cutting-edge technical skills in software, AI, and data science.',
   },
   {
     title: 'Department of Commerce',
     icon: Calculator,
     color: 'bg-amber-500',
-    courses: ['B.Com (General)', 'B.Com (Accounting & Finance)', 'B.Com (Computer Applications)'],
+    courseNames: ['B.Com (General)', 'B.Com (A&F)', 'B.Com (CA)'],
+    coursesDetail: [
+      {
+        name: 'B.Com (General)',
+        duration: '3 years',
+        eligibility: '10+2 Commerce/Any',
+        description: 'Financial accounting, business economics, and management.',
+      },
+      {
+        name: 'B.Com (Accounting & Finance)',
+        duration: '3 years',
+        eligibility: '10+2 Commerce with Accountancy',
+        description: 'Advanced accounting, taxation, auditing, and financial management.',
+      },
+      {
+        name: 'B.Com (Computer Applications)',
+        duration: '3 years',
+        eligibility: '10+2 Commerce/CS',
+        description: 'Integration of commerce with Tally, ERP, and business software.',
+      },
+    ],
     desc: 'Providing a strong foundation in financial accounting, taxation, and business laws.',
   },
   {
     title: 'Department of Science',
     icon: Microscope,
     color: 'bg-rose-500',
-    courses: ['B.Sc (Physics)', 'B.Sc (Chemistry)', 'B.Sc (Mathematics)'],
+    courseNames: ['B.Sc Physics', 'B.Sc Chemistry', 'B.Sc Maths'],
+    coursesDetail: [
+      {
+        name: 'B.Sc (Physics)',
+        duration: '3 years',
+        eligibility: '10+2 with Physics, Chemistry, Maths',
+        description: 'Classical & quantum mechanics, electromagnetism, and lab work.',
+      },
+      {
+        name: 'B.Sc (Chemistry)',
+        duration: '3 years',
+        eligibility: '10+2 with Physics, Chemistry, Maths/Bio',
+        description: 'Organic, inorganic, physical chemistry, and analytical techniques.',
+      },
+      {
+        name: 'B.Sc (Mathematics)',
+        duration: '3 years',
+        eligibility: '10+2 with Mathematics',
+        description: 'Calculus, algebra, real analysis, and statistical methods.',
+      },
+    ],
     desc: 'Fostering scientific inquiry and research excellence in fundamental sciences.',
   },
   {
     title: 'Department of Humanities',
     icon: Globe,
     color: 'bg-indigo-500',
-    courses: ['BA (English Literature)', 'BA (Economics)'],
+    courseNames: ['BA English', 'BA Economics'],
+    coursesDetail: [
+      {
+        name: 'BA (English Literature)',
+        duration: '3 years',
+        eligibility: '10+2 in any stream',
+        description: 'Poetry, drama, fiction, literary criticism, and creative writing.',
+      },
+      {
+        name: 'BA (Economics)',
+        duration: '3 years',
+        eligibility: '10+2 with Maths/Economics',
+        description: 'Micro/macro economics, econometrics, public finance, and development economics.',
+      },
+    ],
     desc: 'Developing critical thinking and cultural awareness through the study of literature and society.',
   },
 ];
-
 export default function Courses() {
   return (
     <motion.div

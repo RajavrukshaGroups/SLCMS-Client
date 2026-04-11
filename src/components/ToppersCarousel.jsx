@@ -41,7 +41,7 @@ export default function ToppersCarousel() {
           </div>
           <div className="flex gap-4">
             <div className="px-6 py-3 bg-primary/5 rounded-full text-primary font-bold text-sm">
-              Batch of 2023
+              Batch of 2024 - 25
             </div>
           </div>
         </div>

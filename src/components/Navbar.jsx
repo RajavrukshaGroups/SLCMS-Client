@@ -979,7 +979,9 @@ const Navbar = () => {
         { name: 'BCA', href: '/course/bca' },
         { name: 'B.Sc', href: '/course/bsc-cbz' },
         { name: 'BA', href: '/course/ba-journalism' },
-        { name: 'M.Com', href: '/course/mcom' }
+        { name: 'M.Com', href: '/course/mcom' },
+        { name: 'MCA', href: '/course/mca' },
+        { name: 'MBA', href: '/course/mba' }
       ]
     },
     { name: 'Gallery', href: '/gallery' },

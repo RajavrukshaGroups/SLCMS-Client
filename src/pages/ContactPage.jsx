@@ -276,13 +276,14 @@ const ContactPage = () => {
                     }`}
                   >
                     <option value="">-- Choose a program --</option>
-                    <option>B.Tech - Computer Science</option>
-                    <option>B.Tech - Artificial Intelligence</option>
-                    <option>B.Tech - Electronics & Communication</option>
-                    <option>BBA - Business Administration</option>
+                    <option>B.Com - Bachelor of Commerce</option>
+                    <option>BBA - Bachelor of Business Administration</option>
+                    <option>BCA - Bachelor of Computer Applications</option>
+                    <option>B.Sc - Bachelor of Science</option>
+                    <option>BA - Bachelor of Arts</option>
+                    <option>M.Com - Master of Commerce</option>
                     <option>MBA - Master of Business Administration</option>
                     <option>MCA - Master of Computer Applications</option>
-                    <option>Diploma in Engineering</option>
                   </select>
                   {errors.course && <p className="text-red-500 text-xs mt-1">{errors.course}</p>}
                 </div>

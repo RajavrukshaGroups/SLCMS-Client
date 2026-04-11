@@ -11,7 +11,8 @@ import classImg from "../assets/Ba-sl-clg.jpeg"
 import event1Img from "../assets/event-1.jpeg"
 import BBAImg from "../assets/BBA.jpeg"
 import Carousel from '../components/Carousel'
-import unknown from '../assets/unknown.webp'
+//import unknown from '../assets/unknown.webp'
+import PlacedStudents from '../components/PlacedStudents';
 
 export default function Home() {
   return (
@@ -48,6 +49,7 @@ export default function Home() {
       <AboutSection />
       <CoursesPreview />
       <ToppersCarousel />
+      <PlacedStudents />
       
       {/* Campus Life Preview */}
       <section className="py-24 bg-white">
