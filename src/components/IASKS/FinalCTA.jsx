@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function FinalCTA() {
+  const navigate = useNavigate();
   return (
     <section className="py-24 px-2 relative overflow-hidden">
       {/* Background Glows */}
@@ -58,12 +60,12 @@ export default function FinalCTA() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-6"
             >
-              <button className="group relative px-10 py-5 bg-gold text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 bg-glow-gold">
+              <button onClick={()=> navigate("/admissions")} className="group relative px-10 py-5 bg-gold text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 bg-glow-gold">
                 <span className="relative z-10 flex items-center gap-2">
                   Apply Now <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </button>
-              <button className="px-10 py-5 glass text-dark-text font-semibold rounded-full hover:bg-black/5 transition-all flex items-center gap-2 bg-white/50">
+              <button onClick={()=> navigate("/contact")} className="px-10 py-5 glass text-dark-text font-semibold rounded-full hover:bg-black/5 transition-all flex items-center gap-2 bg-white/50">
                 Talk to Counsellor <MessageCircle className="w-5 h-5" />
               </button>
             </motion.div>

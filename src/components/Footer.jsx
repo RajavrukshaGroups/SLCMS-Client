@@ -30,7 +30,7 @@ export default function Footer() {
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href="https://www.facebook.com/shrilakshmiclg/"
                   className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
                 >
                   <Icon className="w-5 h-5" />
@@ -113,7 +113,7 @@ export default function Footer() {
           </p>
           <div className="flex gap-8 text-xs text-slate-500">
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Sitemap</a>
+            <a href="https://maps.google.com/?q=No.+29,+Sri+Gandada+Kaval,+Magadi+Main+Rd,+Vishwaneedam+Post,+Sunkadakatte,+Bengaluru,+Karnataka+560091" className="hover:text-white transition-colors">Sitemap</a>
           </div>
         </div>
       </div>

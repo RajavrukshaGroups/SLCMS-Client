@@ -90,7 +90,7 @@ export default function Home() {
       <Facilities />
       
       {/* Placement Partners */}
-      <section className="py-20 bg-white border-y border-slate-100">
+      {/* <section className="py-20 bg-white border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="text-[10px] uppercase tracking-[0.4em] text-slate-400 font-bold">Our Placement Partners</span>
@@ -101,7 +101,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <AdmissionCTA />
     </motion.div>

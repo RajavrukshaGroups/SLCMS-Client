@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import backgroundImage from "../assets/backgroundImage.webp"
 
 export default function AdmissionCTA() {
+  const navigate = useNavigate();
+
   return (
     <section className="py-24 relative overflow-hidden"
        style={{
@@ -40,7 +43,7 @@ export default function AdmissionCTA() {
           </p>
           
           <div className="flex flex-wrap justify-center gap-6 pt-4">
-            <button className="px-10 py-5 bg-accent text-slate-900 rounded-full font-bold shadow-2xl hover:bg-white transition-all duration-300 flex items-center gap-3">
+            <button onClick={()=> navigate("/admissions")} className="px-10 py-5 bg-accent text-slate-900 rounded-full font-bold shadow-2xl hover:bg-white transition-all duration-300 flex items-center gap-3">
               Apply Online Now
               <ChevronRight className="w-5 h-5" />
             </button>

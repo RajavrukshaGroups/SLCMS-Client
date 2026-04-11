@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { BarChart3, Target, Users, Brain } from "lucide-react";
 import React from "react";
+import placementImage from "../../assets/placement.jpeg";
 
 const assistanceItems = [
   {
@@ -27,7 +28,7 @@ const assistanceItems = [
 
 export default function Assistance() {
   return (
-    <section id="assistance" className="py-32 bg-white">
+    <section id="assistance" className="py-12 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="mb-24">
           <motion.span 
@@ -73,8 +74,12 @@ export default function Assistance() {
               </div>
             </motion.div>
           ))}
+
+          <img src={placementImage} alt="Placement Assistance" className="md:col-span-2 w-full h-auto rounded-lg shadow-lg" />
+
+       </div>
+          
         </div>
-      </div>
-    </section>
+      </section>
   );
 }

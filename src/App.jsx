@@ -18,6 +18,9 @@ import College from './components/AboutUs/College';
 import CoursePage from './pages/CoursePage.jsx'
 import CourseDetailPage from './components/CourseDetailPage.jsx';
 import PlacementsPage from './pages/Placements.jsx';
+import Contact from './pages/ContactPage';
+import ELibrary from './pages/E-Library';
+import Faculty from './pages/Faculty';
 
 
 function ScrollToTop() {
@@ -49,10 +52,12 @@ export default function App() {
               <Route path="/admissions" element={<Admissions />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/placements" element={<PlacementsPage />} />
-              <Route path="/e-library" element={<PlaceholderPage title="E-Library" />} />
+              <Route path="/e-library" element={<ELibrary />} />
               <Route path="/aicte" element={<PlaceholderPage title="AICTE Information" />} />
-              <Route path="/contact" element={<PlaceholderPage title="Contact Us" />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="/feedback" element={<PlaceholderPage title="Student Feedback" />} />
+              <Route path='/student-faculty-feedback' element={<PlaceholderPage title="Student & Faculty Feedback" />} />
+              <Route path='/faculty' element={<Faculty />} />
             </Routes>
           </AnimatePresence>
         </main>

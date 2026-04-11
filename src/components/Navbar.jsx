@@ -377,19 +377,592 @@
 
 // export default Navbar;
 
+// import React, { useState } from 'react';
+// import { Lock, ChevronDown, ArrowUpRight, Menu, X } from 'lucide-react';
+// import { motion, AnimatePresence } from 'motion/react';
+// import SlCMSLogo from '../assets/slcms_logo.webp'
+
+// const Navbar = () => {
+//   const [isMenuOpen, setIsMenuOpen] = useState(false);
+//   const [activeDropdown, setActiveDropdown] = useState(null);
+
+//   const navItems = [
+//     { 
+//       name: 'About', href: '/about', 
+//       active: true,
+//       dropdown: [
+//         { name: 'Overview', href: '/about/overview' },
+//         { name: 'Administration', href: '/about/administration' },
+//         { name: "Chairman's Message", href: '/about/chairmans-message' },
+//         { name: 'College', href: '/about/college' }
+//       ]
+//     },
+//     { name: 'IAS/KAS', href: '/iaskas' },
+//     { 
+//       name: 'Courses' , href: '/courses',
+//       dropdown: [
+//         { name: 'B.com', href: '/course/bcom' },
+//         { name: 'BBA', href: '/course/bba' },
+//         { name: 'BCA', href: '/course/bca' },
+//         { name: 'B.Sc', href: '/course/bsc-cbz' },
+//         { name: 'BA', href: '/course/ba-journalism' },
+//         { name: 'M.Com', href: '/course/mcom' }
+//       ]
+//     },
+//     { name: 'Gallery', href: '/gallery' },
+//     { name: 'Placements', href: '/placements' },
+//     { 
+//       name: 'AICTE', href: '/aicte',
+//       dropdown: [
+//         { name: 'LOA', href: '#' },
+//         { name: 'AICTE Mandatory Disclosure', href: '#' },
+//         { name: 'Student and Faculty Feedback', href: '#' }
+//       ]
+//     },
+//     { name: 'Contact', href: '/contact' },
+//   ];
+
+//   return (
+//     <nav id="main-navbar" className="w-full bg-white border-b border-gray-200 font-sans sticky top-0 z-50">
+//       <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row h-auto lg:h-24">
+//         {/* Logo Section */}
+        
+//         <div id="logo-section" className="flex items-center justify-between lg:justify-start gap-3 px-4 lg:px-8 py-3 border-b lg:border-b-0 lg:border-r border-gray-100 min-w-full lg:min-w-[320px]">
+//           <a href="/">
+//             <div className="flex items-center gap-3">
+//               <div className="text-gold">
+//                 {/* Fallback logo if asset is missing */}
+//                 {/* <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center">
+//                   <span className="font-bold text-gold text-xl">SL</span>
+                  
+//                 </div> */}
+//                 <img src={SlCMSLogo} alt="SLCMS Logo" className="w-20 h-23 object-contain" />
+//               </div>
+//               <div className="flex flex-col leading-tight">
+//                 <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase">Sri Lakshmi College of</span>
+//                 <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase">Management & Science</span>
+//                 <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-500 uppercase">Bangalore</span>
+//               </div>
+//             </div>
+//           </a>
+//           {/* Mobile Menu Toggle */}
+//           <button 
+//             className="lg:hidden p-2 text-gray-600"
+//             onClick={() => setIsMenuOpen(!isMenuOpen)}
+//           >
+//             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+//           </button>
+//         </div>
+
+//         {/* Desktop Navigation */} 
+//         {/* flex-1 */}
+//         <div className="hidden lg:flex flex-col flex-1"> 
+//           {/* Top Row */}
+//           <div id="top-nav-row" className="flex items-center justify-between border-b border-gray-100 h-1/2">
+          
+//             <div className="flex items-center gap-8 px-8">
+//               <a href="#" className="text-[13px] text-gray-600 hover:text-primary transition-colors">E-Library</a>
+//               <a href="#" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Jobs</a>
+//               <a href="#" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Alumni</a>
+              
+//               <div className="flex items-center gap-3 ml-4">
+//                 <button className="flex items-center gap-2 px-4 py-1.5 bg-gray-50 rounded-full text-[13px] text-gray-700 hover:bg-gray-100 transition-colors">
+//                   Staff <Lock size={12} className="text-primary" />
+//                 </button>
+//                 <button className="flex items-center gap-2 px-4 py-1.5 bg-gray-50 rounded-full text-[13px] text-gray-700 hover:bg-gray-100 transition-colors">
+//                   Faculties <ChevronDown size={14} className="text-gray-400" />
+//                 </button>
+//               </div>
+//             </div>
+
+//             <div className="flex items-center h-full">
+//               <div className="flex items-center h-full">
+//                 <a 
+//                   href="/contact" 
+//                   className="flex items-center gap-2 px-8 h-full bg-gold text-white relative overflow-hidden z-10 
+//                     before:content-[''] before:absolute before:top-0 before:left-[-100%] 
+//                     before:w-full before:h-full before:bg-primary before:transition-all 
+//                     before:duration-400 before:ease-[cubic-bezier(0.25,1,0.5,1)] before:z-[-1] 
+//                     hover:before:left-0 hover:text-white transition-colors text-[14px] font-medium"
+//                 >
+//                   Contact
+//                 </a>
+//               </div>
+//               <a 
+//                 id="login-button" 
+//                 href="/admissions"
+//                 className="flex items-center gap-3 px-10 h-full bg-primary text-white relative overflow-hidden z-10 
+//                   before:content-[''] before:absolute before:top-0 before:left-[-100%] 
+//                   before:w-full before:h-full before:bg-gold before:transition-all 
+//                   before:duration-400 before:ease-[cubic-bezier(0.25,1,0.5,1)] before:z-[-1] 
+//                   hover:before:left-0 hover:text-black transition-colors text-[14px] font-medium"
+//               >
+//                 Apply Now <ArrowUpRight size={16} />
+//               </a>
+//             </div>
+//           </div>
+
+//           {/* Bottom Row */}
+//           <div id="bottom-nav-row" className="flex items-center gap-8 px-8 h-1/2">
+//             {navItems.map((item) => (
+//               <div 
+//                 key={item.name}
+//                 className="relative h-full flex items-center"
+//                 onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
+//                 onMouseLeave={() => setActiveDropdown(null)}
+//               >
+//                 <a 
+//                   href={item.href} 
+//                   className={`flex items-center gap-1.5 text-[14px] font-medium transition-colors h-full ${
+//                     item.active ? 'text-primary' : 'text-gray-700 hover:text-primary'
+//                   }`}
+//                 >
+//                   {item.name}
+//                   {item.dropdown && <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
+//                 </a>
+
+//                 {/* Dropdown Menu */}
+//                 <AnimatePresence>
+//                   {item.dropdown && activeDropdown === item.name && (
+//                     <motion.div
+//                       initial={{ opacity: 0, y: 10 }}
+//                       animate={{ opacity: 1, y: 0 }}
+//                       exit={{ opacity: 0, y: 10 }}
+//                       className="absolute top-full left-0 w-56 bg-white border border-gray-100 shadow-xl rounded-b-xl py-2 z-50"
+//                     >
+//                       {item.dropdown.map((subItem) => (
+//                         <a
+//                           key={subItem.name}
+//                           href={subItem.href}
+//                           className="block px-6 py-2.5 text-[13px] text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
+//                         >
+//                           {subItem.name}
+//                         </a>
+//                       ))}
+//                     </motion.div>
+//                   )}
+//                 </AnimatePresence>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+
+//         {/* Mobile Navigation Menu */}
+//         <AnimatePresence>
+//           {isMenuOpen && (
+//             <motion.div 
+//               initial={{ height: 0, opacity: 0 }}
+//               animate={{ height: 'auto', opacity: 1 }}
+//               exit={{ height: 0, opacity: 0 }}
+//               className="lg:hidden bg-white border-b border-gray-100 overflow-hidden"
+//             >
+//               <div className="flex flex-col p-4 gap-4">
+//                 {/* Main Links */}
+//                 <div className="flex flex-col gap-1">
+//                   {navItems.map((item) => (
+//                     <div key={item.name} className="flex flex-col">
+//                       <a
+//                         href={item.href}
+//                         onClick={() => item.dropdown && setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+//                         className={`flex items-center justify-between px-4 py-3 rounded-lg text-[14px] font-medium transition-colors ${
+//                           item.active ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-50'
+//                         }`}
+//                       >
+//                         {item.name}
+//                         {item.dropdown && <ChevronDown size={16} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
+//                       </a>
+                      
+//                       {/* Mobile Dropdown */}
+//                       <AnimatePresence>
+//                         {item.dropdown && activeDropdown === item.name && (
+//                           <motion.div
+//                             initial={{ height: 0, opacity: 0 }}
+//                             animate={{ height: 'auto', opacity: 1 }}
+//                             exit={{ height: 0, opacity: 0 }}
+//                             className="overflow-hidden bg-gray-50/50 rounded-lg ml-4 mt-1"
+//                           >
+//                             {item.dropdown.map((subItem) => (
+//                               <a
+//                                 key={subItem.name}
+//                                 href={subItem.href}
+//                                 className="block px-6 py-2.5 text-[13px] text-gray-600 hover:text-primary"
+//                               >
+//                                 {subItem.name}
+//                               </a>
+//                             ))}
+//                           </motion.div>
+//                         )}
+//                       </AnimatePresence>
+//                     </div>
+//                   ))}
+//                 </div>
+
+//                 <hr className="border-gray-100" />
+
+//                 {/* Secondary Links */}
+//                 <div className="flex flex-wrap gap-4 px-2">
+//                   <a href="#" className="text-[13px] text-gray-600">E-Library</a>
+//                   <a href="#" className="text-[13px] text-gray-600">Jobs</a>
+//                   <a href="#" className="text-[13px] text-gray-600">Alumni</a>
+//                 </div>
+
+//                 {/* Action Buttons */}
+//                 <div className="flex flex-col gap-2">
+//                   <div className="flex gap-2">
+//                     <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-50 rounded-lg text-[13px] text-gray-700">
+//                       Staff <Lock size={12} className="text-primary" />
+//                     </button>
+//                     <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-50 rounded-lg text-[13px] text-gray-700">
+//                       Faculties <ChevronDown size={14} className="text-gray-400" />
+//                     </button>
+//                   </div>
+//                   <a 
+//                     href="/contact" 
+//                     className="w-full py-3 bg-gold text-white text-center rounded-lg font-medium"
+//                   >
+//                     Contact
+//                   </a>
+//                   <a
+//                     href="/admissions"
+//                     className="w-full py-3 bg-primary text-white text-center rounded-lg font-medium flex items-center justify-center gap-2"
+//                   >
+//                     Apply Now <ArrowUpRight size={16} />
+//                   </a>
+//                 </div>
+//               </div>
+//             </motion.div>
+//           )}
+//         </AnimatePresence>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+// import React, { useState } from 'react';
+// import { Lock, ChevronDown, ArrowUpRight, Menu, X } from 'lucide-react';
+// import { motion, AnimatePresence } from 'motion/react';
+// import SlCMSLogo from '../assets/slcms_logo.webp';
+// import { useNavigate } from 'react-router-dom';
+
+// const Navbar = () => {
+//   const [isMenuOpen, setIsMenuOpen] = useState(false);
+//   const [activeDropdown, setActiveDropdown] = useState(null);
+//   const navigate = useNavigate();
+
+//   const navItems = [
+//     {
+//       name: 'About', href: '/about',
+//       active: true,
+//       dropdown: [
+//         { name: 'Overview', href: '/about/overview' },
+//         { name: 'Administration', href: '/about/administration' },
+//         { name: "Chairman's Message", href: '/about/chairmans-message' },
+//         { name: 'College', href: '/about/college' }
+//       ]
+//     },
+//     { name: 'IAS/KAS', href: '/iaskas' },
+//     {
+//       name: 'Courses', href: '/courses',
+//       dropdown: [
+//         { name: 'B.com', href: '/course/bcom' },
+//         { name: 'BBA', href: '/course/bba' },
+//         { name: 'BCA', href: '/course/bca' },
+//         { name: 'B.Sc', href: '/course/bsc-cbz' },
+//         { name: 'BA', href: '/course/ba-journalism' },
+//         { name: 'M.Com', href: '/course/mcom' }
+//       ]
+//     },
+//     { name: 'Gallery', href: '/gallery' },
+//     { name: 'Placements', href: '/placements' },
+//     {
+//       name: 'AICTE', //href: '/aicte',
+//       dropdown: [
+//         { name: 'LOA', href: 'https://srilakshmimanagement.org/wp-content/uploads/2025/02/LOA-Report-24-25.pdf' },
+//         { name: 'AICTE Mandatory Disclosure', href: 'https://srilakshmimanagement.org/wp-content/uploads/2025/01/AICTE.pdf' },
+//         { name: 'Student and Faculty Feedback', href: '/student-faculty-feedback' }
+//       ]
+//     },
+//     { name: 'Contact', href: '/contact' },
+//   ];
+
+//   // Handle mobile link clicks: for items with dropdown, first click toggles dropdown,
+//   // second click (while open) navigates. For items without dropdown, navigate immediately.
+//   const handleMobileLinkClick = (e, item) => {
+//     if (!item.dropdown) {
+//       // No dropdown → navigate normally
+//       return; // allow default navigation
+//     }
+
+//     // Prevent default navigation for dropdown items on first click
+//     e.preventDefault();
+
+//     if (activeDropdown === item.name) {
+//       // Dropdown already open → navigate to the item's href
+//       window.location.href = item.href;
+//     } else {
+//       // Dropdown closed → open it
+//       setActiveDropdown(item.name);
+//     }
+//   };
+
+//   return (
+//     <nav id="main-navbar" className="w-full bg-white border-b border-gray-200 font-sans sticky top-0 z-50">
+//       <div className="max-w-360 mx-auto flex flex-col lg:flex-row h-auto lg:h-24">
+//         {/* Logo Section */}
+//         <div id="logo-section" className="flex items-center justify-between lg:justify-start gap-3 px-4 lg:px-8 py-3 border-b lg:border-b-0 lg:border-r border-gray-100 min-w-full lg:min-w-[320px]">
+//           <a href="/">
+//             <div className="flex items-center gap-3">
+//               <img src={SlCMSLogo} alt="SLCMS Logo" className="w-20 h-23 object-contain" />
+//               <div className="flex flex-col leading-tight">
+//                 <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase">Sri Lakshmi College of</span>
+//                 <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase">Management & Science</span>
+//                 <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-500 uppercase">Bangalore</span>
+//               </div>
+//             </div>
+//           </a>
+//           <button
+//             className="lg:hidden p-2 text-gray-600"
+//             onClick={() => setIsMenuOpen(!isMenuOpen)}
+//           >
+//             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+//           </button>
+//         </div>
+
+//         {/* Desktop Navigation */}
+//         <div className="hidden lg:flex flex-col flex-1">
+//           {/* Top Row */}
+//           <div id="top-nav-row" className="flex items-center justify-between border-b border-gray-100 h-1/2">
+//             <div className="flex items-center gap-8 px-8">
+//               <a href="/e-library" className="text-[13px] text-gray-600 hover:text-primary transition-colors">E-Library</a>
+//               <a href="/placements" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Jobs</a>
+//               <a href="/alumni" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Alumni</a>
+//               <div className="flex items-center gap-3 ml-4">
+//                 <button className="flex items-center gap-2 px-4 py-1.5 bg-gray-50 rounded-full text-[13px] text-gray-700 hover:bg-gray-100 transition-colors">
+//                   Staff <Lock size={12} className="text-primary" />
+//                 </button>
+//                 <button onClick={()=>navigate("/faculty")} className="flex items-center gap-2 px-4 py-1.5 bg-gray-50 rounded-full text-[13px] text-gray-700 hover:bg-gray-100 transition-colors">
+//                   Faculties <ChevronDown size={14} className="text-gray-400" />
+//                 </button>
+//               </div>
+//             </div>
+//             <div className="flex items-center h-full">
+//               <div className="flex items-center h-full">
+//                 <a
+//                   href="/contact"
+//                   className="flex items-center gap-2 px-8 h-full bg-gold text-white relative overflow-hidden z-10 
+//                     before:content-[''] before:absolute before:top-0 before:left-[-100%] 
+//                     before:w-full before:h-full before:bg-primary before:transition-all 
+//                     before:duration-400 before:ease-[cubic-bezier(0.25,1,0.5,1)] before:z-[-1] 
+//                     hover:before:left-0 hover:text-white transition-colors text-[14px] font-medium"
+//                 >
+//                   Contact
+//                 </a>
+//               </div>
+//               <a
+//                 id="login-button"
+//                 href="/admissions"
+//                 className="flex items-center gap-3 px-10 h-full bg-primary text-white relative overflow-hidden z-10 
+//                   before:content-[''] before:absolute before:top-0 before:left-[-100%] 
+//                   before:w-full before:h-full before:bg-gold before:transition-all 
+//                   before:duration-400 before:ease-[cubic-bezier(0.25,1,0.5,1)] before:z-[-1] 
+//                   hover:before:left-0 hover:text-black transition-colors text-[14px] font-medium"
+//               >
+//                 Apply Now <ArrowUpRight size={16} />
+//               </a>
+//             </div>
+//           </div>
+
+//           {/* Bottom Row */}
+//           <div id="bottom-nav-row" className="flex items-center gap-8 px-8 h-1/2">
+//             {navItems.map((item) => (
+//               <div
+//                 key={item.name}
+//                 className="relative h-full flex items-center"
+//                 onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
+//                 onMouseLeave={() => setActiveDropdown(null)}
+//               >
+//                 <a
+//                   href={item.href}
+//                   className={`flex items-center gap-1.5 text-[14px] font-medium transition-colors h-full ${
+//                     item.active ? 'text-primary' : 'text-gray-700 hover:text-primary'
+//                   }`}
+//                 >
+//                   {item.name}
+//                   {item.dropdown && <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
+//                 </a>
+
+//                 {/* Desktop Dropdown */}
+//                 <AnimatePresence>
+//                   {item.dropdown && activeDropdown === item.name && (
+//                     <motion.div
+//                       initial={{ opacity: 0, y: 10 }}
+//                       animate={{ opacity: 1, y: 0 }}
+//                       exit={{ opacity: 0, y: 10 }}
+//                       className="absolute top-full left-0 w-56 bg-white border border-gray-100 shadow-xl rounded-b-xl py-2 z-50"
+//                     >
+//                       {item.dropdown.map((subItem) => (
+//                         <a
+//                           key={subItem.name}
+//                           href={subItem.href}
+//                           className="block px-6 py-2.5 text-[13px] text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
+//                         >
+//                           {subItem.name}
+//                         </a>
+//                       ))}
+//                     </motion.div>
+//                   )}
+//                 </AnimatePresence>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+
+//         {/* Mobile Navigation Menu */}
+//         <AnimatePresence>
+//           {isMenuOpen && (
+//             <motion.div
+//               initial={{ height: 0, opacity: 0 }}
+//               animate={{ height: 'auto', opacity: 1 }}
+//               exit={{ height: 0, opacity: 0 }}
+//               className="lg:hidden bg-white border-b border-gray-100 overflow-hidden"
+//             >
+//               <div className="flex flex-col p-4 gap-4">
+//                 {/* Main Links */}
+//                 <div className="flex flex-col gap-1">
+//                   {navItems.map((item) => (
+//                     <div key={item.name} className="flex flex-col">
+//                       <a
+//                         href={item.href}
+//                         onClick={(e) => handleMobileLinkClick(e, item)}
+//                         className={`flex items-center justify-between px-4 py-3 rounded-lg text-[14px] font-medium transition-colors ${
+//                           item.active ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-50'
+//                         }`}
+//                       >
+//                         {item.name}
+//                         {item.dropdown && <ChevronDown size={16} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
+//                       </a>
+
+//                       {/* Mobile Dropdown */}
+//                       <AnimatePresence>
+//                         {item.dropdown && activeDropdown === item.name && (
+//                           <motion.div
+//                             initial={{ height: 0, opacity: 0 }}
+//                             animate={{ height: 'auto', opacity: 1 }}
+//                             exit={{ height: 0, opacity: 0 }}
+//                             className="overflow-hidden bg-gray-50/50 rounded-lg ml-4 mt-1"
+//                           >
+//                             {item.dropdown.map((subItem) => (
+//                               <a
+//                                 key={subItem.name}
+//                                 href={subItem.href}
+//                                 className="block px-6 py-2.5 text-[13px] text-gray-600 hover:text-primary"
+//                               >
+//                                 {subItem.name}
+//                               </a>
+//                             ))}
+//                           </motion.div>
+//                         )}
+//                       </AnimatePresence>
+//                     </div>
+//                   ))}
+//                 </div>
+
+//                 <hr className="border-gray-100" />
+
+//                 {/* Secondary Links */}
+//                 <div className="flex flex-wrap gap-4 px-2">
+//                   <a href="/e-library" className="text-[13px] text-gray-600">E-Library</a>
+//                   <a href="/placements" className="text-[13px] text-gray-600">Jobs</a>
+//                   <a href="/alumni" className="text-[13px] text-gray-600">Alumni</a>
+//                 </div>
+
+//                 {/* Action Buttons */}
+//                 <div className="flex flex-col gap-2">
+//                   <div className="flex gap-2">
+//                     <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-50 rounded-lg text-[13px] text-gray-700">
+//                       Staff <Lock size={12} className="text-primary" />
+//                     </button>
+//                     <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-50 rounded-lg text-[13px] text-gray-700">
+//                       Faculties <ChevronDown size={14} className="text-gray-400" />
+//                     </button>
+//                   </div>
+//                   <a
+//                     href="/contact"
+//                     className="w-full py-3 bg-gold text-white text-center rounded-lg font-medium"
+//                   >
+//                     Contact
+//                   </a>
+//                   <a
+//                     href="/admissions"
+//                     className="w-full py-3 bg-primary text-white text-center rounded-lg font-medium flex items-center justify-center gap-2"
+//                   >
+//                     Apply Now <ArrowUpRight size={16} />
+//                   </a>
+//                 </div>
+//               </div>
+//             </motion.div>
+//           )}
+//         </AnimatePresence>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
 import React, { useState } from 'react';
 import { Lock, ChevronDown, ArrowUpRight, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import SlCMSLogo from '../assets/slcms_logo.webp'
+import SlCMSLogo from '../assets/slcms_logo.webp';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Helper function to determine if a nav item is active based on current path
+  const isNavItemActive = (item) => {
+    const currentPath = location.pathname;
+    
+    // For Courses: match both /courses and any /course/* route
+    if (item.name === 'Courses') {
+      return currentPath === '/courses' || currentPath.startsWith('/course/');
+    }
+    
+    // For About: match /about and any subroute
+    if (item.name === 'About') {
+      return currentPath === '/about' || currentPath.startsWith('/about/');
+    }
+    
+    // For AICTE: highlight when its internal child route is active
+    if (item.name === 'AICTE') {
+      return currentPath === '/student-faculty-feedback';
+    }
+    
+    // For items with direct href (and no special case)
+    if (item.href) {
+      // Exact match for regular pages (IAS/KAS, Gallery, Placements, Contact)
+      return currentPath === item.href;
+    }
+    
+    return false;
+  };
+
+  // Helper to check if a dropdown sub-item is active
+  const isSubItemActive = (subItem) => {
+    if (!subItem.href) return false;
+    // For external links (http/https), never mark as active
+    if (subItem.href.startsWith('http')) return false;
+    return location.pathname === subItem.href;
+  };
 
   const navItems = [
-    { 
-      name: 'About', href: '/about', 
-      active: true,
+    {
+      name: 'About', href: '/about',
       dropdown: [
         { name: 'Overview', href: '/about/overview' },
         { name: 'Administration', href: '/about/administration' },
@@ -398,8 +971,8 @@ const Navbar = () => {
       ]
     },
     { name: 'IAS/KAS', href: '/iaskas' },
-    { 
-      name: 'Courses' , href: '/courses',
+    {
+      name: 'Courses', href: '/courses',
       dropdown: [
         { name: 'B.com', href: '/course/bcom' },
         { name: 'BBA', href: '/course/bba' },
@@ -411,32 +984,47 @@ const Navbar = () => {
     },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Placements', href: '/placements' },
-    { 
-      name: 'AICTE', href: '/aicte',
+    {
+      name: 'AICTE',
       dropdown: [
-        { name: 'LOA', href: '#' },
-        { name: 'AICTE Mandatory Disclosure', href: '#' },
-        { name: 'Student and Faculty Feedback', href: '#' }
+        { name: 'LOA', href: 'https://srilakshmimanagement.org/wp-content/uploads/2025/02/LOA-Report-24-25.pdf' },
+        { name: 'AICTE Mandatory Disclosure', href: 'https://srilakshmimanagement.org/wp-content/uploads/2025/01/AICTE.pdf' },
+        { name: 'Student and Faculty Feedback', href: '/student-faculty-feedback' }
       ]
-    }
+    },
+    { name: 'Contact', href: '/contact' },
   ];
+
+  // Handle mobile link clicks: for items with dropdown, first click toggles dropdown,
+  // second click (while open) navigates. For items without dropdown, navigate immediately.
+  const handleMobileLinkClick = (e, item) => {
+    if (!item.dropdown) {
+      // No dropdown → allow default navigation
+      return;
+    }
+
+    // Prevent default navigation for dropdown items on first click
+    e.preventDefault();
+
+    if (activeDropdown === item.name) {
+      // Dropdown already open → navigate to the item's href if it exists
+      if (item.href) {
+        window.location.href = item.href;
+      }
+    } else {
+      // Dropdown closed → open it
+      setActiveDropdown(item.name);
+    }
+  };
 
   return (
     <nav id="main-navbar" className="w-full bg-white border-b border-gray-200 font-sans sticky top-0 z-50">
       <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row h-auto lg:h-24">
         {/* Logo Section */}
-        
         <div id="logo-section" className="flex items-center justify-between lg:justify-start gap-3 px-4 lg:px-8 py-3 border-b lg:border-b-0 lg:border-r border-gray-100 min-w-full lg:min-w-[320px]">
           <a href="/">
             <div className="flex items-center gap-3">
-              <div className="text-gold">
-                {/* Fallback logo if asset is missing */}
-                {/* <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center">
-                  <span className="font-bold text-gold text-xl">SL</span>
-                  
-                </div> */}
-                <img src={SlCMSLogo} alt="SLCMS Logo" className="w-20 h-23 object-contain" />
-              </div>
+              <img src={SlCMSLogo} alt="SLCMS Logo" className="w-20 h-23 object-contain" />
               <div className="flex flex-col leading-tight">
                 <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase">Sri Lakshmi College of</span>
                 <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase">Management & Science</span>
@@ -444,8 +1032,7 @@ const Navbar = () => {
               </div>
             </div>
           </a>
-          {/* Mobile Menu Toggle */}
-          <button 
+          <button
             className="lg:hidden p-2 text-gray-600"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
@@ -453,31 +1040,27 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Desktop Navigation */} 
-        {/* flex-1 */}
-        <div className="hidden lg:flex flex-col flex-1"> 
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex flex-col flex-1">
           {/* Top Row */}
           <div id="top-nav-row" className="flex items-center justify-between border-b border-gray-100 h-1/2">
-          
             <div className="flex items-center gap-8 px-8">
-              <a href="#" className="text-[13px] text-gray-600 hover:text-primary transition-colors">E-Library</a>
-              <a href="#" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Jobs</a>
-              <a href="#" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Alumni</a>
-              
+              <a href="/e-library" className="text-[13px] text-gray-600 hover:text-primary transition-colors">E-Library</a>
+              <a href="/placements" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Jobs</a>
+              <a href="/alumni" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Alumni</a>
               <div className="flex items-center gap-3 ml-4">
                 <button className="flex items-center gap-2 px-4 py-1.5 bg-gray-50 rounded-full text-[13px] text-gray-700 hover:bg-gray-100 transition-colors">
                   Staff <Lock size={12} className="text-primary" />
                 </button>
-                <button className="flex items-center gap-2 px-4 py-1.5 bg-gray-50 rounded-full text-[13px] text-gray-700 hover:bg-gray-100 transition-colors">
+                <button onClick={()=>navigate("/faculty")} className="flex items-center gap-2 px-4 py-1.5 bg-gray-50 rounded-full text-[13px] text-gray-700 hover:bg-gray-100 transition-colors">
                   Faculties <ChevronDown size={14} className="text-gray-400" />
                 </button>
               </div>
             </div>
-
             <div className="flex items-center h-full">
               <div className="flex items-center h-full">
-                <a 
-                  href="/contact" 
+                <a
+                  href="/contact"
                   className="flex items-center gap-2 px-8 h-full bg-gold text-white relative overflow-hidden z-10 
                     before:content-[''] before:absolute before:top-0 before:left-[-100%] 
                     before:w-full before:h-full before:bg-primary before:transition-all 
@@ -487,8 +1070,8 @@ const Navbar = () => {
                   Contact
                 </a>
               </div>
-              <a 
-                id="login-button" 
+              <a
+                id="login-button"
                 href="/admissions"
                 className="flex items-center gap-3 px-10 h-full bg-primary text-white relative overflow-hidden z-10 
                   before:content-[''] before:absolute before:top-0 before:left-[-100%] 
@@ -503,53 +1086,78 @@ const Navbar = () => {
 
           {/* Bottom Row */}
           <div id="bottom-nav-row" className="flex items-center gap-8 px-8 h-1/2">
-            {navItems.map((item) => (
-              <div 
-                key={item.name}
-                className="relative h-full flex items-center"
-                onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <a 
-                  href={item.href} 
-                  className={`flex items-center gap-1.5 text-[14px] font-medium transition-colors h-full ${
-                    item.active ? 'text-primary' : 'text-gray-700 hover:text-primary'
-                  }`}
+            {navItems.map((item) => {
+              const isActive = isNavItemActive(item);
+              
+              return (
+                <div
+                  key={item.name}
+                  className="relative h-full flex items-center"
+                  onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
+                  onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  {item.name}
-                  {item.dropdown && <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
-                </a>
-
-                {/* Dropdown Menu */}
-                <AnimatePresence>
-                  {item.dropdown && activeDropdown === item.name && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      className="absolute top-full left-0 w-56 bg-white border border-gray-100 shadow-xl rounded-b-xl py-2 z-50"
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      className={`flex items-center gap-1.5 text-[14px] font-medium transition-colors h-full ${
+                        isActive ? 'text-primary' : 'text-gray-700 hover:text-primary'
+                      }`}
                     >
-                      {item.dropdown.map((subItem) => (
-                        <a
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block px-6 py-2.5 text-[13px] text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
-                        >
-                          {subItem.name}
-                        </a>
-                      ))}
-                    </motion.div>
+                      {item.name}
+                      {item.dropdown && <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
+                    </a>
+                  ) : (
+                    <div
+                      role="button"
+                      className={`flex items-center gap-1.5 text-[14px] font-medium transition-colors h-full cursor-default ${
+                        isActive ? 'text-primary' : 'text-gray-700'
+                      }`}
+                    >
+                      {item.name}
+                      {item.dropdown && <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
+                    </div>
                   )}
-                </AnimatePresence>
-              </div>
-            ))}
+
+                  {/* Desktop Dropdown */}
+                  <AnimatePresence>
+                    {item.dropdown && activeDropdown === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full left-0 w-56 bg-white border border-gray-100 shadow-xl rounded-b-xl py-2 z-50"
+                      >
+                        {item.dropdown.map((subItem) => {
+                          const isSubActive = isSubItemActive(subItem);
+                          return (
+                            <a
+                              key={subItem.name}
+                              href={subItem.href}
+                              target={subItem.href?.startsWith('http') ? '_blank' : '_self'}
+                              rel={subItem.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                              className={`block px-6 py-2.5 text-[13px] transition-colors ${
+                                isSubActive 
+                                  ? 'text-primary bg-primary/5 font-medium' 
+                                  : 'text-gray-600 hover:bg-gray-50 hover:text-primary'
+                              }`}
+                            >
+                              {subItem.name}
+                            </a>
+                          );
+                        })}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
         </div>
 
         {/* Mobile Navigation Menu */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.div 
+            <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
@@ -558,51 +1166,74 @@ const Navbar = () => {
               <div className="flex flex-col p-4 gap-4">
                 {/* Main Links */}
                 <div className="flex flex-col gap-1">
-                  {navItems.map((item) => (
-                    <div key={item.name} className="flex flex-col">
-                      <a
-                        href={item.href}
-                        onClick={() => item.dropdown && setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                        className={`flex items-center justify-between px-4 py-3 rounded-lg text-[14px] font-medium transition-colors ${
-                          item.active ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-50'
-                        }`}
-                      >
-                        {item.name}
-                        {item.dropdown && <ChevronDown size={16} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
-                      </a>
-                      
-                      {/* Mobile Dropdown */}
-                      <AnimatePresence>
-                        {item.dropdown && activeDropdown === item.name && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden bg-gray-50/50 rounded-lg ml-4 mt-1"
+                  {navItems.map((item) => {
+                    const isActive = isNavItemActive(item);
+                    
+                    return (
+                      <div key={item.name} className="flex flex-col">
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            onClick={(e) => handleMobileLinkClick(e, item)}
+                            className={`flex items-center justify-between px-4 py-3 rounded-lg text-[14px] font-medium transition-colors ${
+                              isActive ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-50'
+                            }`}
                           >
-                            {item.dropdown.map((subItem) => (
-                              <a
-                                key={subItem.name}
-                                href={subItem.href}
-                                className="block px-6 py-2.5 text-[13px] text-gray-600 hover:text-primary"
-                              >
-                                {subItem.name}
-                              </a>
-                            ))}
-                          </motion.div>
+                            {item.name}
+                            {item.dropdown && <ChevronDown size={16} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
+                          </a>
+                        ) : (
+                          <div
+                            onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                            className={`flex items-center justify-between px-4 py-3 rounded-lg text-[14px] font-medium transition-colors cursor-pointer ${
+                              isActive ? 'bg-primary/10 text-primary' : 'text-gray-700'
+                            }`}
+                          >
+                            {item.name}
+                            {item.dropdown && <ChevronDown size={16} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
+                          </div>
                         )}
-                      </AnimatePresence>
-                    </div>
-                  ))}
+
+                        {/* Mobile Dropdown */}
+                        <AnimatePresence>
+                          {item.dropdown && activeDropdown === item.name && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="overflow-hidden bg-gray-50/50 rounded-lg ml-4 mt-1"
+                            >
+                              {item.dropdown.map((subItem) => {
+                                const isSubActive = isSubItemActive(subItem);
+                                return (
+                                  <a
+                                    key={subItem.name}
+                                    href={subItem.href}
+                                    target={subItem.href?.startsWith('http') ? '_blank' : '_self'}
+                                    rel={subItem.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                    className={`block px-6 py-2.5 text-[13px] transition-colors ${
+                                      isSubActive ? 'text-primary font-medium' : 'text-gray-600 hover:text-primary'
+                                    }`}
+                                  >
+                                    {subItem.name}
+                                  </a>
+                                );
+                              })}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <hr className="border-gray-100" />
 
                 {/* Secondary Links */}
                 <div className="flex flex-wrap gap-4 px-2">
-                  <a href="#" className="text-[13px] text-gray-600">E-Library</a>
-                  <a href="#" className="text-[13px] text-gray-600">Jobs</a>
-                  <a href="#" className="text-[13px] text-gray-600">Alumni</a>
+                  <a href="/e-library" className="text-[13px] text-gray-600">E-Library</a>
+                  <a href="/placements" className="text-[13px] text-gray-600">Jobs</a>
+                  <a href="/alumni" className="text-[13px] text-gray-600">Alumni</a>
                 </div>
 
                 {/* Action Buttons */}
@@ -615,8 +1246,8 @@ const Navbar = () => {
                       Faculties <ChevronDown size={14} className="text-gray-400" />
                     </button>
                   </div>
-                  <a 
-                    href="/contact" 
+                  <a
+                    href="/contact"
                     className="w-full py-3 bg-gold text-white text-center rounded-lg font-medium"
                   >
                     Contact

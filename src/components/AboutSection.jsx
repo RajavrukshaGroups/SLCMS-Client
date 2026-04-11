@@ -4,12 +4,14 @@ import { GraduationCap, BookOpen, Users, Trophy, ChevronRight } from 'lucide-rea
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {useNavigate} from "react-router-dom"
 import founder from "../assets/founder.jpg"
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutSection() {
   const sectionRef = useRef(null);
+  const navigate = useNavigate();
 
   useGSAP(() => {
     gsap.from('.about-content > *', {
@@ -101,7 +103,7 @@ export default function AboutSection() {
           </div>
 
           <div className="pt-4">
-            <button className="group flex items-center gap-3 text-primary font-bold hover:text-accent transition-colors">
+            <button onClick={()=>navigate("/about")} className="group flex items-center gap-3 text-primary font-bold hover:text-accent transition-colors">
               Discover More About Our Vision
               <div className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
                 <ChevronRight className="w-5 h-5" />

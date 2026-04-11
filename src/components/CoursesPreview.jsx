@@ -10,6 +10,7 @@ const courses = [
     icon: Briefcase,
     desc: 'Master the fundamentals of management, marketing, and finance for the corporate world.',
     color: 'bg-blue-500',
+    link:'/course/bba'
   },
   {
     title: 'Bachelor of Computer Applications',
@@ -17,6 +18,7 @@ const courses = [
     icon: Code,
     desc: 'Dive deep into software development, database management, and emerging technologies.',
     color: 'bg-emerald-500',
+    link:'/course/bca'
   },
   {
     title: 'Bachelor of Commerce',
@@ -24,6 +26,7 @@ const courses = [
     icon: Book,
     desc: 'Specialized training in accounting, taxation, and financial management.',
     color: 'bg-amber-500',
+    link:'/course/bcom'
   },
   {
     title: 'Bachelor of Science',
@@ -31,6 +34,7 @@ const courses = [
     icon: Microscope,
     desc: 'Explore the wonders of science with our specialized programs in Physics and Chemistry.',
     color: 'bg-rose-500',
+    link:'/course/bsc-cbz'
   },
 ];
 
@@ -52,32 +56,38 @@ export default function CoursesPreview() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {courses.map((course, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -10 }}
-              className="premium-card p-8 group cursor-pointer h-full flex flex-col"
-            >
-              <div className={`w-14 h-14 rounded-2xl ${course.color} text-white flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
-                <course.icon className="w-7 h-7" />
-              </div>
-              
-              <div className="mb-4">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-accent mb-2 block">{course.code}</span>
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors mb-4">
-                  {course.title}
-                </h3>
-                <p className="text-sm text-slate-500 leading-relaxed">
-                  {course.desc}
-                </p>
-              </div>
-
-              <div className="mt-auto pt-6 flex items-center justify-between">
-                <span className="text-xs font-bold text-primary uppercase tracking-wider">3 Year Program</span>
-                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
-                  <ArrowRight className="w-4 h-4" />
+            <a href={course.link}>
+              <motion.div
+                key={i}
+                whileHover={{ y: -10 }}
+                className="premium-card p-8 group cursor-pointer h-full flex flex-col"
+              >
+                <div className={`w-14 h-14 rounded-2xl ${course.color} text-white flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                  <course.icon className="w-7 h-7" />
                 </div>
-              </div>
-            </motion.div>
+                
+                <div className="mb-4">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-accent mb-2 block">{course.code}</span>
+                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors mb-4">
+                    {course.title}
+                  </h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    {course.desc}
+                  </p>
+                </div>
+                {/* <a href={course.link}> */}
+                <div className="mt-auto pt-6 flex items-center justify-between">
+                  
+                  <span className="text-xs font-bold text-primary uppercase tracking-wider">3 Year Program</span>
+                  
+                  <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                  
+                </div>
+                {/* </a> */}
+              </motion.div>
+            </a>
           ))}
         </div>
 

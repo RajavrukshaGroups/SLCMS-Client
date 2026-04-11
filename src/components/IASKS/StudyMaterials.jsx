@@ -1,13 +1,19 @@
 import { motion } from "motion/react";
-import { Search } from "lucide-react";
+import { Search, Lock } from "lucide-react";
+import StudyMaterial1 from "../../assets/study-material.png";
+import StudyMaterial2 from "../../assets/study-material2.png";
+import StudyMaterial3 from "../../assets/study-material3.png";
+import StudyMaterial4 from "../../assets/study-material4.png";
+import StudyMaterial5 from "../../assets/study-material5.png";
+import StudyMaterial6 from "../../assets/study-material6.png";
 
 const materials = [
-  { title: "NCERT Summary Notes", category: "Foundation", image: "https://picsum.photos/seed/notes1/600/800" },
-  { title: "Current Affairs Monthly", category: "Updates", image: "https://picsum.photos/seed/notes2/600/400" },
-  { title: "Mains Answer Writing", category: "Practice", image: "https://picsum.photos/seed/notes3/600/600" },
-  { title: "Prelims Test Series", category: "Assessment", image: "https://picsum.photos/seed/notes4/600/500" },
-  { title: "Ethics Case Studies", category: "Advanced", image: "https://picsum.photos/seed/notes5/600/700" },
-  { title: "Geography Atlas", category: "Resources", image: "https://picsum.photos/seed/notes6/600/450" }
+  { title: "NCERT Summary Notes", category: "Foundation", image: StudyMaterial1 },
+  { title: "Current Affairs Monthly", category: "Updates", image: StudyMaterial2 },
+  { title: "Mains Answer Writing", category: "Practice", image: StudyMaterial3 },
+  { title: "Prelims Test Series", category: "Assessment", image: StudyMaterial4 },
+  { title: "Ethics Case Studies", category: "Advanced", image: StudyMaterial5 },
+  { title: "Geography Atlas", category: "Resources", image: StudyMaterial6 }
 ];
 
 export default function StudyMaterials() {
@@ -43,14 +49,14 @@ export default function StudyMaterials() {
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700 group-hover:blur-sm"
+                className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700 blur-sm group-hover:blur-sm"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-light-bg via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
               
               <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="p-4 rounded-full glass bg-gold/20 text-gold mb-4">
-                  <Search className="w-6 h-6" />
+                <div className="p-4 rounded-full glass bg-gold/80 text-gold mb-4">
+                  <Lock className="w-6 h-6 text-primary/95" />
                 </div>
                 <span className="px-4 py-1.5 glass rounded-full text-[10px] font-bold uppercase tracking-widest text-gold mb-2 bg-white">
                   {item.category}
