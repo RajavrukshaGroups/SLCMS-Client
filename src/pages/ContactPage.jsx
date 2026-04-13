@@ -20,7 +20,7 @@ const ContactPage = () => {
 
   // Backend API endpoint (replace with your actual endpoint)
   // const API_ENDPOINT =
-  //   process.env.REACT_APP_API_URL || "https://your-backend.com/api/contact";
+  //   process.env.VITE_API_URL || "https://your-backend.com/api/contact";
 
   // Handle input changes
   const handleChange = (e) => {
