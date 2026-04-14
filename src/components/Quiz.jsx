@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { 
-  CheckCircle2, 
-  ChevronRight, 
-  Timer, 
-  Award, 
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  CheckCircle2,
+  ChevronRight,
+  Timer,
+  Award,
   AlertCircle,
   RefreshCcw,
   LogOut,
-  Sparkles
-} from 'lucide-react';
-import { cn } from '../lib/utils';
+  Sparkles,
+} from "lucide-react";
+import { cn } from "../lib/utils";
+import { useSelector } from "react-redux";
+import axiosInstance from "../api/axiosInstance";
+import { API_ROUTES } from "../api/apiRoutes";
+import { toast } from "react-toastify";
 
 // const questions = [
 //   { id: 1, text: "What is the capital of France?", options: ["London", "Berlin", "Paris", "Madrid"], correctAnswer: 2 },
@@ -40,37 +44,62 @@ const questions = [
     id: 1,
     text: "Outstanding expenses are:",
     options: ["Assets", "Liabilities", "Income", "Capital"],
-    correctAnswer: 1
+    correctAnswer: 1,
   },
   {
     id: 2,
     text: "The concept that business and owner are separate is known as:",
-    options: ["Going Concern Concept", "Money Measurement Concept", "Business Entity Concept", "Dual Aspect Concept"],
-    correctAnswer: 2
+    options: [
+      "Going Concern Concept",
+      "Money Measurement Concept",
+      "Business Entity Concept",
+      "Dual Aspect Concept",
+    ],
+    correctAnswer: 2,
   },
   {
     id: 3,
     text: "Who is the present governor of RBI?",
-    options: ["Raghuram Rajan", "Shaktikanta Das", "Sanjay Malhotra", "Narendra Modi"],
-    correctAnswer: 1
+    options: [
+      "Raghuram Rajan",
+      "Shaktikanta Das",
+      "Sanjay Malhotra",
+      "Narendra Modi",
+    ],
+    correctAnswer: 1,
   },
   {
     id: 4,
     text: "Who is the finance minister of India?",
-    options: ["Pramitha Sen", "Nirmala Sitharaman", "Droupadi Murmu", "Umashree"],
-    correctAnswer: 1
+    options: [
+      "Pramitha Sen",
+      "Nirmala Sitharaman",
+      "Droupadi Murmu",
+      "Umashree",
+    ],
+    correctAnswer: 1,
   },
   {
     id: 5,
     text: "According to the Law of Demand, if the price of a product increases, the quantity demanded will:",
-    options: ["Stay the same", "Decrease", "Increase", "Shift the demand curve to the right"],
-    correctAnswer: 1
+    options: [
+      "Stay the same",
+      "Decrease",
+      "Increase",
+      "Shift the demand curve to the right",
+    ],
+    correctAnswer: 1,
   },
   {
     id: 6,
     text: "The median is best defined as:",
-    options: ["The average value", "The middle value when data is arranged in order", "The most repeated value", "The total of all observations"],
-    correctAnswer: 1
+    options: [
+      "The average value",
+      "The middle value when data is arranged in order",
+      "The most repeated value",
+      "The total of all observations",
+    ],
+    correctAnswer: 1,
   },
 
   // Kannada Section
@@ -78,19 +107,19 @@ const questions = [
     id: 7,
     text: "‘ಪಂಪ’ ಯಾವ ಯುಗದ ಕವಿ?",
     options: ["ಆಧುನಿಕ ಯುಗ", "ನವೋದಯ ಯುಗ", "ಪ್ರಾಚೀನ ಯುಗ", "ಮಧ್ಯಯುಗ"],
-    correctAnswer: 2
+    correctAnswer: 2,
   },
   {
     id: 8,
     text: "‘ವಚನ ಸಾಹಿತ್ಯ’ ಯಾರಿಗೆ ಸಂಬಂಧಿಸಿದೆ?",
     options: ["ದಾಸ ಸಾಹಿತ್ಯ", "ಜೈನ ಸಾಹಿತ್ಯ", "ವಚನಕಾರರು", "ನವೋದಯ ಕವಿಗಳು"],
-    correctAnswer: 2
+    correctAnswer: 2,
   },
   {
     id: 9,
     text: "‘ದಾಸ ಸಾಹಿತ್ಯ’ ಮುಖ್ಯವಾಗಿ ಯಾವ ವಿಷಯವನ್ನು ಒಳಗೊಂಡಿದೆ?",
     options: ["ರಾಷ್ಟ್ರಭಕ್ತಿ", "ಭಕ್ತಿ", "ಪ್ರೇಮ", "ಸಾಮಾಜಿಕ ವಿಚಾರ"],
-    correctAnswer: 1
+    correctAnswer: 1,
   },
   // {
   //   id: 10,
@@ -108,13 +137,13 @@ const questions = [
     id: 10,
     text: "भारत की राजधानी क्या है?",
     options: ["मुंबई", "नई दिल्ली", "चेन्नई"],
-    correctAnswer: 2
+    correctAnswer: 2,
   },
   {
     id: 11,
     text: "ताजमहल कहाँ स्थित है?",
     options: ["दिल्ली", "आगरा", "जयपुर"],
-    correctAnswer: 2
+    correctAnswer: 2,
   },
 
   // English Section
@@ -122,37 +151,37 @@ const questions = [
     id: 12,
     text: "Fill in the blank: There are many butterflies ____ the garden.",
     options: ["in", "on", "at", "under"],
-    correctAnswer: 0
+    correctAnswer: 0,
   },
   {
     id: 13,
     text: "Fill in the blank: Sam went to the market ____ his parents.",
     options: ["with", "by", "from", "into"],
-    correctAnswer: 0
+    correctAnswer: 0,
   },
   {
     id: 14,
     text: "Fill in the blank: ____ river Nile is the longest river.",
     options: ["A", "An", "The", "No article"],
-    correctAnswer: 2
+    correctAnswer: 2,
   },
   {
     id: 15,
     text: "Fill in the blank: We have to submit assignments in ____ hour.",
     options: ["a", "an", "the", "no article"],
-    correctAnswer: 1
+    correctAnswer: 1,
   },
   {
     id: 16,
     text: "Fill in the blank: The birds ____ flying.",
     options: ["is", "are"],
-    correctAnswer: 1
+    correctAnswer: 1,
   },
   {
     id: 17,
     text: "Fill in the blank: The writer ____ honoured.",
     options: ["was", "were"],
-    correctAnswer: 0
+    correctAnswer: 0,
   },
   {
     id: 18,
@@ -161,9 +190,9 @@ const questions = [
       "Heavy rainfall was there in Karnataka this year",
       "There heavy rainfall was in Karnataka this year",
       "This year Karnataka rainfall heavy was there",
-      "Karnataka was heavy rainfall there this year"
+      "Karnataka was heavy rainfall there this year",
     ],
-    correctAnswer: 0
+    correctAnswer: 0,
   },
   {
     id: 19,
@@ -172,16 +201,16 @@ const questions = [
       "The Indian team has won the cricket match",
       "Indian team the cricket match has won",
       "The cricket has Indian team won match",
-      "Won the Indian team cricket match has"
+      "Won the Indian team cricket match has",
     ],
-    correctAnswer: 0
+    correctAnswer: 0,
   },
   {
     id: 20,
     text: "Opposite of 'wise' is:",
     options: ["Smart", "Clever", "Foolish", "Bright"],
-    correctAnswer: 2
-  }
+    correctAnswer: 2,
+  },
 ];
 
 export default function Quiz({ userName, onFinish }) {
@@ -190,6 +219,8 @@ export default function Quiz({ userName, onFinish }) {
   const [questionTimer, setQuestionTimer] = useState(30); // 30 seconds per question
   const [isFinished, setIsFinished] = useState(false);
   const [showEligibility, setShowEligibility] = useState(false);
+  const admissionData = useSelector((state) => state.admission);
+  const [loading, setLoading] = useState(false);
 
   // Individual question timer
   useEffect(() => {
@@ -222,31 +253,82 @@ export default function Quiz({ userName, onFinish }) {
     }
   };
 
-  const handleFinish = () => {
-    setIsFinished(true);
+  // const handleFinish = () => {
+  //   setIsFinished(true);
+  //   const score = Object.keys(selectedAnswers).reduce((acc, index) => {
+  //     const idx = parseInt(index);
+  //     return (
+  //       acc + (selectedAnswers[idx] === questions[idx].correctAnswer ? 1 : 0)
+  //     );
+  //   }, 0);
+
+  //   // Check eligibility (10 or more marks)
+  //   setShowEligibility(score >= 10);
+  //   onFinish(score);
+  // };
+
+  const handleFinish = async () => {
+    setLoading(true); // 🔥 START LOADER
+
     const score = Object.keys(selectedAnswers).reduce((acc, index) => {
       const idx = parseInt(index);
-      return acc + (selectedAnswers[idx] === questions[idx].correctAnswer ? 1 : 0);
+      return (
+        acc + (selectedAnswers[idx] === questions[idx].correctAnswer ? 1 : 0)
+      );
     }, 0);
-    
-    // Check eligibility (10 or more marks)
-    setShowEligibility(score >= 10);
-    onFinish(score);
+
+    try {
+      const finalPayload = {
+        ...admissionData.step1,
+        ...admissionData.step2,
+        score,
+        totalQuestions: questions.length,
+      };
+
+      const response = await axiosInstance.post(
+        API_ROUTES.SUBMIT_ADMISSION,
+        finalPayload,
+      );
+
+      console.log("API RESPONSE:", response);
+
+      // ✅ STRICT SUCCESS CHECK
+      if (response?.data?.success) {
+        toast.success(
+          response?.data?.message || "Form submitted successfully 🎉",
+        );
+
+        setShowEligibility(score >= 10);
+        setIsFinished(true);
+
+        onFinish(score); // ✅ only on success
+      } else {
+        throw new Error("API returned failure");
+      }
+    } catch (err) {
+      console.error("ERROR:", err?.response || err.message);
+
+      toast.error(err?.response?.data?.message || "Something went wrong ❌");
+    } finally {
+      setLoading(false); // 🔥 STOP LOADER
+    }
   };
 
   const formatTime = (seconds) => {
-    return `00:${seconds.toString().padStart(2, '0')}`;
+    return `00:${seconds.toString().padStart(2, "0")}`;
   };
 
   if (isFinished) {
     const score = Object.keys(selectedAnswers).reduce((acc, index) => {
       const idx = parseInt(index);
-      return acc + (selectedAnswers[idx] === questions[idx].correctAnswer ? 1 : 0);
+      return (
+        acc + (selectedAnswers[idx] === questions[idx].correctAnswer ? 1 : 0)
+      );
     }, 0);
 
     return (
       <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-slate-50 to-slate-100 p-4 py-28">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="max-w-md w-full bg-white rounded-2xl shadow-xl p-6 text-center border border-slate-100"
@@ -256,10 +338,16 @@ export default function Quiz({ userName, onFinish }) {
               <div className="w-16 h-16 bg-linear-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-1">🎉 Congratulations! 🎉</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-1">
+                🎉 Congratulations! 🎉
+              </h2>
               <div className="bg-linear-to-r from-emerald-50 to-emerald-100 rounded-xl p-4 mb-4">
-                <p className="text-emerald-700 font-bold text-xl">You're Eligible!</p>
-                <p className="text-emerald-600 text-sm">Score: {score}/{questions.length}</p>
+                <p className="text-emerald-700 font-bold text-xl">
+                  You're Eligible!
+                </p>
+                <p className="text-emerald-600 text-sm">
+                  Score: {score}/{questions.length}
+                </p>
               </div>
             </>
           ) : (
@@ -267,26 +355,34 @@ export default function Quiz({ userName, onFinish }) {
               <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="w-8 h-8 text-amber-600" />
               </div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-1">Quiz Completed!</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-1">
+                Quiz Completed!
+              </h2>
               <div className="bg-slate-50 rounded-xl p-4 mb-4">
-                <p className="text-slate-700 font-bold text-xl">Score: {score}/{questions.length}</p>
-                <p className="text-slate-500 text-sm">Need 10+ to be eligible</p>
+                <p className="text-slate-700 font-bold text-xl">
+                  Score: {score}/{questions.length}
+                </p>
+                <p className="text-slate-500 text-sm">
+                  Need 10+ to be eligible
+                </p>
               </div>
             </>
           )}
-          
-          <p className="text-slate-500 mb-6 text-sm">Great effort, {userName}!</p>
+
+          <p className="text-slate-500 mb-6 text-sm">
+            Great effort, {userName}!
+          </p>
 
           <div className="space-y-2">
-            <button 
+            <button
               onClick={() => window.location.reload()}
               className="w-full py-3 bg-emerald-600 text-white rounded-xl font-bold shadow-md hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 text-sm"
             >
               <RefreshCcw className="w-3 h-3" />
               Try Again
             </button>
-            <button 
-              onClick={() => window.location.href = '/'}
+            <button
+              onClick={() => (window.location.href = "/")}
               className="w-full py-3 bg-white text-slate-600 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-all flex items-center justify-center gap-2 text-sm"
             >
               <LogOut className="w-3 h-3" />
@@ -302,105 +398,133 @@ export default function Quiz({ userName, onFinish }) {
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
   const score = Object.keys(selectedAnswers).reduce((acc, index) => {
     const idx = parseInt(index);
-    return acc + (selectedAnswers[idx] === questions[idx].correctAnswer ? 1 : 0);
+    return (
+      acc + (selectedAnswers[idx] === questions[idx].correctAnswer ? 1 : 0)
+    );
   }, 0);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100 py-24 px-4">
-      <div className="max-w-2xl mx-auto">
-        {/* Compact Header */}
-        <div className="flex justify-between items-center mb-4 bg-white rounded-xl shadow-sm p-3 border border-slate-100">
-          <div>
-            <h1 className="text-lg font-bold text-slate-900">Quick Quiz</h1>
-            <p className="text-xs text-slate-500">Q{currentQuestionIndex + 1}/{questions.length}</p>
-          </div>
-          
-          {/* Score Badge */}
-          <div className="flex items-center gap-3">
-            <div className="bg-amber-50 px-3 py-1 rounded-full">
-              <span className="text-sm font-bold text-amber-700">Score: {score}</span>
-            </div>
-            
-            {/* Timer */}
-            <div className={cn(
-              "flex items-center gap-1 px-3 py-1 rounded-full font-mono font-bold text-sm",
-              questionTimer < 10 ? "bg-rose-50 text-rose-600 animate-pulse" : "bg-emerald-50 text-emerald-600"
-            )}>
-              <Timer className="w-3 h-3" />
-              {formatTime(questionTimer)}
-            </div>
+    <>
+      {loading && (
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-xl shadow-xl flex items-center gap-3">
+            <div className="w-6 h-6 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin"></div>
+            <span className="font-semibold text-slate-700">
+              Submitting your details...
+            </span>
           </div>
         </div>
-
-        {/* Progress Bar */}
-        <div className="h-1.5 bg-slate-200 rounded-full mb-4 overflow-hidden">
-          <motion.div 
-            className="h-full bg-emerald-600"
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
-          />
-        </div>
-
-        {/* Question Card - Smaller */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentQuestionIndex}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="bg-white rounded-xl shadow-sm border border-slate-100 p-4"
-          >
-            <h2 className="text-base font-bold text-slate-900 mb-4 leading-relaxed">
-              {currentQuestion.text}
-            </h2>
-
-            <div className="space-y-2">
-              {currentQuestion.options.map((option, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleAnswerSelect(index)}
-                  className={cn(
-                    "w-full p-3 rounded-xl text-left font-medium transition-all border flex items-center justify-between text-sm",
-                    selectedAnswers[currentQuestionIndex] === index
-                      ? "bg-emerald-50 border-emerald-600 text-emerald-700"
-                      : "bg-white border-slate-100 text-slate-600 hover:border-emerald-200 hover:bg-slate-50"
-                  )}
-                >
-                  <span>{option}</span>
-                  <div className={cn(
-                    "w-5 h-5 rounded-full border flex items-center justify-center",
-                    selectedAnswers[currentQuestionIndex] === index
-                      ? "bg-emerald-600 border-emerald-600"
-                      : "border-slate-200"
-                  )}>
-                    {selectedAnswers[currentQuestionIndex] === index && (
-                      <CheckCircle2 className="w-3 h-3 text-white" />
-                    )}
-                  </div>
-                </button>
-              ))}
+      )}
+      <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100 py-24 px-4">
+        <div className="max-w-2xl mx-auto">
+          {/* Compact Header */}
+          <div className="flex justify-between items-center mb-4 bg-white rounded-xl shadow-sm p-3 border border-slate-100">
+            <div>
+              <h1 className="text-lg font-bold text-slate-900">Quick Quiz</h1>
+              <p className="text-xs text-slate-500">
+                Q{currentQuestionIndex + 1}/{questions.length}
+              </p>
             </div>
 
-            <div className="mt-4 flex justify-end">
-              <button
-                onClick={handleNext}
-                disabled={selectedAnswers[currentQuestionIndex] === undefined}
+            {/* Score Badge */}
+            <div className="flex items-center gap-3">
+              <div className="bg-amber-50 px-3 py-1 rounded-full">
+                <span className="text-sm font-bold text-amber-700">
+                  Score: {score}
+                </span>
+              </div>
+
+              {/* Timer */}
+              <div
                 className={cn(
-                  "px-6 py-2 rounded-full font-bold shadow-sm transition-all flex items-center gap-1 text-sm",
-                  selectedAnswers[currentQuestionIndex] === undefined
-                    ? "bg-slate-100 text-slate-400 cursor-not-allowed"
-                    : "bg-emerald-600 text-white hover:bg-emerald-700"
+                  "flex items-center gap-1 px-3 py-1 rounded-full font-mono font-bold text-sm",
+                  questionTimer < 10
+                    ? "bg-rose-50 text-rose-600 animate-pulse"
+                    : "bg-emerald-50 text-emerald-600",
                 )}
               >
-                {currentQuestionIndex === questions.length - 1 ? "Finish" : "Next"}
-                <ChevronRight className="w-3 h-3" />
-              </button>
+                <Timer className="w-3 h-3" />
+                {formatTime(questionTimer)}
+              </div>
             </div>
-          </motion.div>
-        </AnimatePresence>
+          </div>
 
-        {/* Eligibility Target */}
-        {/* <div className="mt-4 flex items-center justify-between bg-white rounded-lg p-2 border border-slate-100">
+          {/* Progress Bar */}
+          <div className="h-1.5 bg-slate-200 rounded-full mb-4 overflow-hidden">
+            <motion.div
+              className="h-full bg-emerald-600"
+              initial={{ width: 0 }}
+              animate={{ width: `${progress}%` }}
+            />
+          </div>
+
+          {/* Question Card - Smaller */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentQuestionIndex}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="bg-white rounded-xl shadow-sm border border-slate-100 p-4"
+            >
+              <h2 className="text-base font-bold text-slate-900 mb-4 leading-relaxed">
+                {currentQuestion.text}
+              </h2>
+
+              <div className="space-y-2">
+                {currentQuestion.options.map((option, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleAnswerSelect(index)}
+                    className={cn(
+                      "w-full p-3 rounded-xl text-left font-medium transition-all border flex items-center justify-between text-sm",
+                      selectedAnswers[currentQuestionIndex] === index
+                        ? "bg-emerald-50 border-emerald-600 text-emerald-700"
+                        : "bg-white border-slate-100 text-slate-600 hover:border-emerald-200 hover:bg-slate-50",
+                    )}
+                  >
+                    <span>{option}</span>
+                    <div
+                      className={cn(
+                        "w-5 h-5 rounded-full border flex items-center justify-center",
+                        selectedAnswers[currentQuestionIndex] === index
+                          ? "bg-emerald-600 border-emerald-600"
+                          : "border-slate-200",
+                      )}
+                    >
+                      {selectedAnswers[currentQuestionIndex] === index && (
+                        <CheckCircle2 className="w-3 h-3 text-white" />
+                      )}
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              <div className="mt-4 flex justify-end">
+                <button
+                  onClick={handleNext}
+                  disabled={
+                    loading ||
+                    selectedAnswers[currentQuestionIndex] === undefined
+                  }
+                  className={cn(
+                    "px-6 py-2 rounded-full font-bold shadow-sm transition-all flex items-center gap-1 text-sm",
+                    selectedAnswers[currentQuestionIndex] === undefined
+                      ? "bg-slate-100 text-slate-400 cursor-not-allowed"
+                      : "bg-emerald-600 text-white hover:bg-emerald-700",
+                  )}
+                >
+                  {currentQuestionIndex === questions.length - 1
+                    ? "Finish"
+                    : "Next"}
+                  <ChevronRight className="w-3 h-3" />
+                </button>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Eligibility Target */}
+          {/* <div className="mt-4 flex items-center justify-between bg-white rounded-lg p-2 border border-slate-100">
           <span className="text-xs text-slate-500">Target: 10 marks</span>
           <div className="flex items-center gap-1">
             <div className="w-20 h-1.5 bg-slate-200 rounded-full overflow-hidden">
@@ -412,7 +536,8 @@ export default function Quiz({ userName, onFinish }) {
             <span className="text-xs font-bold text-emerald-600">{score}/10</span>
           </div>
         </div> */}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
