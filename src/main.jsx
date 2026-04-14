@@ -5,17 +5,24 @@ import "./index.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// ✅ Redux
+import { Provider } from "react-redux";
+import { store } from "../store/store";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
-    <ToastContainer
-      position="top-right"
-      autoClose={3000}
-      hideProgressBar={false}
-      newestOnTop
-      closeOnClick
-      pauseOnHover
-      theme="colored"
-    />{" "}
+    {/* ✅ Wrap EVERYTHING inside Provider */}
+    <Provider store={store}>
+      <App />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        theme="colored"
+      />
+    </Provider>
   </StrictMode>,
 );
