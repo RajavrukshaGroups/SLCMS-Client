@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   User,
   MapPin,
@@ -61,13 +61,7 @@ const steps = [
   { id: 3, title: "Review & Submit", icon: CheckCircle2 },
 ];
 
-// const courses = [
-//   'Bachelor of Business Administration (BBA)',
-//   'Bachelor of Computer Applications (BCA)',
-//   'Bachelor of Commerce (B.Com)',
-//   'Bachelor of Science (B.Sc) - Physics',
-//   'Bachelor of Science (B.Sc) - Chemistry',
-// ];
+
 const courses = [
   // Bachelor Courses
   "Bachelor of Business Administration (BBA)",
@@ -90,19 +84,43 @@ export default function AdmissionForm({ onComplete }) {
   const [showQuiz, setShowQuiz] = useState(false);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [isAgeEdited, setIsAgeEdited] = useState(false);
 
   const {
     register,
     handleSubmit,
     trigger,
     watch,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(formSchema),
     mode: "onChange",
   });
-
+  
   const formData = watch();
+  const dobValue = watch("dob");
+
+ useEffect(() => {
+  if (!dobValue || isAgeEdited) return;
+
+  const today = new Date();
+  const birthDate = new Date(dobValue);
+
+  let age = today.getFullYear() - birthDate.getFullYear();
+
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+
+  setValue("age", age.toString());
+}, [dobValue, isAgeEdited, setValue]);
+
 
   const nextStep = async () => {
     const fields = getFieldsForStep(currentStep);
@@ -245,17 +263,7 @@ export default function AdmissionForm({ onComplete }) {
           </div>
         </div>
       )}
-      <div className="min-h-screen pt-33 pb-20 bg-neutral-50 relative overflow-hidden">
-        {/* Top Fade */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[120px]" />
-
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]" />
-
-          {/* 🔥 ONLY Top Black Fade */}
-          <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-black/80 to-transparent" />
-        </div>
+      <div className="min-h-screen pt-13 pb-20 bg-neutral-50 relative overflow-hidden">
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           {/* Hero Section */}
@@ -467,7 +475,11 @@ export default function AdmissionForm({ onComplete }) {
                             </label>
                             <input
                               type="number"
-                              {...register("age")}
+                                {...register("age")}
+                                onChange={(e) => {
+                                  setIsAgeEdited(true);
+                                  setValue("age", e.target.value);
+                                }}
                               className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/10 outline-none transition-all"
                             />
                             {errors.age && (

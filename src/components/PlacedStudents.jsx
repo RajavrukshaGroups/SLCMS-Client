@@ -862,28 +862,63 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Search, ExternalLink, Trophy } from 'lucide-react';
+import unknownImg from '../assets/unknown.webp';
 
+import croppedBook from '../assets/CompanyLogos/cropped-book-logo-1.webp';
+import MeraquiLOGO from '../assets/CompanyLogos/cropped-MeraquiLOGO-ConnectingBharattoFutureIndia.webp';
+import LaunchedGlobal from '../assets/CompanyLogos/LaunchedGlobal.png';
+import HRHNext from '../assets/CompanyLogos/HRHNext.svg';
+import Unlox from '../assets/CompanyLogos/Unlox.webp';
+import MuthootFinance from '../assets/CompanyLogos/MuthootFinance.png';
+import ArambhaSkill from '../assets/CompanyLogos/ArambhaSkill.png';
+
+
+// const students = [
+//   { id: 1, name: 'Namratha M K', company: 'Launched Global', companyLogo: LaunchedGlobal, salary: '2.16 LPA', image: unknownImg },
+//   { id: 2, name: 'Lekhana C', company: 'UNLOX', companyLogo: Unlox, salary: '2.16 LPA', image: unknownImg },
+//   { id: 3, name: 'Pooja N', company: 'UNLOX', companyLogo: Unlox, salary: '2.16 LPA', image: unknownImg },
+//   { id: 4, name: 'Rishi Kumar', company: 'UNLOX', companyLogo: Unlox, salary: '2.16 LPA', image: unknownImg },
+//   { id: 5, name: 'Divyashree G M', company: 'Meraqui Ventures', companyLogo: MeraquiLOGO, salary: '2.4 LPA', image: unknownImg },
+//   { id: 6, name: 'Kavana K P', company: 'Meraqui Ventures', companyLogo: MeraquiLOGO, salary: '2.4 LPA', image: unknownImg },
+//   { id: 7, name: 'Divya S', company: 'Muthoot Money', companyLogo: MuthootFinance, salary: '1.2 LPA', image: unknownImg },
+//   { id: 8, name: 'Harshavrdhan H A', company: 'HRH', companyLogo: HRHNext, salary: '1.2 LPA', image: unknownImg },
+//   { id: 9, name: 'Sharanya L', company: 'HRH', companyLogo: HRHNext, salary: '1.2 LPA', image: unknownImg },
+//   { id: 10, name: 'Ramupatel H R', company: 'Meraqui Ventures', companyLogo: MeraquiLOGO, salary: '2.4 LPA', image: unknownImg },
+//   { id: 11, name: 'Lingaraju', company: 'Meraqui Ventures', companyLogo: MeraquiLOGO, salary: '2.4 LPA', image: unknownImg },
+//   { id: 12, name: 'Karthik H', company: 'Muthoot Finance', companyLogo: MuthootFinance, salary: '2.19 LPA', image: unknownImg },
+//   { id: 13, name: 'Deekshitha', company: 'Muthoot Finance', companyLogo: MuthootFinance, salary: '2.19 LPA', image: unknownImg },
+//   { id: 14, name: 'Rekha C', company: 'HRH', companyLogo: HRHNext, salary: '1.2 LPA', image：unknownImg },
+//   { id：15， name：'Raju HR'， company：'HRH'， companyLogo：HRHNext， salary：'1.2 LPA'， image：unknownImg },
+//   { id：16， name：'Darshan N'， company：'Bookwormz'， companyLogo：croppedBook， salary：'3.2 LPA'， image：unknownImg },
+//   { id: 17, name: 'Charan V', company: 'Bookwormz', companyLogo: croppedBook, salary: '3.2 LPA', image: unknownImg },
+//   { id: 18, name: 'Anip Kumar', company: 'Bookwormz', companyLogo: croppedBook, salary: '3.2 LPA', image: unknownImg },
+//   { id: 19, name: 'Aashish K', company: 'Bookwormz', companyLogo: croppedBook, salary: '3.2 LPA', image: unknownImg },
+//   { id: 20, name: 'Madesh M', company: 'Arambha Skill', companyLogo: ArambhaSkill, salary: '3.2 LPA', image: unknownImg },
+// ];
 const students = [
-  { id: 1, name: 'Namratha M K', company: 'Launched Global', salary: '2.16 LPA', image: 'https://picsum.photos/seed/n1/100/100' },
-  { id: 2, name: 'Lekhana C', company: 'UNLOX', salary: '2.16 LPA', image: 'https://picsum.photos/seed/n2/100/100' },
-  { id: 3, name: 'Pooja N', company: 'UNLOX', salary: '2.16 LPA', image: 'https://picsum.photos/seed/n3/100/100' },
-  { id: 4, name: 'Rishi Kumar', company: 'UNLOX', salary: '2.16 LPA', image: 'https://picsum.photos/seed/n4/100/100' },
-  { id: 5, name: 'Divyashree G M', company: 'Meraqui Ventures', salary: '2.4 LPA', image: 'https://picsum.photos/seed/n5/100/100' },
-  { id: 6, name: 'Kavana K P', company: 'Meraqui Ventures', salary: '2.4 LPA', image: 'https://picsum.photos/seed/n6/100/100' },
-  { id: 7, name: 'Divya S', company: 'Muthoot Money', salary: '1.2 LPA', image: 'https://picsum.photos/seed/n7/100/100' },
-  { id: 8, name: 'Harshavrdhan H A', company: 'HRH', salary: '1.2 LPA', image: 'https://picsum.photos/seed/n8/100/100' },
-  { id: 9, name: 'Sharanya L', company: 'HRH', salary: '1.2 LPA', image: 'https://picsum.photos/seed/n9/100/100' },
-  { id: 10, name: 'Ramupatel H R', company: 'Meraqui Ventures', salary: '2.4 LPA', image: 'https://picsum.photos/seed/n10/100/100' },
-  { id: 11, name: 'Lingaraju', company: 'Meraqui Ventures', salary: '2.4 LPA', image: 'https://picsum.photos/seed/n11/100/100' },
-  { id: 12, name: 'Karthik H', company: 'Muthoot Finance', salary: '2.19 LPA', image: 'https://picsum.photos/seed/n12/100/100' },
-  { id: 13, name: 'Deekshitha', company: 'Muthoot Finance', salary: '2.19 LPA', image: 'https://picsum.photos/seed/n13/100/100' },
-  { id: 14, name: 'Rekha C', company: 'HRH', salary: '1.2 LPA', image: 'https://picsum.photos/seed/n14/100/100' },
-  { id: 15, name: 'Raju HR', company: 'HRH', salary: '1.2 LPA', image: 'https://picsum.photos/seed/n15/100/100' },
-  { id: 16, name: 'Darshan N', company: 'Bookwormz', salary: '3.2 LPA', image: 'https://picsum.photos/seed/n16/100/100' },
-  { id: 17, name: 'Charan V', company: 'Bookwormz', salary: '3.2 LPA', image: 'https://picsum.photos/seed/n17/100/100' },
-  { id: 18, name: 'Anip Kumar', company: 'Bookwormz', salary: '3.2 LPA', image: 'https://picsum.photos/seed/n18/100/100' },
-  { id: 19, name: 'Aashish K', company: 'Bookwormz', salary: '3.2 LPA', image: 'https://picsum.photos/seed/n19/100/100' },
-  { id: 20, name: 'Madesh M', company: 'Arambha Skill', salary: '3.2 LPA', image: 'https://picsum.photos/seed/n20/100/100' },
+  { id: 1, name: 'Namratha M K', company: 'Launched Global', companyLogo: LaunchedGlobal, salary: '2.16 LPA', image: unknownImg },
+  { id: 2, name: 'Lekhana C', company: 'UNLOX', companyLogo: Unlox, salary: '2.16 LPA', image: unknownImg },
+  { id: 3, name: 'Pooja N', company: 'UNLOX', companyLogo: Unlox, salary: '2.16 LPA', image: unknownImg },
+  { id: 4, name: 'Rishi Kumar', company: 'UNLOX', companyLogo: Unlox, salary: '2.16 LPA', image: unknownImg },
+  { id: 5, name: 'Divyashree G M', company: 'Meraqui Ventures', companyLogo: MeraquiLOGO, salary: '2.4 LPA', image: unknownImg },
+  { id: 6, name: 'Kavana K P', company: 'Meraqui Ventures', companyLogo: MeraquiLOGO, salary: '2.4 LPA', image: unknownImg },
+  { id: 7, name: 'Divya S', company: 'Muthoot Money', companyLogo: MuthootFinance, salary: '1.2 LPA', image: unknownImg },
+  { id: 8, name: 'Harshavrdhan H A', company: 'HRH', companyLogo: HRHNext, salary: '1.2 LPA', image: unknownImg },
+  { id: 9, name: 'Sharanya L', company: 'HRH', companyLogo: HRHNext, salary: '1.2 LPA', image: unknownImg },
+  { id: 10, name: 'Ramupatel H R', company: 'Meraqui Ventures', companyLogo: MeraquiLOGO, salary: '2.4 LPA', image: unknownImg },
+  { id: 11, name: 'Lingaraju', company: 'Meraqui Ventures', companyLogo: MeraquiLOGO, salary: '2.4 LPA', image: unknownImg },
+  { id: 12, name: 'Karthik H', company: 'Muthoot Finance', companyLogo: MuthootFinance, salary: '2.19 LPA', image: unknownImg },
+  { id: 13, name: 'Deekshitha', company: 'Muthoot Finance', companyLogo: MuthootFinance, salary: '2.19 LPA', image: unknownImg },
+
+  { id: 14, name: 'Rekha C', company: 'HRH', companyLogo: HRHNext, salary: '1.2 LPA', image: unknownImg },
+  { id: 15, name: 'Raju HR', company: 'HRH', companyLogo: HRHNext, salary: '1.2 LPA', image: unknownImg },
+  { id: 16, name: 'Darshan N', company: 'Bookwormz', companyLogo: croppedBook, salary: '3.2 LPA', image: unknownImg },
+
+  { id: 17, name: 'Charan V', company: 'Bookwormz', companyLogo: croppedBook, salary: '3.2 LPA', image: unknownImg },
+  { id: 18, name: 'Anip Kumar', company: 'Bookwormz', companyLogo: croppedBook, salary: '3.2 LPA', image: unknownImg },
+  { id: 19, name: 'Aashish K', company: 'Bookwormz', companyLogo: croppedBook, salary: '3.2 LPA', image: unknownImg },
+
+  { id: 20, name: 'Madesh M', company: 'Arambha Skill', companyLogo: ArambhaSkill, salary: '3.2 LPA', image: unknownImg },
 ];
 
 export default function PlacedStudents() {
@@ -942,7 +977,8 @@ export default function PlacedStudents() {
           <div className="flex flex-col">
             <span className="text-sm font-bold text-brand-navy group-hover:text-brand-teal transition-colors">{student.name}</span>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-500">{student.company}</span>
+              {/* <span className="text-xs text-slate-500">{student.company}</span> */}
+              <img src={student.companyLogo} alt={student.company} className="h-5 object-contain" />
               <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
                 {student.salary}
               </span>
@@ -960,7 +996,7 @@ export default function PlacedStudents() {
           <div className="max-w-xl">
             <div className="inline-flex items-center text-gold gap-2 px-3 py-1 rounded-full bg-brand-teal/10 text-brand-teal text-xs font-bold uppercase tracking-wider mb-4">
               <Trophy className="w-3 h-3" />
-              Placement Records
+              Placement Records 2024-25
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-primary text-brand-navy mb-4">
               Our Wall of Fame

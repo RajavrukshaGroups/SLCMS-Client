@@ -428,11 +428,11 @@ export default function Quiz({ userName, onFinish }) {
 
             {/* Score Badge */}
             <div className="flex items-center gap-3">
-              <div className="bg-amber-50 px-3 py-1 rounded-full">
+              {/* <div className="bg-amber-50 px-3 py-1 rounded-full">
                 <span className="text-sm font-bold text-amber-700">
                   Score: {score}
                 </span>
-              </div>
+              </div> */}
 
               {/* Timer */}
               <div
