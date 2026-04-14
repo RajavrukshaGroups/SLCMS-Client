@@ -242,9 +242,9 @@ export default function App() {
       <div className="max-w-7xl mx-auto px-6 mb-16">
         <div className="flex flex-col md:flex-row justify-between items-end gap-6 text-center md:text-left">
           <div className="max-w-3xl">
-            <span className="text-teal-600 font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Department of Commerce & Management</span>
+            <span className="text-gold font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Department of Commerce & Management</span>
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-slate-900 leading-tight">
-              Sri Lakshmi College of Management and Science <br/>
+              {/* Sri Lakshmi College of Management and Science <br/> */}
               <span className="text-teal-600 italic">Academic Toppers 2024-25</span>
             </h2>
           </div>
