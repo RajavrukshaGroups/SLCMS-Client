@@ -26,12 +26,12 @@ export default function Home() {
       
       {/* Quick Stats Bar */}
       <div className="bg-white py-12 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-3 place-items-center gap-8">
           {[
             { label: 'Years Excellence', val: '20+', icon: TrendingUp },
             { label: 'Expert Faculty', val: '150+', icon: Users },
             { label: 'Placements', val: '95%', icon: Award },
-            { label: 'Campus Size', val: '25 Acres', icon: Building },
+            // { label: 'Campus Size', val: '25 Acres', icon: Building },
           ].map((stat, i) => (
             <div key={i} className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary">
@@ -44,6 +44,7 @@ export default function Home() {
             </div>
           ))}
         </div>
+      
       </div>
 
       <AboutSection />

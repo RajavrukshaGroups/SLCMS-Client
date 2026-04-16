@@ -70,7 +70,7 @@ export default function Difference() {
               </div>
               <div className="absolute -top-8 -right-8 glass p-6 rounded-3xl border-electric-blue/10 bg-glow-blue bg-white">
                 <p className="text-2xl font-bold text-electric-blue">24/7</p>
-                <p className="text-xs text-dark-text/60 uppercase tracking-wider">Expert Support</p>
+                <p className="text-xs text-dark-text/60 uppercase tracking-wider"> Library Facilities</p>
               </div>
             </div>
           </motion.div>

@@ -996,7 +996,7 @@ export default function PlacedStudents() {
           <div className="max-w-xl">
             <div className="inline-flex items-center text-gold gap-2 px-3 py-1 rounded-full bg-brand-teal/10 text-brand-teal text-xs font-bold uppercase tracking-wider mb-4">
               <Trophy className="w-3 h-3" />
-              Placement Records 2024-25
+              Placement Records 2025-26
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-primary text-brand-navy mb-4">
               Our Wall of Fame
@@ -1006,7 +1006,7 @@ export default function PlacedStudents() {
             </p>
           </div>
           
-          <div className="relative group">
+          {/* <div className="relative group">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-brand-teal transition-colors" />
             <input 
               type="text"
@@ -1015,7 +1015,7 @@ export default function PlacedStudents() {
               onChange={(e) => setSearch(e.target.value)}
               className="pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl w-full md:w-80 focus:outline-none focus:ring-2 focus:ring-brand-teal/20 focus:border-brand-teal transition-all"
             />
-          </div>
+          </div> */}
         </div>
 
         <div 
@@ -1062,21 +1062,21 @@ export default function PlacedStudents() {
               <MarqueeContent />
               
               {/* Gradient Overlays */}
-              <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
-              <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
+              {/* <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" /> */}
             </div>
           )}
         </div>
         
-        {!search && (
+        {/* {!search && (
           <p className="text-center mt-8 text-xs text-slate-400 font-medium animate-pulse">
             Hover to pause • Scroll to explore more
           </p>
-        )}
+        )} */}
       </div>
 
       {/* Sticky Bottom Marquee */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {showSticky && !search && (
           <motion.div
             initial={{ y: 100, opacity: 0 }}
@@ -1099,7 +1099,7 @@ export default function PlacedStudents() {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </div>
   );
 }

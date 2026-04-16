@@ -58,7 +58,9 @@ export default function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/feedback" element={<PlaceholderPage title="Student Feedback" />} />
               <Route path='/student-faculty-feedback' element={<PlaceholderPage title="Student & Faculty Feedback" />} />
-              <Route path='/faculty' element={<Faculty />} />
+              <Route path='/faculty' element={<PlaceholderPage title="Faculties" />} />  
+              <Route path='/staff' element={<PlaceholderPage title="Staff" />} />
+              <Route path='/alumni' element={<PlaceholderPage title="Alumni" />} />
             </Routes>
           </AnimatePresence>
         </main>

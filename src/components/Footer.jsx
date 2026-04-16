@@ -67,7 +67,7 @@ export default function Footer() {
               Resources
             </h4>
             <ul className="space-y-4">
-              {['E-Library', 'AICTE Info', 'Feedback', 'Contact Us', 'Privacy Policy'].map((item) => (
+              {['E-Library', 'AICTE Info', 'Feedback', 'Contact Us', ].map((item) => (
                 <li key={item}>
                   <Link
                     to={`/${item.toLowerCase().replace(' ', '-')}`}
@@ -112,7 +112,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Sri Lakshmi College of Management & Science. All rights reserved.
           </p>
           <div className="flex gap-8 text-xs text-slate-500">
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            {/* <a href="#" className="hover:text-white transition-colors">Terms of Service</a> */}
             <a href="https://maps.google.com/?q=No.+29,+Sri+Gandada+Kaval,+Magadi+Main+Rd,+Vishwaneedam+Post,+Sunkadakatte,+Bengaluru,+Karnataka+560091" className="hover:text-white transition-colors">Sitemap</a>
           </div>
         </div>

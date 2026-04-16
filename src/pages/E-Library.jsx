@@ -134,8 +134,8 @@ const ELibraryPage = () => {
   // External resources
   const resources = [
     { name: 'National Digital Library', url: 'https://ndl.iitkgp.ac.in/', icon: Library },
-    { name: 'Pg Pathshala Management', url: 'https://urlzs.com/KjqYv', icon: BookOpen },
-    { name: 'Campuswide Access', url: 'https://bangaloreuniversity.ac.in/campuswide-access/', icon: Globe },
+    // { name: 'Pg Pathshala Management', url: 'https://urlzs.com/KjqYv', icon: BookOpen },
+   // { name: 'Campuswide Access', url: 'https://bangaloreuniversity.ac.in/campuswide-access/', icon: Globe },
     { name: 'Cambridge Dictionary', url: 'https://dictionary.cambridge.org/', icon: Bookmark },
   ];
 
@@ -166,7 +166,7 @@ const ELibraryPage = () => {
       <div className="relative bg-gradient-to-r from-teal-700 to-teal-900 text-gold overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-6 py-20 lg:py-28 text-center" 
-             style={{backgroundImage:`url(${libraryHero})`, backgroundSize:'cover', backgroundPosition:'center'}}
+             style={{backgroundImage:`url(${libraryHero})`, backgroundSize:'cover', backgroundPosition:'center',}}
             >
           <motion.h1
             initial={{ scale: 0.9, opacity: 0 }}
@@ -189,8 +189,8 @@ const ELibraryPage = () => {
       </div>
 
       {/* External Resources Section */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* <div className="max-w-7xl mx-auto px-6 py-16 ">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 ">
           {resources.map((res, idx) => (
             <motion.a
               key={idx}
@@ -199,6 +199,31 @@ const ELibraryPage = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03, y: -5 }}
               className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 border border-gray-100 hover:shadow-xl transition-all group"
+            >
+              <div className="p-3 bg-teal-50 rounded-xl group-hover:bg-teal-100 transition">
+                <res.icon className="w-6 h-6 text-teal-700" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-gray-800">{res.name}</h3>
+                <p className="text-xs text-teal-600 flex items-center gap-1">
+                  Visit <ExternalLink size={12} />
+                </p>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+      </div> */}
+      
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="flex flex-wrap justify-center gap-6">
+          {resources.map((res, idx) => (
+            <motion.a
+              key={idx}
+              href={res.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03, y: -5 }}
+              className="w-full sm:w-[45%] lg:w-[260px] bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 border border-gray-100 hover:shadow-xl transition-all group"
             >
               <div className="p-3 bg-teal-50 rounded-xl group-hover:bg-teal-100 transition">
                 <res.icon className="w-6 h-6 text-teal-700" />

@@ -546,6 +546,7 @@ import {
   CheckCircle, 
   Briefcase, 
   GraduationCap,
+  ArrowRight,
   Phone,
   Mail,
   MapPin,
@@ -565,6 +566,8 @@ import BCAImg from '../assets/computer-lab-scaled-1.webp';
 import MCOMImg from '../assets/m.com-img.png';
 import MCAImg from '../assets/MCA.jpg';
 import MBAImg from '../assets/MBA.webp';
+//import { useNavigate } from "react-router-dom";
+
 
 // Complete course details content for all courses
 // const courseDetailsContent = {
@@ -1273,7 +1276,7 @@ const CourseDetailPage = () => {
           {/* Right Column - Sidebar */}
           <div className="space-y-6">
             {/* Enquiry Form */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-stone-100 sticky top-24" data-aos="fade-left">
+            {/* <div className="bg-white rounded-2xl p-6 shadow-lg border border-stone-100 sticky top-24" data-aos="fade-left">
               <h3 className="text-xl font-bold text-stone-800 mb-4">Apply for {course.title}</h3>
               <form onSubmit={handleFormSubmit} className="space-y-4">
                 <input
@@ -1315,7 +1318,60 @@ const CourseDetailPage = () => {
                   <Send size={18} /> Submit Application
                 </button>
               </form>
+            </div> */}
+            
+            {/* Apply Card */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-stone-100 sticky top-24" data-aos="fade-left">
+              
+              {/* Badge */}
+              <span className="inline-block px-3 py-1 bg-amber-50 text-amber-600 text-xs font-semibold rounded-full uppercase tracking-widest mb-4">
+                Course Application
+              </span>
+
+              {/* Title */}
+              <h3 className="text-xl font-bold text-stone-800 mb-1">
+                {course.title}
+              </h3>
+              <p className="text-sm text-stone-500 mb-5">{course.fullTitle}</p>
+
+              {/* Course Info */}
+              <div className="border-t border-stone-100 pt-4 space-y-3 mb-6">
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-stone-400">Duration</span>
+                  <span className="font-semibold text-stone-700">{course.duration}</span>
+                </div>
+                {/* <div className="flex justify-between items-center text-sm">
+                  <span className="text-stone-400">Credits</span>
+                  <span className="font-semibold text-stone-700">{course.creds}</span>
+                </div> */}
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-stone-400">Level</span>
+                  <span className="font-semibold text-stone-700">{course.level}</span>
+                </div>
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-stone-400">Mode</span>
+                  <span className="font-semibold text-stone-700">Full Time</span>
+                </div>
+              </div>
+
+              {/* Eligibility highlight */}
+              <div className="bg-amber-50 rounded-xl p-3 mb-6 flex items-start gap-2">
+                <GraduationCap size={16} className="text-amber-600 mt-0.5 flex-shrink-0" />
+                <p className="text-xs text-amber-700 leading-relaxed">
+                  {course.keyHighlights[1]}
+                </p>
+              </div>
+
+              {/* Apply Button */}
+              <button
+                onClick={() => navigate("/admissions")}
+                className="w-full bg-stone-800 hover:bg-stone-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
+              >
+                Apply Now
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
+
 
             {/* Contact Info */}
             {/* <div className="bg-amber-50 rounded-2xl p-6">
