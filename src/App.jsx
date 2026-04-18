@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'motion/react';
+import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Admissions from './pages/Admissions';
 import Courses from './pages/Courses';
 import PlaceholderPage from './pages/PlaceholderPage';
-import { useEffect } from 'react';
+//import { useEffect } from 'react';
 import Gallery from './pages/Gallery'
 import AboutPage from './pages/AboutPage'
 import IASKS from './pages/IASKSPage';
@@ -21,6 +22,7 @@ import PlacementsPage from './pages/Placements.jsx';
 import Contact from './pages/ContactPage';
 import ELibrary from './pages/E-Library';
 import Faculty from './pages/Faculty';
+import CollegeConcessionPopup from './components/CollegeConcessionPopup.jsx';
 
 
 
@@ -33,11 +35,20 @@ function ScrollToTop() {
 }
 
 export default function App() {
+   const [isOpen, setIsOpen] = useState(false);
+
+  // Auto-open modal after a short delay
+  useEffect(() => {
+    const timer = setTimeout(() => setIsOpen(true), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+  
   return (
     <Router>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Navbar />
+        <CollegeConcessionPopup />
         <main className="grow">
           <AnimatePresence mode="wait">
             <Routes>
@@ -64,6 +75,12 @@ export default function App() {
             </Routes>
           </AnimatePresence>
         </main>
+
+        {/* Scholarship Popup */}
+      <CollegeConcessionPopup 
+        isOpen={isOpen} 
+        onClose={() => setIsOpen(false)} 
+      />
         <Footer />
       </div>
     </Router>
