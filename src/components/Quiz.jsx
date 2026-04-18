@@ -541,3 +541,4 @@ export default function Quiz({ userName, onFinish }) {
     </>
   );
 }
+
