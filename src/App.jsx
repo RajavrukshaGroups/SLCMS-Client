@@ -39,6 +39,7 @@ function ScrollToTop() {
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showFloating, setShowFloating] = useState(false);
 
   // Auto-open modal after a short delay
   // useEffect(() => {
@@ -47,28 +48,35 @@ export default function App() {
   // }, []);
 
   useEffect(() => {
-    const data = localStorage.getItem("quizCompleted");
+    const completed = localStorage.getItem("quizCompleted");
+    const minimized = localStorage.getItem("popupMinimized");
 
-    if (data) {
+    // ✅ 1. If quiz completed → DO NOTHING (no popup, no floating)
+    if (completed) {
       try {
-        const parsed = JSON.parse(data);
+        const parsed = JSON.parse(completed);
 
         const now = Date.now();
         const diff = now - parsed.date;
-
         const days7 = 7 * 24 * 60 * 60 * 1000;
 
         if (diff < days7) {
-          return;
+          return; // 🚀 NOTHING SHOWS
         } else {
           localStorage.removeItem("quizCompleted");
         }
-      } catch (err) {
-        console.error("Invalid localStorage data");
+      } catch {
         localStorage.removeItem("quizCompleted");
       }
     }
 
+    // ✅ 2. Only show floating if NOT completed
+    if (minimized) {
+      setShowFloating(true);
+      return;
+    }
+
+    // ✅ 3. Otherwise show popup
     const timer = setTimeout(() => setIsOpen(true), 1500);
     return () => clearTimeout(timer);
   }, []);
@@ -134,7 +142,26 @@ export default function App() {
         <CollegeConcessionPopup
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
+          onMinimize={() => {
+            setIsOpen(false);
+            setShowFloating(true);
+            localStorage.setItem("popupMinimized", "true");
+          }}
         />
+        {showFloating && (
+          <div
+            onClick={() => {
+              setIsOpen(true);
+              setShowFloating(false);
+            }}
+            className="fixed bottom-6 right-6 flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-full shadow-xl cursor-pointer z-50 hover:scale-105 transition animate-bounce"
+          >
+            <span className="text-lg">🎓</span>
+            <span className="text-sm font-semibold whitespace-nowrap">
+              Get Fee Concession
+            </span>
+          </div>
+        )}
         <Footer />
       </div>
     </Router>

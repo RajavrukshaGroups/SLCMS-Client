@@ -164,9 +164,10 @@ const QUESTIONS = [
   },
 ];
 
-const CollegeConcessionPopup = ({ isOpen, onClose }) => {
+const CollegeConcessionPopup = ({ isOpen, onClose, onMinimize }) => {
   const dispatch = useDispatch();
-  const [step, setStep] = useState(1); // 1: info, 2: quiz, 3: result
+  const [step, setStep] = useState(0); // 👈 start from 0 now
+  // const [step, setStep] = useState(1); // 1: info, 2: quiz, 3: result
   const [studentData, setStudentData] = useState({
     name: "",
     email: "",
@@ -182,7 +183,8 @@ const CollegeConcessionPopup = ({ isOpen, onClose }) => {
   // Reset state when popup opens
   useEffect(() => {
     if (isOpen) {
-      setStep(1);
+      // setStep(1);
+      setStep(0);
       setStudentData({
         name: "",
         email: "",
@@ -367,6 +369,7 @@ const CollegeConcessionPopup = ({ isOpen, onClose }) => {
           date: Date.now(),
         }),
       );
+      localStorage.removeItem("popupMinimized");
       toast.success("Test submitted successfully 🎉");
 
       setStep(3);
@@ -379,13 +382,30 @@ const CollegeConcessionPopup = ({ isOpen, onClose }) => {
 
   const redirectToWhatsApp = () => {
     const { name, email, mobile, course } = studentData;
-    const message = `Hello SLCMS Admissions,%0A%0AI have completed the College Concession Test.%0A%0A📌 Name: ${name}%0A📧 Email: ${email}%0A📞 Mobile: ${mobile}%0A📚 Preferred Course: ${course}%0A🎯 Test Score: ${finalScore}/20%0A🎟️ Concession Coupon: ${concessionCoupon}%0A💰 Concession Value: ${concessionAmount}%0A%0APlease guide me for admission process and redeem my coupon. Thank you!`;
-    // const whatsappUrl = `https://wa.me/?text=${message}`;
-    const phoneNumber = "919886597362"; // ✅ Replace with your WhatsApp number
+    const message = `
+Hello SLCMS Admissions,
 
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+I have completed the College Concession Test.
 
-    window.open(whatsappUrl, '_blank');
+📌 Name: ${name}
+📧 Email: ${email}
+📞 Mobile: ${mobile}
+📚 Preferred Course: ${course}
+
+🎯 Test Score: ${finalScore}/20
+🎟️ Concession Coupon: ${concessionCoupon}
+💰 Concession Value: ${concessionAmount}
+
+Please guide me for the admission process and help me redeem my coupon.
+
+Thank you!
+`;
+    const phoneNumber = "919535003404"; // ✅ Replace with your WhatsApp number
+    // const phoneNumber = "917013911624"; // ✅ Replace with your WhatsApp number
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappUrl, "_blank");
   };
 
   const answeredCount = userAnswers.filter((a) => a !== null).length;
@@ -397,13 +417,56 @@ const CollegeConcessionPopup = ({ isOpen, onClose }) => {
       <div className="bg-white rounded-3xl max-w-2xl w-[90%] max-h-[90vh] overflow-y-auto relative shadow-2xl">
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={onMinimize}
           className="absolute top-4 right-5 text-3xl text-gray-400 hover:text-gray-600 transition-colors"
         >
           &times;
         </button>
 
         {/* Step 1: User Info */}
+        {step === 0 && (
+          <div className="p-8 text-center">
+            <h2 className="text-2xl font-bold text-[#1e4663] mb-3">
+              🎓 Unlock Your Fee Concession
+            </h2>
+
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Take a quick <strong>2-minute assessment</strong> and get up to{" "}
+              <span className="text-green-600 font-semibold">
+                ₹10,000 fee concession
+              </span>{" "}
+              based on your performance.
+            </p>
+
+            <p className="text-sm text-gray-500 mb-6">
+              ✅ Only 20 simple questions <br />
+              ✅ Instant result & coupon <br />✅ No registration hassle
+            </p>
+
+            <div className="flex gap-4 justify-center">
+              {/* YES BUTTON */}
+              <button
+                onClick={() => setStep(1)}
+                className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition shadow-md"
+              >
+                🚀 Yes, I Want Concession
+              </button>
+
+              {/* NO BUTTON */}
+              <button
+                // onClick={onClose}
+                onClick={onMinimize}
+                className="bg-gray-300 text-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-400 transition"
+              >
+                Maybe Later
+              </button>
+            </div>
+
+            <p className="text-xs text-gray-400 mt-5">
+              🎯 Join hundreds of students who have already earned concessions
+            </p>
+          </div>
+        )}
         {step === 1 && (
           <div className="p-7 md:p-8">
             <div className="text-center mb-6">
