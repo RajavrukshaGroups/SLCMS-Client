@@ -1,8 +1,8 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:11000";
+// const BASE_URL = "http://localhost:11000";
 // const BASE_URL =
 //   process.env.VITE_API_URL || "https://server.bouncyboxstudio.in";
-// const BASE_URL = "https://server.bouncyboxstudio.in";
+const BASE_URL = "https://server.bouncyboxstudio.in";
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
