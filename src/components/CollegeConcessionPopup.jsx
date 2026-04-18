@@ -243,7 +243,11 @@ const CollegeConcessionPopup = ({ isOpen, onClose }) => {
   const redirectToWhatsApp = () => {
     const { name, email, mobile, course } = studentData;
     const message = `Hello SLCMS Admissions,%0A%0AI have completed the College Concession Test.%0A%0A📌 Name: ${name}%0A📧 Email: ${email}%0A📞 Mobile: ${mobile}%0A📚 Preferred Course: ${course}%0A🎯 Test Score: ${finalScore}/20%0A🎟️ Concession Coupon: ${concessionCoupon}%0A💰 Concession Value: ${concessionAmount}%0A%0APlease guide me for admission process and redeem my coupon. Thank you!`;
-    const whatsappUrl = `https://wa.me/?text=${message}`;
+    // const whatsappUrl = `https://wa.me/?text=${message}`;
+    const phoneNumber = "919886597362"; // ✅ Replace with your WhatsApp number
+
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
     window.open(whatsappUrl, '_blank');
   };
 
