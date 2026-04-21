@@ -75,7 +75,7 @@ export default function Assistance() {
             </motion.div>
           ))}
 
-          <img src={placementImage} alt="Placement Assistance" className="md:col-span-2 w-full h-auto rounded-lg shadow-lg" />
+          {/* <img src={placementImage} alt="Placement Assistance" className="md:col-span-2 w-full h-auto rounded-lg shadow-lg" /> */}
 
        </div>
           

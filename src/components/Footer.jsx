@@ -67,7 +67,7 @@ export default function Footer() {
               Resources
             </h4>
             <ul className="space-y-4">
-              {['E-Library', 'AICTE Info', 'Feedback', 'Contact Us', ].map((item) => (
+              {['E-Library', 'IASKAS', 'Feedback', 'Contact', ].map((item) => (
                 <li key={item}>
                   <Link
                     to={`/${item.toLowerCase().replace(' ', '-')}`}
@@ -97,7 +97,7 @@ export default function Footer() {
               </li>
               <li className="flex gap-4">
                 <Phone className="w-5 h-5 text-accent shrink-0" />
-                <span className="text-sm text-slate-400">+91 80 1234 5678</span>
+                <span className="text-sm text-slate-400">+91 95350 03404</span>
               </li>
               <li className="flex gap-4">
                 <Mail className="w-5 h-5 text-accent shrink-0" />
