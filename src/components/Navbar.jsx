@@ -26,7 +26,7 @@ const Navbar = () => {
     
     // For AICTE: highlight when its internal child route is active
     if (item.name === 'AICTE') {
-      return currentPath === '/student-faculty-feedback';
+      return currentPath === '/feedback';
     }
     
     // For items with direct href (and no special case)
@@ -77,7 +77,7 @@ const Navbar = () => {
       dropdown: [
         { name: 'LOA', href: 'https://srilakshmimanagement.org/wp-content/uploads/2025/02/LOA-Report-24-25.pdf' },
         { name: 'AICTE Mandatory Disclosure', href: 'https://srilakshmimanagement.org/wp-content/uploads/2025/01/AICTE.pdf' },
-        { name: 'Student and Faculty Feedback', href: '/student-faculty-feedback' }
+        { name: 'Student and Faculty Feedback', href: '/feedback' }
       ]
     },
     { name: 'Contact', href: '/contact' },
@@ -135,15 +135,16 @@ const Navbar = () => {
             <div className="flex items-center gap-8 px-8">
               <a href="/e-library" className="text-[13px] text-gray-600 hover:text-primary transition-colors">E-Library</a>
               <a href="/placements" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Jobs</a>
-              <a href="/alumni" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Alumni</a>
-              <div className="flex items-center gap-3 ml-4">
+              {/* <a href="/alumni" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Alumni</a> */}
+              <a href="/feedback" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Feedback</a>
+              {/* <div className="flex items-center gap-3 ml-4">
                 <button onClick={()=>navigate("/staff")} className="flex items-center gap-2 px-4 py-1.5 bg-gray-50 rounded-full text-[13px] text-gray-700 hover:bg-gray-100 transition-colors">
                   Staff <Lock size={12} className="text-primary" />
                 </button>
                 <button onClick={()=>navigate("/faculty")} className="flex items-center gap-2 px-4 py-1.5 bg-gray-50 rounded-full text-[13px] text-gray-700 hover:bg-gray-100 transition-colors">
                   Faculties <ChevronDown size={14} className="text-gray-400" />
                 </button>
-              </div>
+              </div> */}
             </div>
             <div className="flex items-center h-full">
               <div className="flex items-center h-full">
@@ -260,16 +261,17 @@ const Navbar = () => {
                     return (
                       <div key={item.name} className="flex flex-col">
                         {item.href ? (
-                          <a
-                            href={item.href}
-                            onClick={(e) => handleMobileLinkClick(e, item)}
-                            className={`flex items-center justify-between px-4 py-3 rounded-lg text-[14px] font-medium transition-colors ${
-                              isActive ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-50'
-                            }`}
-                          >
-                            {item.name}
-                            {item.dropdown && <ChevronDown size={16} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
-                          </a>
+                          // <a
+                          //   href={item.href}
+                          //   onClick={(e) => handleMobileLinkClick(e, item)}
+                          //   className={`flex items-center justify-between px-4 py-3 rounded-lg text-[14px] font-medium transition-colors ${
+                          //     isActive ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-50'
+                          //   }`}
+                          // >
+                          //   {item.name}
+                          //   {item.dropdown && <ChevronDown size={16} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
+                          // </a>
+                          <></>
                         ) : (
                           <div
                             onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
@@ -283,7 +285,7 @@ const Navbar = () => {
                         )}
 
                         {/* Mobile Dropdown */}
-                        <AnimatePresence>
+                        {/* <AnimatePresence>
                           {item.dropdown && activeDropdown === item.name && (
                             <motion.div
                               initial={{ height: 0, opacity: 0 }}
@@ -309,6 +311,106 @@ const Navbar = () => {
                               })}
                             </motion.div>
                           )}
+                        </AnimatePresence> */}
+                        <AnimatePresence>
+                          {isMenuOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="lg:hidden bg-white border-b border-gray-100 overflow-hidden"
+                            >
+                              <div className="flex flex-col p-4 gap-4">
+                                {/* ✅ ACTION BUTTONS - NOW AT TOP */}
+                                <div className="flex flex-col gap-2">
+                                  <a
+                                    href="/contact"
+                                    className="w-full py-3 bg-gold text-white text-center rounded-lg font-medium"
+                                  >
+                                    Contact
+                                  </a>
+                                  <a
+                                    href="/admissions"
+                                    className="w-full py-3 bg-primary text-white text-center rounded-lg font-medium flex items-center justify-center gap-2"
+                                  >
+                                    Apply Now <ArrowUpRight size={16} />
+                                  </a>
+                                </div>
+
+                                {/* Main Links */}
+                                <div className="flex flex-col gap-1">
+                                  {navItems.map((item) => {
+                                    const isActive = isNavItemActive(item);
+                                    
+                                    return (
+                                      <div key={item.name} className="flex flex-col">
+                                        {item.href ? (
+                                          <a
+                                            href={item.href}
+                                            onClick={(e) => handleMobileLinkClick(e, item)}
+                                            className={`flex items-center justify-between px-4 py-3 rounded-lg text-[14px] font-medium transition-colors ${
+                                              isActive ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-50'
+                                            }`}
+                                          >
+                                            {item.name}
+                                            {item.dropdown && <ChevronDown size={16} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
+                                          </a>
+                                        ) : (
+                                          <div
+                                            onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                                            className={`flex items-center justify-between px-4 py-3 rounded-lg text-[14px] font-medium transition-colors cursor-pointer ${
+                                              isActive ? 'bg-primary/10 text-primary' : 'text-gray-700'
+                                            }`}
+                                          >
+                                            {item.name}
+                                            {item.dropdown && <ChevronDown size={16} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
+                                          </div>
+                                        )}
+
+                                        {/* Mobile Dropdown */}
+                                        <AnimatePresence>
+                                          {item.dropdown && activeDropdown === item.name && (
+                                            <motion.div
+                                              initial={{ height: 0, opacity: 0 }}
+                                              animate={{ height: 'auto', opacity: 1 }}
+                                              exit={{ height: 0, opacity: 0 }}
+                                              className="overflow-hidden bg-gray-50/50 rounded-lg ml-4 mt-1"
+                                            >
+                                              {item.dropdown.map((subItem) => {
+                                                const isSubActive = isSubItemActive(subItem);
+                                                return (
+                                                  <a
+                                                    key={subItem.name}
+                                                    href={subItem.href}
+                                                    target={subItem.href?.startsWith('http') ? '_blank' : '_self'}
+                                                    rel={subItem.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                                    className={`block px-6 py-2.5 text-[13px] transition-colors ${
+                                                      isSubActive ? 'text-primary font-medium' : 'text-gray-600 hover:text-primary'
+                                                    }`}
+                                                  >
+                                                    {subItem.name}
+                                                  </a>
+                                                );
+                                              })}
+                                            </motion.div>
+                                          )}
+                                        </AnimatePresence>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+
+                                <hr className="border-gray-100" />
+
+                                {/* Secondary Links */}
+                                <div className="flex flex-wrap gap-4 px-2">
+                                  <a href="/e-library" className="text-[13px] text-gray-600">E-Library</a>
+                                  <a href="/placements" className="text-[13px] text-gray-600">Jobs</a>
+                                  <a href="/feedback" className="text-[13px] text-gray-600">Feedback</a>
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
                         </AnimatePresence>
                       </div>
                     );
@@ -321,19 +423,20 @@ const Navbar = () => {
                 <div className="flex flex-wrap gap-4 px-2">
                   <a href="/e-library" className="text-[13px] text-gray-600">E-Library</a>
                   <a href="/placements" className="text-[13px] text-gray-600">Jobs</a>
-                  <a href="/alumni" className="text-[13px] text-gray-600">Alumni</a>
+                  {/* <a href="/alumni" className="text-[13px] text-gray-600">Alumni</a> */}
+                  <a href="/feedback" className="text-[13px] text-gray-600">Feedback</a>
                 </div>
 
                 {/* Action Buttons */}
                 <div className="flex flex-col gap-2">
-                  <div className="flex gap-2">
+                  {/* <div className="flex gap-2">
                     <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-50 rounded-lg text-[13px] text-gray-700">
                       Staff <Lock size={12} className="text-primary" />
                     </button>
                     <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-50 rounded-lg text-[13px] text-gray-700">
                       Faculties <ChevronDown size={14} className="text-gray-400" />
                     </button>
-                  </div>
+                  </div> */}
                   <a
                     href="/contact"
                     className="w-full py-3 bg-gold text-white text-center rounded-lg font-medium"

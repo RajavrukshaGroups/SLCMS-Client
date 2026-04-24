@@ -1,7 +1,8 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { ChevronDown } from "lucide-react";
 import { useRef } from "react";
-import PlacementHeroImg from "../../assets/placement-hero-img.jpg";
+//import PlacementHeroImg from "../../assets/placement-hero-img.jpg";
+import PlacementHeroImg from '../../assets/placements-banner.jpg'
 
 export default function Hero() {
   const containerRef = useRef(null);
@@ -20,7 +21,7 @@ export default function Hero() {
   };
 
   return (
-    <section ref={containerRef} className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+    <section ref={containerRef} className="relative auto-screen py-12 w-full overflow-hidden flex items-center justify-center">
       {/* Background with cinematic image/gradient */}
       <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
         <img
@@ -71,49 +72,49 @@ export default function Hero() {
       </motion.div> */}
 
       <motion.div
-  style={{ opacity }}
-  className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto"
->
-  {/* Heading */}
-  <motion.h1
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1, ease: "easeOut" }}
-    className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-4 sm:mb-6 tracking-tight leading-tight"
-  >
-    Shaping Careers.
-    <span className="block sm:inline text-accent">
-      {" "}Building Futures.
-    </span>
-  </motion.h1>
+        style={{ opacity }}
+        className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto"
+      >
+        {/* Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-4 sm:mb-6 tracking-tight leading-tight"
+        >
+          Shaping Careers.
+          <span className="block sm:inline text-accent">
+            {" "}Building Futures.
+          </span>
+        </motion.h1>
 
-  {/* Subtext */}
-  <motion.p
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-    className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 font-sans max-w-xl sm:max-w-2xl mx-auto mb-6 sm:mb-10 leading-relaxed"
-  >
-    Empowering students with the right guidance, skills, and opportunities
-    to succeed in the corporate world.
-  </motion.p>
+        {/* Subtext */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 font-sans max-w-xl sm:max-w-2xl mx-auto mb-6 sm:mb-10 leading-relaxed"
+        >
+          Empowering students with the right guidance, skills, and opportunities
+          to succeed in the corporate world.
+        </motion.p>
 
-  {/* Button */}
-  <motion.button
-    initial={{ opacity: 0, scale: 0.9 }}
-    animate={{ opacity: 1, scale: 1 }}
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    transition={{ duration: 0.5, delay: 0.6 }}
-    onClick={scrollToNext}
-    className="group relative px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base bg-accent text-white font-poppins font-semibold rounded-full overflow-hidden transition-all hover:bg-accent-light animate-glow"
-  >
-    <span className="relative z-10 flex items-center justify-center gap-2">
-      Explore Placements
-      <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-y-1 transition-transform" />
-    </span>
-  </motion.button>
-</motion.div>
+        {/* Button */}
+        <motion.button
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          onClick={scrollToNext}
+          className="group relative px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base bg-accent text-white font-poppins font-semibold rounded-full overflow-hidden transition-all hover:bg-accent-light animate-glow"
+        >
+          <span className="relative z-10 flex items-center justify-center gap-2">
+            Explore Placements
+            <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-y-1 transition-transform" />
+          </span>
+        </motion.button>
+      </motion.div>
 
       {/* Parallax elements or subtle motion */}
       <motion.div
