@@ -425,47 +425,101 @@ Thank you!
 
         {/* Step 1: User Info */}
         {step === 0 && (
-          <div className="p-8 text-center">
-            <h2 className="text-2xl font-bold text-[#1e4663] mb-3">
-              🎓 Unlock Your Fee Concession
-            </h2>
+          // <div className="p-8 text-center">
+          //   <h2 className="text-2xl font-bold text-[#1e4663] mb-3">
+          //     🎓 Unlock Your Fee Concession
+          //   </h2>
 
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              Take a quick <strong>2-minute assessment</strong> and get up to{" "}
-              <span className="text-green-600 font-semibold">
-                ₹10,000 fee concession
-              </span>{" "}
-              based on your performance.
-            </p>
+          //   <p className="text-gray-600 mb-4 leading-relaxed">
+          //     Take a quick <strong>2-minute assessment</strong> and get up to{" "}
+          //     <span className="text-green-600 font-semibold">
+          //       ₹10,000 fee concession
+          //     </span>{" "}
+          //     based on your performance.
+          //   </p>
 
-            <p className="text-sm text-gray-500 mb-6">
-              ✅ Only 20 simple questions <br />
-              ✅ Instant result & coupon <br />✅ No registration hassle
-            </p>
+          //   <p className="text-sm text-gray-500 mb-6">
+          //     ✅ Only 20 simple questions <br />
+          //     ✅ Instant result & coupon <br />✅ No registration hassle
+          //   </p>
 
-            <div className="flex gap-4 justify-center">
-              {/* YES BUTTON */}
-              <button
-                onClick={() => setStep(1)}
-                className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition shadow-md"
-              >
-                🚀 Yes, I Want Concession
-              </button>
+          //   <div className="flex gap-4 justify-center">
+          //     {/* YES BUTTON */}
+          //     <button
+          //       onClick={() => setStep(1)}
+          //       className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition shadow-md"
+          //     >
+          //       🚀 Yes, I Want Concession
+          //     </button>
 
-              {/* NO BUTTON */}
-              <button
-                // onClick={onClose}
-                onClick={onMinimize}
-                className="bg-gray-300 text-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-400 transition"
-              >
-                Maybe Later
-              </button>
-            </div>
+          //     {/* NO BUTTON */}
+          //     <button
+          //       // onClick={onClose}
+          //       onClick={onMinimize}
+          //       className="bg-gray-300 text-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-400 transition"
+          //     >
+          //       Maybe Later
+          //     </button>
+          //   </div>
 
-            <p className="text-xs text-gray-400 mt-5">
-              🎯 Join hundreds of students who have already earned concessions
-            </p>
+          //   <p className="text-xs text-gray-400 mt-5">
+          //     🎯 Join hundreds of students who have already earned concessions
+          //   </p>
+          // </div>
+                  <div className="p-8 text-center">
+          {/* Urgency Badge - Added */}
+          <div className="inline-flex items-center gap-2 bg-red-500 text-white px-4 py-1.5 rounded-full text-xs font-bold mb-4 animate-pulse shadow-md">
+            <span>⏰</span>
+            <span>LIMITED SLOTS • HURRY!</span>
+            <span>🔥</span>
           </div>
+
+          <h2 className="text-3xl font-serif font-bold bg-gradient-to-r from-[#1e4663] to-[#2a6b8f] bg-clip-text text-transparent mb-4">
+            Unlock Your Fee Concession
+          </h2>
+
+          <p className="text-gray-600 mb-5 leading-relaxed text-base">
+            Take a <strong>2‑minute smart assessment</strong> and qualify for a 
+            <span className="text-emerald-600 font-bold mx-1"> significant fee concession </span> 
+            — based entirely on your performance.
+          </p>
+
+          {/* Timer & Stock Counter - Added for Urgency */}
+         
+          <p className="text-sm text-gray-500 mb-6 space-y-1">
+            <span className="block">✅ 20 curated questions • Instant result & offer code</span>
+            <span className="block">✅ No registration • Completely hassle‑free</span>
+          </p>
+
+          {/* Urgency Note - Added */}
+          <p className="text-xs text-amber-600 mb-4 font-medium">
+            ⚡ Only first 50 students get guaranteed concession ⚡
+          </p>
+
+          <div className="flex gap-5 justify-center">
+            {/* Primary CTA */}
+            <button
+              onClick={() => setStep(1)}
+              className="bg-gradient-to-r from-emerald-700 to-teal-600 text-white px-8 py-3 rounded-full font-semibold 
+                        shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+            >
+              🚀 Yes, I Want Concession
+            </button>
+
+            {/* Secondary CTA */}
+            <button
+              onClick={onMinimize}
+              className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full font-semibold 
+                        hover:bg-gray-50 hover:border-gray-400 transition-all duration-200"
+            >
+              Maybe Later
+            </button>
+          </div>
+
+          <p className="text-xs text-gray-400 mt-6 tracking-wide">
+            🎯 Trusted by hundreds of students — earn your excellence reward.
+          </p>
+        </div>
         )}
         {step === 1 && (
           <div className="p-7 md:p-8">

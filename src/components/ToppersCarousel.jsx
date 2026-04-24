@@ -16,7 +16,6 @@ import KEERTHANA from '../assets/Toppers/KEERTHANA S.png';
 import LAKSHMITHA from '../assets/Toppers/LAKSHMITHA K Y.png';
 import MEGHANA from '../assets/Toppers/MEGHANA L.png';
 import MONISHA from '../assets/Toppers/MONISHA B T.png';
-import NAYANAYADAV from '../assets/Toppers/NAYANA YADAV CH.png';
 import NOORAYESHA from '../assets/Toppers/NOOR AYESHA.png';
 import PALLAVI from '../assets/Toppers/PALLAVI D.png';
 import RAKSHITHA from '../assets/Toppers/RAKSHITHA M.png';
@@ -37,7 +36,7 @@ const toppers = [
     dept: 'Commerce & Management',
     image: RESHAM,
     quote: 'Hard work and consistent effort are the keys to academic success at SLCMS.',
-  },
+   },
   {
     name: 'Nayana Yadav CH',
     course: 'BBA - 2024-25',
@@ -103,83 +102,6 @@ const toppers = [
     image: JOYCEPETER,
     quote: 'Blessed to be part of the SLCMS family and its success story.',
   },
-
-   // BBA TOPPERS
-  {
-    name: 'Resham M',
-    course: 'BBA - 2024-25',
-    rank: 'CGPA: 9.17',
-    dept: 'Commerce & Management',
-    image: RESHAM,
-    quote: 'Hard work and consistent effort are the keys to academic success at SLCMS.',
-  },
-  {
-    name: 'Nayana Yadav CH',
-    course: 'BBA - 2024-25',
-    rank: 'CGPA: 8.75',
-    dept: 'Commerce & Management',
-    image: NAYANA,
-    quote: 'The guidance from our faculty helps us reach our highest potential.',
-  },
-  {
-    name: 'Simran N',
-    course: 'BBA - 2024-25',
-    rank: 'CGPA: 8.67',
-    dept: 'Commerce & Management',
-    image: SIMRAN,
-    quote: 'Grateful for the academic environment that fosters excellence.',
-  },
-  {
-    name: 'Nithyalakshmi H K',
-    course: 'BBA - 2024-25',
-    rank: 'CGPA: 8.62',
-    dept: 'Commerce & Management',
-    image: NITHYALAKSHMI,
-    quote: 'Persistence and dedication always pay off in the long run.',
-  },
-  {
-    name: 'Roopa Shree',
-    course: 'BBA - 2024-25',
-    rank: 'CGPA: 8.15',
-    dept: 'Commerce & Management',
-    image: ROOPA,
-    quote: 'A supportive campus makes all the difference in achieving goals.',
-  },
-  {
-    name: 'Arbintaj',
-    course: 'BBA - 2024-25',
-    rank: 'CGPA: 8.13',
-    dept: 'Commerce & Management',
-    image: ARBINTAJ,
-    quote: 'Success is a journey of continuous learning and improvement.',
-  },
-
-  // B.COM TOPPERS
-  {
-    name: 'Tejaswini T N',
-    course: 'B.Com - 2024-25',
-    rank: 'CGPA: 8.27',
-    dept: 'Commerce & Management',
-    image: TEJASWINI,
-    quote: 'The commerce department provides a solid foundation for our careers.',
-  },
-  {
-    name: 'Sangeetha D',
-    course: 'B.Com - 2024-25',
-    rank: 'CGPA: 8.13',
-    dept: 'Commerce & Management',
-    image: SANGEETHA,
-    quote: 'Academic achievement is a result of focus and great mentorship.',
-  },
-  {
-    name: 'Joyce Peter',
-    course: 'B.Com - 2024-25',
-    rank: 'CGPA: 8.01',
-    dept: 'Commerce & Management',
-    image: JOYCEPETER,
-    quote: 'Blessed to be part of the SLCMS family and its success story.',
-  },
-
   // BCA TOPPERS
   {
     name: 'Aishwarya S',
@@ -379,13 +301,13 @@ export default function App() {
         <motion.div 
           className="flex py-4"
           animate={{
-            x: [0, -3420],  // -3420 Adjusted based on card width + margin * number of unique items
+            x: [0, -6920],  // -3420 Adjusted based on card width + margin * number of unique items
           }}
           transition={{
             x: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: 45, // Slightly slower for readability
+              duration: 95, // Slightly slower for readability
               ease: "linear",
             },
           }}
