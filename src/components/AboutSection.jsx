@@ -5,7 +5,9 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {useNavigate} from "react-router-dom"
-import founder from "../assets/founder.jpg"
+//import founder from "../assets/founder.jpg"
+import founder from '../assets/founder-img.png'
+
 
 gsap.registerPlugin(ScrollTrigger);
 

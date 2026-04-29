@@ -64,7 +64,7 @@ const Navbar = () => {
         { name: 'BBA', href: '/course/bba' },
         { name: 'BCA', href: '/course/bca' },
         { name: 'B.Sc', href: '/course/bsc-cbz' },
-        { name: 'BA', href: '/course/ba-journalism' },
+        { name: 'BA', href: '/course/ba-hep' },
         { name: 'M.Com', href: '/course/mcom' },
         { name: 'MCA', href: '/course/mca' },
         { name: 'MBA', href: '/course/mba' }

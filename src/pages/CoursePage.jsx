@@ -1094,7 +1094,8 @@ import {
   Star,
   Users,
   Target,
-  Zap
+  Zap,
+  ShieldCheck, TrendingUp
 } from 'lucide-react';
 import BscImg from '../assets/Bsc.jpeg';
 import BBAImg from '../assets/BBA.jpeg';
@@ -1111,6 +1112,7 @@ import campusStory from '../assets/srilakshmi-degree-clg-building.jpg';
 import MCAImg from '../assets/MCA.jpg';
 import MBAImg from '../assets/MBA.webp';
 //import CourseBanner from '../assets/course-banner.jpg';
+import ValueAddedSection from '../components/ValueAddedSection';
 
 import succesStory from '../assets/succes-story.jpg';
 
@@ -1172,20 +1174,34 @@ const coursesData = [
     color: "from-blue-500 to-cyan-600",
     outcomes: ["Lab Research", "Field Studies", "Environmental Science"]
   },
+  // { 
+  //   id: 5, 
+  //   title: "BA HEP", 
+  //   slug: "ba-hep",
+  //   category: "ug", 
+  //   duration: "3 Years", 
+  //   creds: "180 Credits",
+  //   desc: "Storytelling for the media age. Digital journalism, ethics, and communication mastery.", 
+  //   longDesc: "New-age media training covering digital storytelling, broadcast journalism, and content strategy.",
+  //   img: BAImg, 
+  //   badge: "Creative Edge",
+  //   color: "from-rose-500 to-red-600",
+  //   outcomes: ["Digital Media", "Content Strategy", "Broadcast Skills"]
+  // },
   { 
-    id: 5, 
-    title: "BA Journalism", 
-    slug: "ba-journalism",
-    category: "ug", 
-    duration: "3 Years", 
-    creds: "180 Credits",
-    desc: "Storytelling for the media age. Digital journalism, ethics, and communication mastery.", 
-    longDesc: "New-age media training covering digital storytelling, broadcast journalism, and content strategy.",
-    img: BAImg, 
-    badge: "Creative Edge",
-    color: "from-rose-500 to-red-600",
-    outcomes: ["Digital Media", "Content Strategy", "Broadcast Skills"]
-  },
+  id: 5, 
+  title: "BA HEP", 
+  slug: "ba-hep",
+  category: "ug", 
+  duration: "3 Years", 
+  creds: "180 Credits",
+  desc: "Focused study in History, Economics, and Political Science for analytical and civic understanding.", 
+  longDesc: "An interdisciplinary program covering History, Economics, and Political Science, designed to build critical thinking, socio-political awareness, and analytical skills for diverse career paths.",
+  img: BAImg, 
+  badge: "Academic Core",
+  color: "from-rose-500 to-red-600",
+  outcomes: ["Public Policy", "Civil Services", "Research & Analysis"]
+},
   { 
     id: 6, 
     title: "M.Com", 
@@ -1531,7 +1547,7 @@ const CourseCatalog = () => {
       </section>
 
       {/* Value Added Section */}
-      <section id="values" className="py-24 bg-white relative overflow-hidden">
+      {/* <section id="values" className="py-24 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-60"></div>
         <div className="container mx-auto px-4 md:px-6 relative z-2">
           <div className="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up">
@@ -1547,7 +1563,13 @@ const CourseCatalog = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <ValueAddedSection/>
+
+          {/* Value-Added Section - Skill Amplification Matrix (Different Design) */}
+{/* Value-Added Section - Certification Spotlight (Split Layout) */}
+
 
       {/* Enquiry Section */}
       <section id="enquiry-section" className="py-20 bg-gradient-to-br from-stone-50 to-amber-50/30">
@@ -1626,7 +1648,7 @@ const CourseCatalog = () => {
                   <option>BBA</option>
                   <option>BCA</option>
                   <option>B.Sc (CBZ)</option>
-                  <option>BA Journalism</option>
+                  <option>BA HEP</option>
                   <option>M.Com</option>
                 </select>
                 <button

@@ -226,7 +226,7 @@ export default function ChairmansMessage() {
             </motion.div>
 
             {/* Signature Area */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -243,7 +243,7 @@ export default function ChairmansMessage() {
                 <h5 className="text-xl font-bold text-zinc-900">Smt. Clara Robert</h5>
                 <p className="text-blue-600 font-semibold">Administrator</p>
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </div>

@@ -962,24 +962,24 @@ export default function PlacedStudents() {
       }}
     >
       {[...students, ...students, ...students].map((student, idx) => (
-          <div className={`flex items-center space-x-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all cursor-pointer group ${scale < 1 ? 'scale-90' : ''} min-w-[280px]`}>
+          <div className={`flex items-center space-x-4 p-4 bg-gold text-center justify-center rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all cursor-pointer group ${scale < 1 ? 'scale-90' : ''} min-w-[280px]`}>
           <div className="relative">
-            <img 
+            {/* <img 
               src={student.image} 
               alt={student.name} 
               className="w-12 h-12 rounded-full border-2 border-brand-teal/20 shadow-sm object-cover group-hover:scale-110 transition-transform"
               referrerPolicy="no-referrer"
-            />
-            <div className="absolute -bottom-1 -right-1 bg-brand-teal text-white p-0.5 rounded-full border-2 border-white">
+            /> */}
+            {/* <div className="absolute -bottom-1 -right-1 bg-brand-teal text-white p-0.5 rounded-full border-2 border-white">
               <ExternalLink className="w-2 h-2" />
-            </div>
+            </div> */}
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-bold text-brand-navy group-hover:text-brand-teal transition-colors">{student.name}</span>
-            <div className="flex items-center gap-2">
+            <img src={student.companyLogo} alt={student.company} className="h-6 object-contain" />
+            <div className="flex items-center gap-2 mt-4">
               {/* <span className="text-xs text-slate-500">{student.company}</span> */}
-              <img src={student.companyLogo} alt={student.company} className="h-5 object-contain" />
-              <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+              <span className="text-sm font-bold text-black  group-hover:text-brand-teal transition-colors">{student.name}</span>
+              <span className="text-[10px] font-bold text-blue-600 bg-emerald-50 px-1.5 py-0.5 rounded">
                 {student.salary}
               </span>
             </div>

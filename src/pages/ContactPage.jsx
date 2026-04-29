@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axiosInstance from "../api/axiosInstance";
 import { API_ROUTES } from "../api/apiRoutes";
 import { toast } from "react-toastify";
+import contactBannerImg from './../assets/contact-page-banner-img.jpg'
+
 
 const ContactPage = () => {
   // Form state
@@ -122,8 +124,18 @@ const ContactPage = () => {
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1
+        <div
+          className="text-center mb-12 px-0"
+          style={{
+            backgroundImage: `url(${contactBannerImg})`,
+            backgroundSize: "cover",        // makes image fill container
+            backgroundPosition: "center",   // keeps it centered
+            backgroundRepeat: "no-repeat",
+            width: "100%",                  // full width
+            height: "300px",                // adjust as needed
+          }}
+        >         
+         {/* <h1
             className="text-4xl md:text-5xl font-bold tracking-tight"
             style={{ color: "#0F766E" }}
           >
@@ -132,7 +144,7 @@ const ContactPage = () => {
           <p className="text-lg text-gray-600 mt-2 max-w-2xl mx-auto">
             Leave us your info — we’re here to answer your questions and guide
             you.
-          </p>
+          </p> */}
           <div
             className="w-20 h-1 mx-auto mt-4 rounded-full"
             style={{ backgroundColor: "#C8A95A" }}
