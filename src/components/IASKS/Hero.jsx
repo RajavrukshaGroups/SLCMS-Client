@@ -163,6 +163,9 @@ export default function Hero() {
 
         {/* 🔥 Only Top Fade */}
         <div className="absolute bottom-0 left-0 w-full h-16 sm:h-20 bg-linear-to-t from-primary/80 to-transparent" />
+
+
+        
       </div>
       </div>
 

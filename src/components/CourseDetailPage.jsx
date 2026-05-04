@@ -922,40 +922,46 @@ Opportunities exist in research laboratories, pharmaceutical companies, environm
       "Animal Physiology", "Biochemistry", "Molecular Biology"
     ]
   },
-  "ba-journalism": {
-    id: "ba-journalism",
-    title: "BA Journalism",
-    fullTitle: "Bachelor of Arts in Journalism & Mass Communication",
-    duration: "3 Years",
-    creds: "180 Credits",
-    level: "Undergraduate",
-    img: BAImg,
-    color: "from-rose-500 to-red-600",
-    badge: "Creative Edge",
-    overview: `Bachelor of Arts in Journalism & Mass Communication prepares students for the dynamic media industry. The program covers print, broadcast, digital journalism, media ethics, content creation, and communication strategies.
+ "ba-hep": {
+  id: "ba-hep",
+  title: "BA HEP",
+  fullTitle: "Bachelor of Arts in History, Economics & Political Science",
+  duration: "3 Years",
+  creds: "180 Credits",
+  level: "Undergraduate",
+  img: BAImg,
+  color: "from-rose-500 to-red-600",
+  badge: "Academic Core",
+  overview: `Bachelor of Arts in History, Economics & Political Science (HEP) offers a comprehensive understanding of societal structures, economic systems, and political frameworks. The program integrates historical perspectives with economic theories and political analysis.
 
-Students learn to create compelling stories across multiple platforms, understand media laws, and develop critical thinking skills essential for modern journalism.`,
-    admission: `Admission is typically based on merit in 10+2 from any stream. Some institutes conduct entrance exams and personal interviews to assess communication skills and media aptitude.
+Students develop critical thinking, analytical reasoning, and a deep awareness of national and global issues, preparing them for careers in public service, research, and policy-making.`,
+  
+  admission: `Admission is typically based on merit in 10+2 from any stream. Some institutions may conduct entrance tests or interviews.
 
-Candidates with strong writing skills, curiosity, and ethical awareness are well-suited for this program.`,
-    career: `Graduates can work in news organizations, digital media, advertising agencies, PR firms, and corporate communication departments. Opportunities exist as journalists, content creators, media planners, and PR specialists.
+Candidates with an interest in social sciences, current affairs, analytical thinking, and civic engagement are well-suited for this program.`,
+  
+  career: `Graduates can pursue careers in civil services, public administration, policy analysis, research, education, and journalism. Opportunities also exist in NGOs, international organizations, and corporate sectors requiring analytical and strategic roles.
 
-With experience, professionals can move into editorial roles, media management, or start their own media ventures.`,
-    keyHighlights: [
-      "Duration: 3 Years (6 Semesters)",
-      "Eligibility: 10+2 from any stream",
-      "Practical Training: Newsroom simulations, Studio work",
-      "Industry Connect: Internships with media houses"
-    ],
-    jobRoles: ["Journalist", "Content Writer", "Media Planner", "PR Specialist", "Digital Marketer", "News Anchor"],
-    topRecruiters: ["Times Group", "NDTV", "CNN News18", "Republic TV", "Zee Media", "PR Agencies", "Digital Media Firms"],
-    syllabus: [
-      "Introduction to Journalism", "Reporting and Editing", "Media Laws and Ethics",
-      "Digital Media Production", "Broadcast Journalism", "Public Relations",
-      "Advertising Principles", "Media Management", "Photojournalism",
-      "Investigative Journalism", "Social Media Management", "Content Strategy"
-    ]
-  },
+With further studies, students can specialize in law, economics, political science, or international relations.`,
+  
+  keyHighlights: [
+    "Duration: 3 Years (6 Semesters)",
+    "Eligibility: 10+2 from any stream",
+    "Core Subjects: History, Economics, Political Science",
+    "Skill Development: Critical Thinking, Research, Analysis"
+  ],
+  
+  jobRoles: ["Civil Servant", "Policy Analyst", "Researcher", "Economist", "Political Analyst", "Educator"],
+  
+  topRecruiters: ["Government Organizations", "Policy Think Tanks", "NGOs", "Research Institutions", "Educational Institutions", "International Organizations"],
+  
+  syllabus: [
+    "Indian History", "World History", "Microeconomics",
+    "Macroeconomics", "Indian Economy", "Political Theory",
+    "Indian Constitution", "Public Administration", "International Relations",
+    "Development Economics", "Comparative Politics", "Research Methodology"
+  ]
+},
   "mcom": {
     id: "mcom",
     title: "M.Com",

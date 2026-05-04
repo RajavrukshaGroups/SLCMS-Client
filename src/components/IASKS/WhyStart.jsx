@@ -26,7 +26,44 @@ const cards = [
 
 export default function WhyStart() {
   return (
-    <section className="md:py-24 py-12 px-6 relative overflow-hidden">
+    <section className="md:py-24 py-12 px-0 relative overflow-hidden">
+      
+      <div className="absolute top-0 w-full bg-gold backdrop-blur-md py-4 overflow-hidden">
+        <div className="flex whitespace-nowrap animate-scroll gap-10">
+          
+          {/* Repeat items twice for infinite effect */}
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex gap-10">
+              <span>🚀 1000+ Students Trained</span>
+              <span>💼 500+ Placements</span>
+              <span>⭐ Top Rated Courses</span>
+              <span>🌍 Global Certification</span>
+              <span>📚 Expert Mentors</span>
+            </div>
+          ))}
+
+        </div>
+      </div>
+
+      {/* Animation Style */}
+      <style>
+        {`
+          .animate-scroll {
+            display: flex;
+            width: max-content;
+            animation: scroll 20s linear infinite;
+          }
+
+          @keyframes scroll {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-50%);
+            }
+          }
+        `}
+      </style>
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
