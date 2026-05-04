@@ -62,7 +62,7 @@
 //             {steps.map((step, index) => (
 //               <div key={index} className={`flex items-center justify-between w-full ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}>
 //                 <div className="w-5/12 hidden md:block" />
-                
+
 //                 <div className="absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full glass border-gold/30 flex items-center justify-center z-20 bg-light-bg">
 //                   <div className="w-4 h-4 rounded-full bg-gold animate-pulse" />
 //                 </div>
@@ -184,28 +184,28 @@
 //           <div className="hidden lg:block absolute top-20 left-0 w-full h-[calc(100%-200px)] pointer-events-none">
 //             <svg className="w-full h-full" viewBox="0 0 1000 800" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
 //               {/* Main Path with smooth semi-circle turns */}
-//               <path 
-//                 d="M50 60 H 833 A 140 140 0 0 1 833 340 H 166 A 140 140 0 0 0 166 620 H 950" 
-//                 stroke="#D1D5DB" 
-//                 strokeWidth="28" 
-//                 strokeLinecap="round" 
+//               <path
+//                 d="M50 60 H 833 A 140 140 0 0 1 833 340 H 166 A 140 140 0 0 0 166 620 H 950"
+//                 stroke="#D1D5DB"
+//                 strokeWidth="28"
+//                 strokeLinecap="round"
 //               />
-              
+
 //               {/* Directional Arrows */}
 //               {/* Row 1 */}
 //               <path d="M333 50 L 353 60 L 333 70" fill="#9CA3AF" />
 //               <path d="M666 50 L 686 60 L 666 70" fill="#9CA3AF" />
-              
+
 //               {/* Turn 1 */}
 //               <path d="M963 190 L 973 210 L 983 190" fill="#9CA3AF" />
-              
+
 //               {/* Row 2 */}
 //               <path d="M666 330 L 646 340 L 666 350" fill="#9CA3AF" />
 //               <path d="M333 330 L 313 340 L 333 350" fill="#9CA3AF" />
-              
+
 //               {/* Turn 2 */}
 //               <path d="M16 470 L 26 490 L 36 470" fill="#9CA3AF" />
-              
+
 //               {/* Row 3 */}
 //               <path d="M333 610 L 353 620 L 333 630" fill="#9CA3AF" />
 //               <path d="M666 610 L 686 620 L 666 630" fill="#9CA3AF" />
@@ -218,7 +218,7 @@
 //               const row = Math.floor(index / 3);
 //               const col = index % 3;
 //               let stepIndex;
-              
+
 //               if (row === 1) {
 //                 stepIndex = row * 3 + (2 - col);
 //               } else {
@@ -262,19 +262,31 @@
 //   );
 // }
 
-
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { useRef } from "react";
-import { BookOpen, PenTool, GraduationCap, ClipboardList, Target, Users, Award, Search, CheckCircle, ChevronDown, Flag } from "lucide-react";
+import {
+  BookOpen,
+  PenTool,
+  GraduationCap,
+  ClipboardList,
+  Target,
+  Users,
+  Award,
+  Search,
+  CheckCircle,
+  ChevronDown,
+  Flag,
+} from "lucide-react";
 
 const steps = [
   {
     year: "Year 1",
     subtitle: "Phase 1",
     title: "NCERTs & Basics",
-    description: "Focus on NCERTs Text Book (6th-12th) and basic concepts to build a strong starting point.",
+    description:
+      "Focus on NCERTs Text Book (6th-12th) and basic concepts to build a strong starting point.",
     color: "bg-[#F59E0B]", // Orange
-    icon: BookOpen
+    icon: BookOpen,
   },
   {
     year: "Year 1",
@@ -282,77 +294,84 @@ const steps = [
     title: "Core Subjects",
     description: "Building a strong foundation in General Studies Subjects.",
     color: "bg-[#B91C1C]", // Red
-    icon: Search
+    icon: Search,
   },
   {
     year: "Year 1",
     subtitle: "Phase 3",
     title: "Foundation Check",
-    description: "Consolidating basic knowledge and starting to analyze newspapers for current affairs.",
+    description:
+      "Consolidating basic knowledge and starting to analyze newspapers for current affairs.",
     color: "bg-[#1E1B4B]", // Dark Blue
-    icon: CheckCircle
+    icon: CheckCircle,
   },
   {
     year: "Year 2",
     subtitle: "Phase 1",
     title: "GS Papers",
-    description: "Deep dive into General Studies papers (GS 1, GS 2, GS 3, and GS 4) with detailed study.",
+    description:
+      "Deep dive into General Studies papers (GS 1, GS 2, GS 3, and GS 4) with detailed study.",
     color: "bg-[#F59E0B]",
-    icon: ClipboardList
+    icon: ClipboardList,
   },
   {
     year: "Year 2",
     subtitle: "Phase 2",
     title: "Optional Subject",
-    description: "Selecting and preparing your optional subject thoroughly along with GS papers.",
+    description:
+      "Selecting and preparing your optional subject thoroughly along with GS papers.",
     color: "bg-[#B91C1C]",
-    icon: Target
+    icon: Target,
   },
   {
     year: "Year 2",
     subtitle: "Phase 3",
     title: "Answer Writing",
-    description: "Daily answer writing practice and Experts feedback to improve Content presentation and speed.",
+    description:
+      "Daily answer writing practice and Experts feedback to improve Content presentation and speed.",
     color: "bg-[#1E1B4B]",
-    icon: PenTool
+    icon: PenTool,
   },
   {
     year: "Year 3",
     subtitle: "Phase 1",
     title: "Intensive Mocks",
-    description: "Regular weekly mock tests for both Prelims and Mains to build exam-day confidence.",
+    description:
+      "Regular weekly mock tests for both Prelims and Mains to build exam-day confidence.",
     color: "bg-[#F59E0B]",
-    icon: Award
+    icon: Award,
   },
   {
     year: "Year 3",
     subtitle: "Phase 2",
     title: "Revision",
-    description: "Intensive subject concept revision and integrating along with current affairs for the final push.",
+    description:
+      "Intensive subject concept revision and integrating along with current affairs for the final push.",
     color: "bg-[#B91C1C]",
-    icon: Users
+    icon: Users,
   },
   {
     year: "Year 3",
     subtitle: "Phase 3",
     title: "Personality Test Guideance",
-    description: "Personality development and mock interviews for the final personality test.",
+    description:
+      "Personality development and mock interviews for the final personality test.",
     color: "bg-[#1E1B4B]",
-    icon: GraduationCap
-  }
+    icon: GraduationCap,
+  },
 ];
 
 export default function App() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start center", "end center"]
+    offset: ["start center", "end center"],
   });
 
   const pathLength = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
@@ -360,11 +379,20 @@ export default function App() {
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 360]);
 
   return (
-    <div className="min-h-screen bg-[#F9F8F4] py-20 px-4 font-sans selection:bg-accent selection:text-white overflow-x-hidden relative">
+    <div className="min-h-screen bg-white py-20 px-4 font-sans selection:bg-accent selection:text-white overflow-x-hidden relative">
       {/* Parallax Background Elements */}
-      <motion.div style={{ y: y1, rotate }} className="absolute top-40 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-      <motion.div style={{ y: y2, rotate: -rotate }} className="absolute bottom-40 right-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-      <motion.div style={{ y: y1 }} className="absolute top-1/2 left-1/4 w-48 h-48 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <motion.div
+        style={{ y: y1, rotate }}
+        className="absolute top-40 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none"
+      />
+      <motion.div
+        style={{ y: y2, rotate: -rotate }}
+        className="absolute bottom-40 right-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none"
+      />
+      <motion.div
+        style={{ y: y1 }}
+        className="absolute top-1/2 left-1/4 w-48 h-48 bg-primary/5 rounded-full blur-3xl pointer-events-none"
+      />
 
       <div className="max-w-6xl mx-auto" ref={containerRef}>
         <motion.div
@@ -381,12 +409,14 @@ export default function App() {
             A step-by-step journey designed to align with your graduation years.
           </p>
 
-          <motion.div 
+          <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="mt-12 flex flex-col items-center text-accent/60"
           >
-            <span className="text-[10px] uppercase tracking-widest font-bold mb-2">Scroll to Begin</span>
+            <span className="text-[10px] uppercase tracking-widest font-bold mb-2">
+              Scroll to Begin
+            </span>
             <ChevronDown size={20} />
           </motion.div>
         </motion.div>
@@ -394,21 +424,27 @@ export default function App() {
         <div className="relative">
           {/* The Snake Path (Desktop) */}
           <div className="hidden lg:block absolute top-20 left-0 w-full h-[calc(100%-200px)] pointer-events-none">
-            <svg className="w-full h-full" viewBox="0 0 1000 800" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              className="w-full h-full"
+              viewBox="0 0 1000 800"
+              preserveAspectRatio="none"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               {/* Background Path (Gray) */}
-              <path 
+              <path
                 id="mainPath"
-                d="M50 60 H 833 A 140 140 0 0 1 833 340 H 166 A 140 140 0 0 0 166 620 H 950" 
-                stroke="#E5E7EB" 
-                strokeWidth="28" 
-                strokeLinecap="round" 
+                d="M50 60 H 833 A 140 140 0 0 1 833 340 H 166 A 140 140 0 0 0 166 620 H 950"
+                stroke="#E5E7EB"
+                strokeWidth="28"
+                strokeLinecap="round"
               />
-              
+
               {/* Animated Progress Path (Teal) */}
-              <motion.path 
-                d="M50 60 H 833 A 140 140 0 0 1 833 340 H 166 A 140 140 0 0 0 166 620 H 950" 
-                stroke="#0F766E" 
-                strokeWidth="28" 
+              <motion.path
+                d="M50 60 H 833 A 140 140 0 0 1 833 340 H 166 A 140 140 0 0 0 166 620 H 950"
+                stroke="#0F766E"
+                strokeWidth="28"
                 strokeLinecap="round"
                 style={{ pathLength }}
               />
@@ -418,9 +454,14 @@ export default function App() {
                 r="18"
                 fill="#C8A95A"
                 filter="drop-shadow(0 0 10px rgba(200, 169, 90, 0.8))"
-                style={{ 
-                  offsetPath: "path('M50 60 H 833 A 140 140 0 0 1 833 340 H 166 A 140 140 0 0 0 166 620 H 950')",
-                  offsetDistance: useTransform(pathLength, [0, 1], ["0%", "100%"])
+                style={{
+                  offsetPath:
+                    "path('M50 60 H 833 A 140 140 0 0 1 833 340 H 166 A 140 140 0 0 0 166 620 H 950')",
+                  offsetDistance: useTransform(
+                    pathLength,
+                    [0, 1],
+                    ["0%", "100%"],
+                  ),
                 }}
               />
 
@@ -444,7 +485,7 @@ export default function App() {
               const row = Math.floor(index / 3);
               const col = index % 3;
               let stepIndex;
-              
+
               if (row === 1) {
                 stepIndex = row * 3 + (2 - col);
               } else {
@@ -453,9 +494,7 @@ export default function App() {
 
               const step = steps[stepIndex];
 
-              return (
-                <StepItem key={stepIndex} step={step} index={index} />
-              );
+              return <StepItem key={stepIndex} step={step} index={index} />;
             })}
           </div>
 
@@ -480,31 +519,31 @@ export default function App() {
 
 function StepItem({ step, index }) {
   const Icon = step.icon;
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8, y: 50 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: false, margin: "-100px" }}
-      transition={{ 
+      transition={{
         type: "spring",
         stiffness: 100,
         damping: 20,
-        delay: 0.1 
+        delay: 0.1,
       }}
       className="flex flex-col items-center group relative"
     >
       {/* Floating Icon */}
       <motion.div
-        animate={{ 
+        animate={{
           y: [0, -15, 0],
-          rotate: [0, 5, -5, 0]
+          rotate: [0, 5, -5, 0],
         }}
-        transition={{ 
-          duration: 4, 
-          repeat: Infinity, 
+        transition={{
+          duration: 4,
+          repeat: Infinity,
           ease: "easeInOut",
-          delay: index * 0.2
+          delay: index * 0.2,
         }}
         className="absolute -top-12 right-0 lg:-right-8 z-30 text-accent/40"
       >
@@ -512,22 +551,28 @@ function StepItem({ step, index }) {
       </motion.div>
 
       {/* Circular Version Header */}
-      <div className={`w-44 h-44 rounded-full ${step.color} flex flex-col items-center justify-center text-white shadow-[0_20px_50px_rgba(0,0,0,0.2)] relative z-20 mb-10 border-[10px] border-[#F9F8F4] transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
-        <span className="text-4xl font-bold font-serif mb-1 tracking-tighter">{step.year}</span>
+      <div
+        className={`w-44 h-44 rounded-full ${step.color} flex flex-col items-center justify-center text-white shadow-[0_20px_50px_rgba(0,0,0,0.2)] relative z-20 mb-10 border-[10px] border-[#F9F8F4] transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
+      >
+        <span className="text-4xl font-bold font-serif mb-1 tracking-tighter">
+          {step.year}
+        </span>
         <div className="w-16 h-0.5 bg-white/40 mb-2" />
-        <span className="text-xs font-display uppercase tracking-[0.2em] text-center px-4 leading-tight opacity-90">{step.subtitle}</span>
-        
+        <span className="text-xs font-display uppercase tracking-[0.2em] text-center px-4 leading-tight opacity-90">
+          {step.subtitle}
+        </span>
+
         {/* Decorative Ring */}
         <div className="absolute inset-0 rounded-full border-2 border-white/20 scale-110 animate-pulse" />
       </div>
 
       {/* Content Card */}
-      <motion.div 
+      <motion.div
         whileHover={{ y: -5 }}
         className="bg-white p-8 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.05)] w-full max-w-sm border-t-8 border-primary/10 relative overflow-hidden group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] transition-all duration-300"
       >
         <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 transition-transform duration-500 group-hover:scale-150" />
-        
+
         <div className="relative z-10">
           <h3 className="text-xl font-serif text-primary mb-3 font-bold group-hover:text-accent transition-colors duration-300">
             {step.title}
@@ -538,7 +583,9 @@ function StepItem({ step, index }) {
         </div>
 
         {/* Bottom Accent */}
-        <div className={`absolute bottom-0 left-0 h-1 w-0 group-hover:w-full transition-all duration-500 ${step.color}`} />
+        <div
+          className={`absolute bottom-0 left-0 h-1 w-0 group-hover:w-full transition-all duration-500 ${step.color}`}
+        />
       </motion.div>
     </motion.div>
   );

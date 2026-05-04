@@ -1,127 +1,181 @@
 import { motion } from "motion/react";
-import { CheckCircle2, ShieldCheck, Zap, TrendingUp, Users, Globe, Clock } from "lucide-react";
+import {
+  CheckCircle2,
+  ShieldCheck,
+  Zap,
+  TrendingUp,
+  Users,
+  Globe,
+  Clock,
+  Sparkles,
+} from "lucide-react";
 import iasksStructure from "../../assets/iasks-structure.png";
 
 const points = [
-  { icon: <ShieldCheck className="w-6 h-6 text-gold" />, text: "Experienced Faculty from Delhi & Bangalore" },
-  { icon: <Zap className="w-6 h-6 text-gold" />, text: "Structured Study Plan for 3 Years" },
-  { icon: <TrendingUp className="w-6 h-6 text-gold" />, text: "Daily Mentorship & Doubt Clearing" },
-  { icon: <CheckCircle2 className="w-6 h-6 text-gold" />, text: "Personal Progress Tracking Dashboard" },
-  { icon: <Users className="w-6 h-6 text-gold" />, text: "Small Batch Size for Individual Attention" },
-  { icon: <Globe className="w-6 h-6 text-gold" />, text: "Seamless Offline + Online Support" },
-  { icon: <Clock className="w-6 h-6 text-gold" />, text: "24/7 Library Facility" }
+  {
+    icon: <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />,
+    text: "Experienced Faculty from Delhi & Bangalore",
+  },
+  {
+    icon: <Zap className="w-5 h-5 text-[#D4AF37]" />,
+    text: "Structured Study Plan for 3 Years",
+  },
+  {
+    icon: <TrendingUp className="w-5 h-5 text-[#D4AF37]" />,
+    text: "Daily Mentorship & Doubt Clearing",
+  },
+  {
+    icon: <CheckCircle2 className="w-5 h-5 text-[#D4AF37]" />,
+    text: "Personal Progress Tracking Dashboard",
+  },
+  {
+    icon: <Users className="w-5 h-5 text-[#D4AF37]" />,
+    text: "Small Batch Size for Individual Attention",
+  },
+  {
+    icon: <Globe className="w-5 h-5 text-[#D4AF37]" />,
+    text: "Seamless Offline + Online Support",
+  },
+  {
+    icon: <Clock className="w-5 h-5 text-[#D4AF37]" />,
+    text: "24/7 Library Facility",
+  },
 ];
 
 export default function Difference() {
+  // Animation variants for staggered point cards
+  const cardVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: { delay: i * 0.07, duration: 0.5, ease: "easeOut" },
+    }),
+  };
+
   return (
-    <section className="py-24 px-6 relative overflow-hidden bg-white">
-      {/* Authentic Herringbone Pattern – Woven/V‑shaped weave */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-20"
+    <section className="py-24 md:py-32 px-6 relative overflow-hidden bg-white">
+      {/* subtle pattern (visible on white) */}
+      <div
+        className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage: `
-            repeating-linear-gradient(
-              45deg,
-              transparent,
-              transparent 16px,
-              rgba(0,0,0,0.02) 16px,
-              rgba(0,0,0,0.02) 32px
-            ),
-            repeating-linear-gradient(
-              -45deg,
-              transparent,
-              transparent 16px,
-              rgba(0,0,0,0.015) 16px,
-              rgba(0,0,0,0.015) 32px
-            ),
-            repeating-linear-gradient(
-              90deg,
-              transparent,
-              transparent 20px,
-              rgba(0,0,0,0.01) 20px,
-              rgba(0,0,0,0.01) 40px
-            )
-          `
+        linear-gradient(#000 1px, transparent 1px),
+        linear-gradient(90deg, #000 1px, transparent 1px)
+      `,
+          backgroundSize: "40px 40px",
         }}
       />
-      
-      {/* Refined herringbone overlay using SVG (woven effect) */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-10"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' width='120' height='60'%3E%3Cpath d='M0,0 L30,30 L60,0 L90,30 L120,0' stroke='%238B5A2B' stroke-width='1.2' fill='none' /%3E%3Cpath d='M0,30 L30,60 L60,30 L90,60 L120,30' stroke='%238B5A2B' stroke-width='1.2' fill='none' /%3E%3Cpath d='M0,0 L30,30 L60,0 L90,30 L120,0' stroke='%23D4AF37' stroke-width='0.5' fill='none' /%3E%3C/svg%3E")`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "120px 60px"
-        }}
-      />
-
-      {/* Additional woven texture (subtle noise) */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-5"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: "repeat"
-        }}
-      />
-
-      {/* Subtle gradient overlay to soften and give depth */}
-      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-gold/5 to-electric-blue/5 pointer-events-none" />
 
       <div className="container mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* LEFT */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 tracking-tight leading-tight text-electric-blue">
+            {/* Tag */}
+            <div className="inline-flex items-center gap-2 bg-gray-100 rounded-full px-4 py-1.5 mb-6 border border-gray-200">
+              <Sparkles className="w-4 h-4 text-[#D4AF37]" />
+              <span className="text-xs uppercase tracking-wider text-gray-600 font-semibold">
+                Why Choose Us
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight text-[#1f3d37]">
               What Makes This <br />
-              <span className=" text-gold">Program Different?</span>
+              <span className="text-[#D4AF37]">Program Different?</span>
             </h2>
-            <div className="space-y-6">
+
+            {/* Points */}
+            <div className="space-y-4">
               {points.map((point, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  custom={index}
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 rounded-2xl glass hover:bg-black/5 transition-colors border border-black/5 bg-white/50 backdrop-blur-sm"
+                  whileHover={{ scale: 1.02, x: 5 }}
+                  className="group"
                 >
-                  <div className="p-2 rounded-xl bg-gold/10">
-                    {point.icon}
+                  <div className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 border border-gray-200 hover:bg-white hover:border-[#D4AF37]/30 transition-all duration-300 shadow-sm hover:shadow-md">
+                    <div className="p-2.5 rounded-xl bg-[#D4AF37]/10">
+                      {point.icon}
+                    </div>
+
+                    <p className="text-sm md:text-base text-gray-700 font-medium">
+                      {point.text}
+                    </p>
                   </div>
-                  <p className="text-lg text-dark-text/80 font-medium">
-                    {point.text}
-                  </p>
                 </motion.div>
               ))}
             </div>
+
+            {/* Stats */}
+            {/* <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="mt-12 flex items-center gap-6 flex-wrap"
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center">
+                  <Users className="w-5 h-5 text-[#D4AF37]" />
+                </div>
+                <div>
+                  <p className="text-[#1f3d37] font-bold">1000+</p>
+                  <p className="text-gray-500 text-xs">Students Trained</p>
+                </div>
+              </div>
+
+              <div className="w-px h-8 bg-gray-300" />
+
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center">
+                  <TrendingUp className="w-5 h-5 text-[#D4AF37]" />
+                </div>
+                <div>
+                  <p className="text-[#1f3d37] font-bold">85%</p>
+                  <p className="text-gray-500 text-xs">Success Rate</p>
+                </div>
+              </div>
+            </motion.div> */}
           </motion.div>
 
+          {/* RIGHT IMAGE (same mostly) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.92 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative"
+            transition={{ duration: 0.7 }}
+            className="relative flex justify-center"
           >
-            <div className="absolute inset-0 bg-gold/10 rounded-full blur-[100px] -z-10" />
-            <div className="glass p-4 rounded-[2.5rem] border border-gold/10 bg-white/80 backdrop-blur-sm">
+            <div className="relative p-3 rounded-[2rem] bg-gradient-to-tr from-[#D4AF37]/20 to-gray-100 shadow-xl">
               <img
                 src={iasksStructure}
-                alt="IAS Aspirant"
-                className="rounded-[2rem] w-full h-auto object-cover"
-                referrerPolicy="no-referrer"
+                alt="IAS Program Structure"
+                className="rounded-[1.5rem] w-full object-cover"
               />
-              <div className="absolute -bottom-8 -left-8 glass p-6 rounded-3xl border border-gold/10 bg-white shadow-xl">
-                <p className="text-2xl font-bold text-gold">100%</p>
-                <p className="text-xs text-dark-text/60 uppercase tracking-wider">Syllabus Coverage</p>
-              </div>
-              <div className="absolute -top-8 -right-8 glass p-6 rounded-3xl border border-electric-blue/10 bg-white shadow-xl">
-                <p className="text-2xl font-bold text-electric-blue">24/7</p>
-                <p className="text-xs text-dark-text/60 uppercase tracking-wider">Library Facilities</p>
+
+              {/* badges */}
+              {/* <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl p-4 shadow-md border border-gray-200">
+                <p className="text-2xl font-bold text-[#D4AF37]">100%</p>
+                <p className="text-xs text-gray-500 uppercase tracking-wide">
+                  Syllabus Coverage
+                </p>
+              </div> */}
+
+              <div className="absolute -top-5 -right-5 bg-white rounded-2xl p-4 shadow-md border border-gray-200">
+                <p className="text-2xl font-bold text-[#1f3d37]">24/7</p>
+                <p className="text-xs text-gray-500 uppercase tracking-wide">
+                  Library Access
+                </p>
               </div>
             </div>
           </motion.div>

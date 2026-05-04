@@ -1,87 +1,195 @@
 import { motion } from "motion/react";
-import { BookOpen, Award, Newspaper, Edit3, Users,Building  } from "lucide-react";
+import {
+  BookOpen,
+  Award,
+  Newspaper,
+  Edit3,
+  Users,
+  Building,
+} from "lucide-react";
 
 const courses = [
   {
-    icon: <BookOpen className="w-8 h-8 text-gold" />,
+    icon: BookOpen,
     title: "Foundation Course",
-    bullets: ["NCERT Basics", "Subject Introduction", "Core Concepts"]
+    bullets: ["NCERT Basics", "Subject Introduction", "Core Concepts"],
+    color: "gold",
   },
   {
-    icon: <Award className="w-8 h-8 text-electric-blue" />,
+    icon: Award,
     title: "Advanced Preparation",
-    bullets: ["General Studies Papers 1-4","SA Preparation" ,"Optional Subjects"]
+    bullets: [
+      "General Studies Papers 1–4",
+      "Essay Preparation",
+      "Optional Subjects",
+    ],
+    color: "green",
   },
   {
-    icon: <Newspaper className="w-8 h-8 text-gold" />,
+    icon: Newspaper,
     title: "Current Affairs",
-    bullets: ["Daily News Analysis",  "Editorial Discussions","Monthly Magazines",]
+    bullets: [
+      "Daily News Analysis",
+      "Editorial Discussions",
+      "Monthly Magazines",
+    ],
+    color: "gold",
   },
   {
-    icon: <Edit3 className="w-8 h-8 text-electric-blue" />,
+    icon: Edit3,
     title: "Answer Writing",
-    bullets: ["Mains Answer Writing Practice", "Answer Writing Feedback Sessions"] //, "Structure Building"
+    bullets: ["Mains Answer Writing Practice", "Detailed Feedback Sessions"],
+    color: "green",
   },
   {
-    icon: <Users className="w-8 h-8 text-gold" />,
+    icon: Users,
     title: "Mock Tests & Interview",
-    bullets: ["Prelims Test Series", "Mains Test Series", "Personality Test Guidance"]
+    bullets: [
+      "Prelims Test Series",
+      "Mains Test Series",
+      "Personality Guidance",
+    ],
+    color: "gold",
   },
-   {
-    icon: <Building className="w-8 h-8 text-gold" />,
+  {
+    icon: Building,
     title: "Facilities",
-    bullets: ["Study Materials", "24/7 Library Access", "Hostel Facility"]
-  }
+    bullets: ["Study Materials", "24/7 Library Access", "Hostel Facility"],
+    color: "green",
+  },
 ];
+
+// Child animation variants for title and bullets
+const cardContentVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
+const bulletVariants = {
+  hidden: { opacity: 0, x: -8 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
+};
 
 export default function CourseOverview() {
   return (
-    <section className="py-24 px-6 relative overflow-hidden bg-black/[0.01]">
+    <section className="py-24 px-6 bg-white">
       <div className="container mx-auto">
+        {/* Heading Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight text-electric-blue">
-            Comprehensive <span className="text-gold">Course Overview</span>
+          <p className="text-[#0f2f2c] uppercase tracking-[0.4em] text-xs mb-6">
+            Structured Learning Path
+          </p>
+
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
+            <span className="text-[#0f2f2c]">Comprehensive </span>
+            {/* <span className="bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent"> */}
+            <span className="bg-[#D4AF37] bg-clip-text text-transparent">
+              Course Overview
+            </span>
           </h2>
-          <p className="text-dark-text/50 max-w-xl mx-auto">
-            A structured path to success, designed by experts for aspiring civil servants.
+
+          <div className="w-20 h-1 bg-gradient-to-r from-amber-500 to-yellow-400 mx-auto my-4 rounded-full" />
+
+          <p className="text-gray-600 max-w-xl mx-auto">
+            A step-by-step preparation system designed to take you from
+            fundamentals to final selection in Civil Services.
           </p>
         </motion.div>
 
-        <div className="relative flex flex-wrap justify-center gap-10">
-          {/* Progress Line */}
-          <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-black/5 to-transparent hidden lg:block" />
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {courses.map((course, index) => {
+            const Icon = course.icon;
+            const isGold = course.color === "gold";
 
-          {courses.map((course, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative z-10 glass p-8 rounded-3xl w-full md:w-[300px] group transition-all hover:bg-gold/5 hover:border-gold/30 border-black/5"
-            >
-              <div className="mb-6 p-4 rounded-2xl bg-black/5 w-fit group-hover:bg-gold/10 transition-colors">
-                {course.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-4 group-hover:text-gold transition-colors text-electric-blue">
-                {course.title}
-              </h3>
-              <ul className="space-y-3">
-                {course.bullets.map((bullet, bIndex) => (
-                  <li key={bIndex} className="text-sm text-dark-text/40 flex items-center gap-2 group-hover:text-dark-text/60 transition-colors">
-                    <div className="w-1 h-1 rounded-full bg-gold" />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="group"
+              >
+                <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden h-full">
+                  {/* Top Accent Line */}
+                  <div
+                    className={`h-1.5 ${
+                      isGold
+                        ? "bg-gradient-to-r from-amber-500 to-yellow-500"
+                        : "bg-gradient-to-r from-[#0f2f2c] to-[#1f6f64]"
+                    }`}
+                  />
+
+                  <div className="p-6">
+                    {/* Icon with its own animation */}
+                    <motion.div
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 + 0.1 }}
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 shadow-sm transition ${
+                        isGold
+                          ? "bg-gradient-to-br from-amber-500 to-yellow-500"
+                          : "bg-[#0f2f2c]"
+                      }`}
+                    >
+                      <Icon className="w-6 h-6 text-white" />
+                    </motion.div>
+
+                    {/* Animated Title + Bullets Container */}
+                    <motion.div
+                      variants={cardContentVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: "-20px" }}
+                    >
+                      {/* Title */}
+                      <motion.h3
+                        variants={itemVariants}
+                        className="text-lg font-semibold text-gray-800 mb-3 group-hover:text-[#0f2f2c] transition"
+                      >
+                        {course.title}
+                      </motion.h3>
+
+                      {/* Bullets */}
+                      <ul className="space-y-2">
+                        {course.bullets.map((bullet, i) => (
+                          <motion.li
+                            key={i}
+                            variants={bulletVariants}
+                            custom={i}
+                            className="text-sm text-gray-600 flex items-start gap-2"
+                          >
+                            <span className="mt-1 w-1.5 h-1.5 rounded-full bg-amber-400" />
+                            {bullet}
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
