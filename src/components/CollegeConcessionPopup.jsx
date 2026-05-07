@@ -160,7 +160,7 @@ const QUESTIONS = [
     id: 20,
     text: "Opposite of 'wise' is:",
     options: ["Smart", "Clever", "Foolish", "Bright"],
-    correct: 2,
+    correct: 3,
   },
 ];
 
