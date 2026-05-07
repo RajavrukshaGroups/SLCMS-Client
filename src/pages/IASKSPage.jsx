@@ -22,6 +22,8 @@ const IASKSPage = () => {
       {/* <Faculty /> */}
       <StudyMaterials />
       <Testimonials />
+      {/* <FAQ />
+      <FinalCTA /> */}
       <FAQ />
       <FinalCTA />
     </div>
