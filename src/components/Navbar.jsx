@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Lock, ChevronDown, ArrowUpRight, Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import SlCMSLogo from '../assets/slcms_logo.webp';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import { Lock, ChevronDown, ArrowUpRight, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import SlCMSLogo from "../assets/slcms_logo.webp";
+import { useNavigate, useLocation, href } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,28 +13,28 @@ const Navbar = () => {
   // Helper function to determine if a nav item is active based on current path
   const isNavItemActive = (item) => {
     const currentPath = location.pathname;
-    
+
     // For Courses: match both /courses and any /course/* route
-    if (item.name === 'Courses') {
-      return currentPath === '/courses' || currentPath.startsWith('/course/');
+    if (item.name === "Courses") {
+      return currentPath === "/courses" || currentPath.startsWith("/course/");
     }
-    
+
     // For About: match /about and any subroute
-    if (item.name === 'About') {
-      return currentPath === '/about' || currentPath.startsWith('/about/');
+    if (item.name === "About") {
+      return currentPath === "/about" || currentPath.startsWith("/about/");
     }
-    
+
     // For AICTE: highlight when its internal child route is active
-    if (item.name === 'AICTE') {
-      return currentPath === '/feedback';
+    if (item.name === "AICTE") {
+      return currentPath === "/feedback";
     }
-    
+
     // For items with direct href (and no special case)
     if (item.href) {
       // Exact match for regular pages (IAS/KAS, Gallery, Placements, Contact)
       return currentPath === item.href;
     }
-    
+
     return false;
   };
 
@@ -42,45 +42,54 @@ const Navbar = () => {
   const isSubItemActive = (subItem) => {
     if (!subItem.href) return false;
     // For external links (http/https), never mark as active
-    if (subItem.href.startsWith('http')) return false;
+    if (subItem.href.startsWith("http")) return false;
     return location.pathname === subItem.href;
   };
 
   const navItems = [
     {
-      name: 'About', href: '/about',
+      name: "About",
+      href: "/about",
       dropdown: [
-        { name: 'Overview', href: '/about/overview' },
-        { name: 'Administration', href: '/about/administration' },
-        { name: "Chairman's Message", href: '/about/chairmans-message' },
-        { name: 'College', href: '/about/college' }
-      ]
+        { name: "Overview", href: "/about/overview" },
+        { name: "Administration", href: "/about/administration" },
+        { name: "Chairman's Message", href: "/about/chairmans-message" },
+        { name: "College", href: "/about/college" },
+      ],
     },
-    { name: 'IAS/KAS', href: '/iaskas' },
+    { name: "IAS/KAS", href: "/iaskas" },
     {
-      name: 'Courses', href: '/courses',
+      name: "Courses",
+      href: "/courses",
       dropdown: [
-        { name: 'B.com', href: '/course/bcom' },
-        { name: 'BBA', href: '/course/bba' },
-        { name: 'BCA', href: '/course/bca' },
-        { name: 'B.Sc', href: '/course/bsc-cbz' },
-        { name: 'BA', href: '/course/ba-hep' },
-        { name: 'M.Com', href: '/course/mcom' },
-        { name: 'MCA', href: '/course/mca' },
-        { name: 'MBA', href: '/course/mba' }
-      ]
+        { name: "B.com", href: "/course/bcom" },
+        { name: "BBA", href: "/course/bba" },
+        { name: "BCA", href: "/course/bca" },
+        { name: "B.Sc", href: "/course/bsc-cbz" },
+        { name: "BA", href: "/course/ba-hep" },
+        { name: "M.Com", href: "/course/mcom" },
+        { name: "MCA", href: "/course/mca" },
+        { name: "MBA", href: "/course/mba" },
+      ],
     },
-    { name: 'Gallery', href: '/gallery' },
-    { name: 'Placements', href: '/placements' },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Placements", href: "/placements" },
     {
-      name: 'AICTE',
+      name: "AICTE",
       dropdown: [
-        { name: 'LOA', href: 'https://srilakshmimanagement.org/wp-content/uploads/2025/02/LOA-Report-24-25.pdf' },
-        { name: 'AICTE Mandatory Disclosure', href: 'https://srilakshmimanagement.org/wp-content/uploads/2025/01/AICTE.pdf' },
-        { name: 'Student and Faculty Feedback', href: '/feedback' }
-      ]
+        {
+          name: "LOA",
+          href: "https://srilakshmimanagement.org/wp-content/uploads/2025/02/LOA-Report-24-25.pdf",
+        },
+        {
+          name: "AICTE Mandatory Disclosure",
+          href: "https://srilakshmimanagement.org/wp-content/uploads/2025/01/AICTE.pdf",
+        },
+        { name: "Student and Faculty Feedback", href: "/feedback" },
+      ],
     },
-    { name: 'Contact', href: '/contact' },
+    { name: "Contact", href: "/contact" },
+    { name: "Get Clearance Form", href: "/fee-clearance-form" },
   ];
 
   // Handle mobile link clicks: for items with dropdown, first click toggles dropdown,
@@ -106,17 +115,33 @@ const Navbar = () => {
   };
 
   return (
-    <nav id="main-navbar" className="w-full bg-white border-b border-gray-200 font-sans sticky top-0 z-50">
+    <nav
+      id="main-navbar"
+      className="w-full bg-white border-b border-gray-200 font-sans sticky top-0 z-50"
+    >
       <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row h-auto lg:h-24">
         {/* Logo Section */}
-        <div id="logo-section" className="flex items-center justify-between lg:justify-start gap-3 px-4 lg:px-8 py-3 border-b lg:border-b-0 lg:border-r border-gray-100 min-w-full lg:min-w-[320px]">
+        <div
+          id="logo-section"
+          className="flex items-center justify-between lg:justify-start gap-3 px-4 lg:px-8 py-3 border-b lg:border-b-0 lg:border-r border-gray-100 min-w-full lg:min-w-[320px]"
+        >
           <a href="/">
             <div className="flex items-center gap-3">
-              <img src={SlCMSLogo} alt="SLCMS Logo" className="w-20 h-23 object-contain" />
+              <img
+                src={SlCMSLogo}
+                alt="SLCMS Logo"
+                className="w-20 h-23 object-contain"
+              />
               <div className="flex flex-col leading-tight">
-                <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase">Sri Lakshmi College of</span>
-                <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase">Management & Science</span>
-                <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-500 uppercase">Sunkadakatte, Bangalore</span>
+                <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase">
+                  Sri Lakshmi College of
+                </span>
+                <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase">
+                  Management & Science
+                </span>
+                <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-500 uppercase">
+                  Sunkadakatte, Bangalore
+                </span>
               </div>
             </div>
           </a>
@@ -131,12 +156,30 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden lg:flex flex-col flex-1">
           {/* Top Row */}
-          <div id="top-nav-row" className="flex items-center justify-between border-b border-gray-100 h-1/2">
+          <div
+            id="top-nav-row"
+            className="flex items-center justify-between border-b border-gray-100 h-1/2"
+          >
             <div className="flex items-center gap-8 px-8">
-              <a href="/e-library" className="text-[13px] text-gray-600 hover:text-primary transition-colors">E-Library</a>
-              <a href="/placements" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Jobs</a>
+              <a
+                href="/e-library"
+                className="text-[13px] text-gray-600 hover:text-primary transition-colors"
+              >
+                E-Library
+              </a>
+              <a
+                href="/placements"
+                className="text-[13px] text-gray-600 hover:text-primary transition-colors"
+              >
+                Jobs
+              </a>
               {/* <a href="/alumni" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Alumni</a> */}
-              <a href="/feedback" className="text-[13px] text-gray-600 hover:text-primary transition-colors">Feedback</a>
+              <a
+                href="/feedback"
+                className="text-[13px] text-gray-600 hover:text-primary transition-colors"
+              >
+                Feedback
+              </a>
               {/* <div className="flex items-center gap-3 ml-4">
                 <button onClick={()=>navigate("/staff")} className="flex items-center gap-2 px-4 py-1.5 bg-gray-50 rounded-full text-[13px] text-gray-700 hover:bg-gray-100 transition-colors">
                   Staff <Lock size={12} className="text-primary" />
@@ -174,226 +217,252 @@ const Navbar = () => {
           </div>
 
           {/* Bottom Row */}
-          <div id="bottom-nav-row" className="flex items-center gap-8 px-8 h-1/2">
-            {navItems.map((item) => {
-              const isActive = isNavItemActive(item);
-              
-              return (
-                <div
-                  key={item.name}
-                  className="relative h-full flex items-center"
-                  onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
-                  onMouseLeave={() => setActiveDropdown(null)}
-                >
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      className={`flex items-center gap-1.5 text-[14px] font-medium transition-colors h-full ${
-                        isActive ? 'text-primary' : 'text-gray-700 hover:text-primary'
-                      }`}
-                    >
-                      {item.name}
-                      {item.dropdown && <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
-                    </a>
-                  ) : (
-                    <div
-                      role="button"
-                      className={`flex items-center gap-1.5 text-[14px] font-medium transition-colors h-full cursor-default ${
-                        isActive ? 'text-primary' : 'text-gray-700'
-                      }`}
-                    >
-                      {item.name}
-                      {item.dropdown && <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />}
-                    </div>
-                  )}
-
-                  {/* Desktop Dropdown */}
-                  <AnimatePresence>
-                    {item.dropdown && activeDropdown === item.name && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        className="absolute top-full left-0 w-56 bg-white border border-gray-100 shadow-xl rounded-b-xl py-2 z-50"
-                      >
-                        {item.dropdown.map((subItem) => {
-                          const isSubActive = isSubItemActive(subItem);
-                          return (
-                            <a
-                              key={subItem.name}
-                              href={subItem.href}
-                              target={subItem.href?.startsWith('http') ? '_blank' : '_self'}
-                              rel={subItem.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                              className={`block px-6 py-2.5 text-[13px] transition-colors ${
-                                isSubActive 
-                                  ? 'text-primary bg-primary/5 font-medium' 
-                                  : 'text-gray-600 hover:bg-gray-50 hover:text-primary'
-                              }`}
-                            >
-                              {subItem.name}
-                            </a>
-                          );
-                        })}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Mobile Navigation Menu */}
-             <AnimatePresence>
-      {isMenuOpen && (
-        <motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="lg:hidden bg-white border-b border-gray-100 overflow-hidden"
-        >
-          <div className="flex flex-col p-4 gap-4">
-            
-            {/* ✅ ACTION BUTTONS (TOP) */}
-            <div className="flex flex-col gap-2">
-              <a
-                href="/contact"
-                className="w-full py-3 bg-gold text-white text-center rounded-lg font-medium"
-              >
-                Contact
-              </a>
-              <a
-                href="/admissions"
-                className="w-full py-3 bg-primary text-white text-center rounded-lg font-medium flex items-center justify-center gap-2"
-              >
-                Apply Now <ArrowUpRight size={16} />
-              </a>
-            </div>
-
-            {/* ✅ MAIN NAV ITEMS */}
-            <div className="flex flex-col gap-1">
+          <div
+            id="bottom-nav-row"
+            className="flex items-center gap-8 px-8 h-1/2"
+          >
+            <div className="flex items-center gap-8 w-full">
+              {" "}
               {navItems.map((item) => {
                 const isActive = isNavItemActive(item);
 
                 return (
-                  <div key={item.name} className="flex flex-col">
-                    
-                    {/* Main Link */}
+                  <div
+                    key={item.name}
+                    className={`relative h-full flex items-center ${
+                      item.name === "Get Clearance Form" ? "ml-auto" : ""
+                    }`}
+                    onMouseEnter={() =>
+                      item.dropdown && setActiveDropdown(item.name)
+                    }
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
                     {item.href ? (
                       <a
                         href={item.href}
-                        onClick={(e) => handleMobileLinkClick(e, item)}
-                        className={`flex items-center justify-between px-4 py-3 rounded-lg text-[14px] font-medium transition-colors ${
+                        className={`flex items-center gap-1.5 text-[14px] font-medium transition-colors h-full ${
                           isActive
-                            ? "bg-primary/10 text-primary"
-                            : "text-gray-700 hover:bg-gray-50"
+                            ? "text-primary"
+                            : "text-gray-700 hover:text-primary"
                         }`}
                       >
                         {item.name}
                         {item.dropdown && (
                           <ChevronDown
-                            size={16}
-                            className={`transition-transform duration-200 ${
-                              activeDropdown === item.name
-                                ? "rotate-180"
-                                : ""
-                            }`}
+                            size={14}
+                            className={`transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`}
                           />
                         )}
                       </a>
                     ) : (
                       <div
-                        onClick={() =>
-                          setActiveDropdown(
-                            activeDropdown === item.name ? null : item.name
-                          )
-                        }
-                        className={`flex items-center justify-between px-4 py-3 rounded-lg text-[14px] font-medium cursor-pointer ${
-                          isActive
-                            ? "bg-primary/10 text-primary"
-                            : "text-gray-700"
+                        role="button"
+                        className={`flex items-center gap-1.5 text-[14px] font-medium transition-colors h-full cursor-default ${
+                          isActive ? "text-primary" : "text-gray-700"
                         }`}
                       >
                         {item.name}
                         {item.dropdown && (
                           <ChevronDown
-                            size={16}
-                            className={`transition-transform duration-200 ${
-                              activeDropdown === item.name
-                                ? "rotate-180"
-                                : ""
-                            }`}
+                            size={14}
+                            className={`transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`}
                           />
                         )}
                       </div>
                     )}
 
-                    {/* ✅ DROPDOWN */}
+                    {/* Desktop Dropdown */}
                     <AnimatePresence>
-                      {item.dropdown &&
-                        activeDropdown === item.name && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.25 }}
-                            className="overflow-hidden bg-gray-50/50 rounded-lg ml-4 mt-1"
-                          >
-                            {item.dropdown.map((subItem) => {
-                              const isSubActive =
-                                isSubItemActive(subItem);
-
-                              return (
-                                <a
-                                  key={subItem.name}
-                                  href={subItem.href}
-                                  target={
-                                    subItem.href?.startsWith("http")
-                                      ? "_blank"
-                                      : "_self"
-                                  }
-                                  rel={
-                                    subItem.href?.startsWith("http")
-                                      ? "noopener noreferrer"
-                                      : undefined
-                                  }
-                                  className={`block px-6 py-2.5 text-[13px] transition-colors ${
-                                    isSubActive
-                                      ? "text-primary font-medium"
-                                      : "text-gray-600 hover:text-primary"
-                                  }`}
-                                >
-                                  {subItem.name}
-                                </a>
-                              );
-                            })}
-                          </motion.div>
-                        )}
+                      {item.dropdown && activeDropdown === item.name && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="absolute top-full left-0 w-56 bg-white border border-gray-100 shadow-xl rounded-b-xl py-2 z-50"
+                        >
+                          {item.dropdown.map((subItem) => {
+                            const isSubActive = isSubItemActive(subItem);
+                            return (
+                              <a
+                                key={subItem.name}
+                                href={subItem.href}
+                                target={
+                                  subItem.href?.startsWith("http")
+                                    ? "_blank"
+                                    : "_self"
+                                }
+                                rel={
+                                  subItem.href?.startsWith("http")
+                                    ? "noopener noreferrer"
+                                    : undefined
+                                }
+                                className={`block px-6 py-2.5 text-[13px] transition-colors ${
+                                  isSubActive
+                                    ? "text-primary bg-primary/5 font-medium"
+                                    : "text-gray-600 hover:bg-gray-50 hover:text-primary"
+                                }`}
+                              >
+                                {subItem.name}
+                              </a>
+                            );
+                          })}
+                        </motion.div>
+                      )}
                     </AnimatePresence>
                   </div>
                 );
               })}
             </div>
-
-            <hr className="border-gray-100" />
-
-            {/* ✅ SECONDARY LINKS */}
-            <div className="flex flex-wrap gap-4 px-2">
-              <a href="/e-library" className="text-[13px] text-gray-600">
-                E-Library
-              </a>
-              <a href="/placements" className="text-[13px] text-gray-600">
-                Jobs
-              </a>
-              <a href="/feedback" className="text-[13px] text-gray-600">
-                Feedback
-              </a>
-            </div>
           </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="lg:hidden bg-white border-b border-gray-100 overflow-hidden"
+            >
+              <div className="flex flex-col p-4 gap-4">
+                {/* ✅ ACTION BUTTONS (TOP) */}
+                <div className="flex flex-col gap-2">
+                  <a
+                    href="/contact"
+                    className="w-full py-3 bg-gold text-white text-center rounded-lg font-medium"
+                  >
+                    Contact
+                  </a>
+                  <a
+                    href="/admissions"
+                    className="w-full py-3 bg-primary text-white text-center rounded-lg font-medium flex items-center justify-center gap-2"
+                  >
+                    Apply Now <ArrowUpRight size={16} />
+                  </a>
+                </div>
+
+                {/* ✅ MAIN NAV ITEMS */}
+                <div className="flex flex-col gap-1">
+                  {navItems.map((item) => {
+                    const isActive = isNavItemActive(item);
+
+                    return (
+                      <div key={item.name} className="flex flex-col">
+                        {/* Main Link */}
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            onClick={(e) => handleMobileLinkClick(e, item)}
+                            className={`flex items-center justify-between px-4 py-3 rounded-lg text-[14px] font-medium transition-colors ${
+                              isActive
+                                ? "bg-primary/10 text-primary"
+                                : "text-gray-700 hover:bg-gray-50"
+                            }`}
+                          >
+                            {item.name}
+                            {item.dropdown && (
+                              <ChevronDown
+                                size={16}
+                                className={`transition-transform duration-200 ${
+                                  activeDropdown === item.name
+                                    ? "rotate-180"
+                                    : ""
+                                }`}
+                              />
+                            )}
+                          </a>
+                        ) : (
+                          <div
+                            onClick={() =>
+                              setActiveDropdown(
+                                activeDropdown === item.name ? null : item.name,
+                              )
+                            }
+                            className={`flex items-center justify-between px-4 py-3 rounded-lg text-[14px] font-medium cursor-pointer ${
+                              isActive
+                                ? "bg-primary/10 text-primary"
+                                : "text-gray-700"
+                            }`}
+                          >
+                            {item.name}
+                            {item.dropdown && (
+                              <ChevronDown
+                                size={16}
+                                className={`transition-transform duration-200 ${
+                                  activeDropdown === item.name
+                                    ? "rotate-180"
+                                    : ""
+                                }`}
+                              />
+                            )}
+                          </div>
+                        )}
+
+                        {/* ✅ DROPDOWN */}
+                        <AnimatePresence>
+                          {item.dropdown && activeDropdown === item.name && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.25 }}
+                              className="overflow-hidden bg-gray-50/50 rounded-lg ml-4 mt-1"
+                            >
+                              {item.dropdown.map((subItem) => {
+                                const isSubActive = isSubItemActive(subItem);
+
+                                return (
+                                  <a
+                                    key={subItem.name}
+                                    href={subItem.href}
+                                    target={
+                                      subItem.href?.startsWith("http")
+                                        ? "_blank"
+                                        : "_self"
+                                    }
+                                    rel={
+                                      subItem.href?.startsWith("http")
+                                        ? "noopener noreferrer"
+                                        : undefined
+                                    }
+                                    className={`block px-6 py-2.5 text-[13px] transition-colors ${
+                                      isSubActive
+                                        ? "text-primary font-medium"
+                                        : "text-gray-600 hover:text-primary"
+                                    }`}
+                                  >
+                                    {subItem.name}
+                                  </a>
+                                );
+                              })}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <hr className="border-gray-100" />
+
+                {/* ✅ SECONDARY LINKS */}
+                <div className="flex flex-wrap gap-4 px-2">
+                  <a href="/e-library" className="text-[13px] text-gray-600">
+                    E-Library
+                  </a>
+                  <a href="/placements" className="text-[13px] text-gray-600">
+                    Jobs
+                  </a>
+                  <a href="/feedback" className="text-[13px] text-gray-600">
+                    Feedback
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );

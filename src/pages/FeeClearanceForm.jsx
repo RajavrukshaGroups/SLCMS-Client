@@ -1,0 +1,1025 @@
+import { useRef, useState } from "react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import slcmsLogo from "../../src/assets/slcms_logo.webp";
+
+const FeeClearanceForm = () => {
+  const pdfRef = useRef();
+  const noDueRef = useRef();
+
+  const [formData, setFormData] = useState({
+    date: "",
+    studentName: "",
+    regNo: "",
+    yearSemester: "",
+    course: "",
+    mobile: "",
+  });
+
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const formatDate = (date) => {
+    if (!date) return "";
+
+    return new Date(date).toLocaleDateString("en-GB");
+  };
+
+  // DOWNLOAD PDF
+  const downloadPDF = async () => {
+    try {
+      setIsDownloading(true);
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4",
+      });
+
+      // 🔥 HIDE ICONS BEFORE PDF
+      const icons = document.querySelectorAll(".hide-in-pdf");
+
+      icons.forEach((icon) => {
+        icon.style.visibility = "hidden";
+      });
+
+      // 🔥 WAIT A BIT FOR DOM UPDATE
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      // PAGE 1
+      const firstCanvas = await html2canvas(pdfRef.current, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+      });
+
+      const firstImg = firstCanvas.toDataURL("image/png");
+
+      pdf.addImage(firstImg, "PNG", 0, 0, 210, 297);
+
+      // PAGE 2
+      pdf.addPage();
+
+      const secondCanvas = await html2canvas(noDueRef.current, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+      });
+
+      const secondImg = secondCanvas.toDataURL("image/png");
+
+      pdf.addImage(secondImg, "PNG", 0, 0, 210, 297);
+
+      // 🔥 SHOW ICONS AGAIN
+      icons.forEach((icon) => {
+        icon.style.visibility = "visible";
+      });
+
+      pdf.save("SLCMS-Forms.pdf");
+      setFormData({
+        date: "",
+        studentName: "",
+        regNo: "",
+        yearSemester: "",
+        course: "",
+        mobile: "",
+      });
+      setIsDownloading(false);
+    } catch (error) {
+      // 🔥 SHOW ICONS AGAIN EVEN IF ERROR
+      const icons = document.querySelectorAll(".hide-in-pdf");
+
+      icons.forEach((icon) => {
+        icon.style.visibility = "visible";
+      });
+      setIsDownloading(false);
+      console.error("PDF generation failed:", error);
+    }
+  };
+
+  const detailRow = {
+    display: "flex",
+    alignItems: "center",
+    gap: "18px",
+  };
+
+  const detailLabel = {
+    width: "240px",
+    fontWeight: "700",
+  };
+
+  //   const detailValue = {
+  //     flex: 1,
+  //     borderBottom: "1px solid black",
+  //     minHeight: "28px",
+  //     display: "flex",
+  //     alignItems: "center",
+  //   };
+  const detailValue = {
+    flex: 1,
+    borderBottom: "1px solid black",
+    minHeight: "32px",
+    display: "flex",
+    alignItems: "center",
+    paddingBottom: "2px",
+    lineHeight: "20px",
+  };
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        padding: "40px 16px",
+        backgroundColor: "#f3f4f6",
+      }}
+    >
+      <style>
+        {`
+    @media print {
+      .calendar-icon {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .responsive-form-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+      }
+
+      .responsive-label {
+        width: 100% !important;
+      }
+
+      .responsive-sign {
+        width: 100% !important;
+      }
+
+      .responsive-title {
+        font-size: 20px !important;
+      }
+
+      .responsive-subtitle {
+        font-size: 18px !important;
+      }
+
+      .responsive-container {
+        padding: 20px !important;
+      }
+    }
+
+    /* PDF FIXED DESKTOP LAYOUT */
+    .pdf-mode {
+      width: 1000px !important;
+      padding: 40px !important;
+      background: white !important;
+    }
+
+    .pdf-mode .responsive-form-row {
+      flex-direction: row !important;
+      align-items: center !important;
+    }
+
+    .pdf-mode .responsive-label {
+      width: 240px !important;
+    }
+
+    .pdf-mode h1 {
+      font-size: 30px !important;
+    }
+
+    .pdf-mode h2 {
+      font-size: 26px !important;
+    }
+
+    .pdf-mode .pdf-table-wrapper {
+      overflow: visible !important;
+    }
+
+    .pdf-mode .pdf-table-inner {
+      min-width: 100% !important;
+    }
+  `}
+      </style>
+
+      <div
+        style={{
+          maxWidth: "1000px",
+          margin: "0 auto",
+        }}
+      >
+        {/* BUTTON */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginBottom: "20px",
+          }}
+        >
+          <button
+            onClick={downloadPDF}
+            style={{
+              backgroundColor: "#000",
+              color: "#fff",
+              padding: "12px 24px",
+              borderRadius: "8px",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
+            Fill the form to download PDF
+          </button>
+        </div>
+
+        {/* PAGE 1 */}
+        <div
+          ref={pdfRef}
+          className={isDownloading ? "pdf-mode" : ""}
+          style={{
+            backgroundColor: "#fff",
+            border: "1px solid #d1d5db",
+            // padding: "40px",
+            padding: window.innerWidth < 768 ? "20px" : "40px",
+            marginBottom: "40px",
+          }}
+        >
+          {/* HEADER */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: window.innerWidth < 768 ? "column" : "row",
+              gap: "24px",
+              alignItems: "center",
+            }}
+          >
+            <img
+              src={slcmsLogo}
+              alt="logo"
+              style={{
+                width: "90px",
+                height: "90px",
+                objectFit: "contain",
+              }}
+            />
+
+            <div
+              style={{
+                flex: 1,
+                textAlign: "center",
+              }}
+            >
+              <h1
+                style={{
+                  fontSize: window.innerWidth < 768 ? "16px" : "30px",
+                  lineHeight: "1.5",
+                  fontWeight: "700",
+                  margin: 0,
+                }}
+              >
+                SRI LAKSHMI COLLEGE OF MANAGEMENT AND SCIENCE
+              </h1>
+
+              <h2
+                style={{
+                  fontSize: window.innerWidth < 768 ? "16px" : "26px",
+                  lineHeight: "1.4",
+                  fontWeight: "700",
+                  textDecoration: "underline",
+                  marginTop: "20px",
+                }}
+              >
+                College Fee Clearance Form
+              </h2>
+
+              {/* <h3
+                style={{
+                  fontSize: "22px",
+                  fontWeight: "600",
+                  marginTop: "12px",
+                }}
+              >
+                BCA / BCOM / BBA
+              </h3> */}
+            </div>
+          </div>
+
+          {/* FORM */}
+          <div
+            style={{
+              marginTop: "60px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "35px",
+              fontSize: "18px",
+            }}
+          >
+            {/* DATE */}
+            <div className="responsive-form-row" style={detailRow}>
+              <label className="responsive-label" style={detailLabel}>
+                DATE:
+              </label>
+              <div
+                style={{
+                  flex: 1,
+                  position: "relative",
+                  borderBottom: "1px solid black",
+                  minHeight: "36px",
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <input
+                  type="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    opacity: 0,
+                    cursor: "pointer",
+                    zIndex: 2,
+                  }}
+                />
+
+                <span
+                  style={{
+                    fontSize: "18px",
+                  }}
+                >
+                  {formData.date ? formatDate(formData.date) : ""}
+                </span>
+
+                <span
+                  className="hide-in-pdf"
+                  style={{
+                    position: "absolute",
+                    right: "0px",
+                    fontSize: "18px",
+                    background: "white",
+                    paddingLeft: "8px",
+                    zIndex: 5,
+                    pointerEvents: "none",
+                  }}
+                >
+                  📅
+                </span>
+              </div>
+            </div>
+
+            {/* NAME */}
+            <div className="responsive-form-row" style={detailRow}>
+              <label className="responsive-label" style={detailLabel}>
+                STUDENT NAME:
+              </label>
+
+              <input
+                type="text"
+                name="studentName"
+                value={formData.studentName}
+                onChange={handleChange}
+                style={{
+                  flex: 1,
+                  border: "none",
+                  borderBottom: "1px solid black",
+                  outline: "none",
+                  fontSize: "18px",
+                }}
+              />
+            </div>
+
+            {/* REG */}
+            <div className="responsive-form-row" style={detailRow}>
+              <label className="responsive-label" style={detailLabel}>
+                {" "}
+                REG NO:
+              </label>
+
+              <input
+                type="text"
+                name="regNo"
+                value={formData.regNo}
+                onChange={handleChange}
+                style={{
+                  flex: 1,
+                  border: "none",
+                  borderBottom: "1px solid black",
+                  outline: "none",
+                  fontSize: "18px",
+                }}
+              />
+            </div>
+
+            {/* YEAR */}
+            <div className="responsive-form-row" style={detailRow}>
+              <label className="responsive-label" style={detailLabel}>
+                {" "}
+                YEAR/SEMESTER:
+              </label>
+
+              <input
+                type="text"
+                name="yearSemester"
+                value={formData.yearSemester}
+                onChange={handleChange}
+                style={{
+                  flex: 1,
+                  border: "none",
+                  borderBottom: "1px solid black",
+                  outline: "none",
+                  fontSize: "18px",
+                }}
+              />
+            </div>
+
+            <div className="responsive-form-row" style={detailRow}>
+              <label className="responsive-label" style={detailLabel}>
+                {" "}
+                COURSE:
+              </label>
+
+              {!isDownloading ? (
+                <select
+                  name="course"
+                  value={formData.course}
+                  onChange={handleChange}
+                  style={{
+                    flex: 1,
+                    border: "none",
+                    borderBottom: "1px solid black",
+                    outline: "none",
+                    fontSize: "18px",
+                    background: "transparent",
+                    paddingBottom: "6px",
+                    cursor: "pointer",
+                  }}
+                >
+                  <option value="">Select Course</option>
+
+                  <option value="B.Com">B.Com</option>
+                  <option value="BBA">BBA</option>
+                  <option value="BCA">BCA</option>
+                  <option value="B.Sc">B.Sc</option>
+                  <option value="BA">BA</option>
+                  <option value="M.Com">M.Com</option>
+                  <option value="MCA">MCA</option>
+                  <option value="MBA">MBA</option>
+                </select>
+              ) : (
+                <div
+                  style={{
+                    flex: 1,
+                    borderBottom: "1px solid black",
+                    minHeight: "32px",
+                    fontSize: "18px",
+                  }}
+                >
+                  {formData.course}
+                </div>
+              )}
+            </div>
+
+            {/* MOBILE */}
+            <div className="responsive-form-row" style={detailRow}>
+              <label className="responsive-label" style={detailLabel}>
+                {" "}
+                MOBILE NO:
+              </label>
+
+              <input
+                type="text"
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                style={{
+                  flex: 1,
+                  border: "none",
+                  borderBottom: "1px solid black",
+                  outline: "none",
+                  fontSize: "18px",
+                }}
+              />
+            </div>
+          </div>
+
+          {/* BILLING SECTION */}
+          <div
+            style={{
+              marginTop: "70px",
+              border: "1px solid black",
+              maxWidth: "650px",
+              marginInline: "auto",
+            }}
+          >
+            {/* TOP */}
+            <div
+              style={{
+                borderBottom: "1px solid black",
+                padding: "25px 20px",
+                textAlign: "center",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "22px",
+                  fontWeight: "700",
+                  lineHeight: "1.4",
+                }}
+              >
+                BILLING SECTION
+              </div>
+
+              <div
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "700",
+                  lineHeight: "1.4",
+                }}
+              >
+                (100% OF FEES TO BE CLEARED)
+              </div>
+
+              <div
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "700",
+                  lineHeight: "1.4",
+                }}
+              >
+                FRONT DESK
+              </div>
+            </div>
+
+            {/* BOTTOM */}
+            <div
+              style={{
+                padding: "26px 18px",
+                minHeight: "90px",
+                display: "flex",
+                alignItems: "flex-start",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "700",
+                }}
+              >
+                SIGN:
+              </span>
+            </div>
+          </div>
+
+          {/* NOTE */}
+          <div
+            style={{
+              marginTop: "55px",
+              fontSize: "18px",
+              lineHeight: "34px",
+              fontWeight: "700",
+            }}
+          >
+            <p>
+              Note: All students are kindly requested to visit the college only
+              at the specified date and time to complete all clearances. Please
+              strictly adhere to the given date and time without fail.
+            </p>
+          </div>
+
+          {/* SIGN */}
+          <div
+            style={{
+              marginTop: "140px",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <div
+              style={{
+                width: "320px",
+                textAlign: "center",
+              }}
+            >
+              <div
+                style={{
+                  width: "100%",
+                  borderBottom: "1px solid black",
+                  height: "40px",
+                }}
+              />
+
+              <p
+                style={{
+                  marginTop: "12px",
+                  fontSize: "18px",
+                  fontWeight: "700",
+                }}
+              >
+                Authorised Sign (SLCMS Office)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* PAGE 2 */}
+        <div
+          ref={noDueRef}
+          className={isDownloading ? "pdf-mode" : ""}
+          style={{
+            backgroundColor: "#fff",
+            border: "1px solid #d1d5db",
+            // padding: "40px",
+            padding: window.innerWidth < 768 ? "20px" : "40px",
+          }}
+        >
+          {/* HEADER */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: window.innerWidth < 768 ? "column" : "row",
+              gap: "24px",
+              alignItems: "center",
+            }}
+          >
+            <img
+              src={slcmsLogo}
+              alt="logo"
+              style={{
+                width: "90px",
+                height: "90px",
+                objectFit: "contain",
+              }}
+            />
+
+            <div
+              style={{
+                flex: 1,
+                textAlign: "center",
+              }}
+            >
+              <h1
+                style={{
+                  fontSize: window.innerWidth < 768 ? "16px" : "30px",
+                  lineHeight: "1.5",
+                  fontWeight: "700",
+                  margin: 0,
+                }}
+              >
+                SRI LAKSHMI COLLEGE OF MANAGEMENT AND SCIENCE
+              </h1>
+
+              <h2
+                style={{
+                  fontSize: window.innerWidth < 768 ? "18px" : "28px",
+                  lineHeight: "1.4",
+                  fontWeight: "700",
+                  textDecoration: "underline",
+                  marginTop: "20px",
+                }}
+              >
+                NO DUE FORM
+              </h2>
+
+              {/* <h3
+                style={{
+                  fontSize: "22px",
+                  fontWeight: "600",
+                  marginTop: "12px",
+                }}
+              >
+                BCA / BCOM / BBA
+              </h3> */}
+            </div>
+          </div>
+
+          {/* DATE */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              marginTop: "40px",
+              fontSize: "18px",
+              gap: "18px",
+            }}
+          >
+            <span
+              style={{
+                fontWeight: "700",
+                whiteSpace: "nowrap",
+              }}
+            >
+              DATE:
+            </span>
+
+            <div
+              style={{
+                width: "220px",
+                borderBottom: "1px solid black",
+                height: "32px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                paddingBottom: "2px",
+                lineHeight: "20px",
+              }}
+            >
+              {formatDate(formData.date)}
+            </div>
+          </div>
+
+          {/* DETAILS */}
+          <div
+            style={{
+              marginTop: "50px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "30px",
+              fontSize: "18px",
+            }}
+          >
+            <div className="responsive-form-row" style={detailRow}>
+              <span style={detailLabel}>• STUDENT NAME</span>
+              <span style={detailValue}>{formData.studentName}</span>
+            </div>
+
+            <div className="responsive-form-row" style={detailRow}>
+              <span style={detailLabel}>• UUCMS REG No</span>
+              <span style={detailValue}>{formData.regNo}</span>
+            </div>
+
+            <div className="responsive-form-row" style={detailRow}>
+              <span style={detailLabel}>• YEAR / SEMESTER</span>
+              <span style={detailValue}>{formData.yearSemester}</span>
+            </div>
+
+            <div className="responsive-form-row" style={detailRow}>
+              <span style={detailLabel}>• COURSE</span>
+              {/* <span style={detailValue}>{formData.course}</span> */}
+              <span style={detailValue}>
+                {formData.course === "" ? "" : formData.course}
+              </span>
+            </div>
+
+            <div className="responsive-form-row" style={detailRow}>
+              <span style={detailLabel}>• MOBILE No</span>
+              <span style={detailValue}>{formData.mobile}</span>
+            </div>
+          </div>
+
+          {/* TABLE */}
+          <div
+            className="pdf-table-wrapper"
+            style={{
+              marginTop: "60px",
+              overflowX: "auto",
+              WebkitOverflowScrolling: "touch",
+            }}
+          >
+            <div
+              className="pdf-table-inner"
+              style={{
+                border: "1px solid black",
+                minWidth: "750px",
+              }}
+            >
+              {/* TOP ROW */}
+              <div
+                style={{
+                  display: "flex",
+                  borderBottom: "1px solid black",
+                  minHeight: "120px",
+                }}
+              >
+                {/* COL 1 */}
+                <div
+                  style={{
+                    width: "23%",
+                    borderRight: "1px solid black",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                    padding: "12px",
+                    lineHeight: "1.8",
+                    fontWeight: "700",
+                    fontSize: "18px",
+                  }}
+                >
+                  <div>Internals</div>
+                  <div>Attendance/Shortage</div>
+                </div>
+
+                {/* COL 2 */}
+                <div
+                  style={{
+                    width: "19%",
+                    borderRight: "1px solid black",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                    padding: "12px",
+                    lineHeight: "1.8",
+                    fontWeight: "700",
+                    fontSize: "18px",
+                  }}
+                >
+                  <div>Sports & Cultural</div>
+                  <div>Fee</div>
+                </div>
+
+                {/* COL 3 */}
+                <div
+                  style={{
+                    width: "20%",
+                    borderRight: "1px solid black",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                    padding: "12px",
+                    lineHeight: "1.8",
+                    fontWeight: "700",
+                    fontSize: "18px",
+                  }}
+                >
+                  <div>Assignments</div>
+                  <div>Class Teacher</div>
+                </div>
+
+                {/* COL 4 */}
+                <div
+                  style={{
+                    width: "17%",
+                    borderRight: "1px solid black",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                    padding: "12px",
+                    lineHeight: "1.8",
+                    fontWeight: "700",
+                    fontSize: "18px",
+                  }}
+                >
+                  Library
+                </div>
+
+                {/* COL 5 */}
+                <div
+                  style={{
+                    width: "21%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                    padding: "12px",
+                    lineHeight: "1.8",
+                    fontWeight: "700",
+                    fontSize: "18px",
+                  }}
+                >
+                  <div>Approved By</div>
+                  <div>UG - PG</div>
+                  <div>Co-ordinator</div>
+                </div>
+              </div>
+
+              {/* BOTTOM ROW */}
+              <div
+                style={{
+                  display: "flex",
+                  minHeight: "95px",
+                }}
+              >
+                <div
+                  style={{
+                    width: "23%",
+                    borderRight: "1px solid black",
+                  }}
+                />
+
+                <div
+                  style={{
+                    width: "19%",
+                    borderRight: "1px solid black",
+                  }}
+                />
+
+                <div
+                  style={{
+                    width: "20%",
+                    borderRight: "1px solid black",
+                  }}
+                />
+
+                <div
+                  style={{
+                    width: "17%",
+                    borderRight: "1px solid black",
+                  }}
+                />
+
+                <div
+                  style={{
+                    width: "21%",
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* NOTE */}
+          <div
+            style={{
+              marginTop: "60px",
+              fontSize: "18px",
+              lineHeight: "34px",
+            }}
+          >
+            <p>
+              Note: All students are kindly requested to visit the college only
+              at the specified date and time to complete all clearances.
+            </p>
+          </div>
+
+          {/* SIGN */}
+          <div
+            style={{
+              marginTop: "80px",
+              display: "flex",
+              justifyContent: window.innerWidth < 768 ? "center" : "flex-end",
+            }}
+          >
+            <div
+              style={{
+                width: "420px",
+                textAlign: "center",
+              }}
+            >
+              <div
+                style={{
+                  width: "100%",
+                  borderBottom: "1px solid black",
+                  height: "40px",
+                }}
+              />
+
+              <p
+                style={{
+                  marginTop: "12px",
+                  fontSize: "18px",
+                  fontWeight: "700",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Signature of Principal / Administrator
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "30px",
+          marginBottom: "40px",
+        }}
+      >
+        <button
+          onClick={downloadPDF}
+          style={{
+            backgroundColor: "#000",
+            color: "#fff",
+            padding: "14px 28px",
+            borderRadius: "10px",
+            border: "none",
+            cursor: "pointer",
+            fontSize: "18px",
+            fontWeight: "700",
+          }}
+        >
+          Download PDF
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default FeeClearanceForm;

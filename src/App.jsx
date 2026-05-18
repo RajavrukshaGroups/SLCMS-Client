@@ -31,6 +31,7 @@ import CollegeConcessionPopup from "./components/CollegeConcessionPopup.jsx";
 import WhatsAppWidget from "./components/WhatsAppWidget.jsx";
 import EnquiryButton from "./components/EnquiryButton";
 import FeedbackPage from "./pages/FeedbackPage.jsx";
+import FeeClearanceForm from "./pages/FeeClearanceForm.jsx";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -87,7 +88,7 @@ export default function App() {
   // Replace with your institution's WhatsApp number (international format, no '+' or spaces)
   const WHATSAPP_NUMBER = "1234567890"; // <-- CHANGE THIS
   const WHATSAPP_MESSAGE = encodeURIComponent(
-    "Hello, I would like to know more about your college and courses."
+    "Hello, I would like to know more about your college and courses.",
   );
   const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
   // -------------------------------------------
@@ -125,14 +126,16 @@ export default function App() {
                 element={<PlaceholderPage title="AICTE Information" />}
               />
               <Route path="/contact" element={<Contact />} />
+              <Route
+                path="/fee-clearance-form"
+                element={<FeeClearanceForm />}
+              />
+
               {/* <Route
                 path="/feedback"
                 element={<PlaceholderPage title="Student Feedback" />}
               /> */}
-              <Route
-                path="/feedback"
-                element={<FeedbackPage />}
-              />
+              <Route path="/feedback" element={<FeedbackPage />} />
               <Route
                 path="/faculty"
                 element={<PlaceholderPage title="Faculties" />}
@@ -199,8 +202,8 @@ export default function App() {
         </a> */}
         <WhatsAppWidget />
         {/* --------------------------------------------------------------- */}
-                  
-        <EnquiryButton/>
+
+        <EnquiryButton />
         <Footer />
       </div>
     </Router>
