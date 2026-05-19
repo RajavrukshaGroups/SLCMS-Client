@@ -1156,7 +1156,12 @@ button {
               style={{
                 border: "1px solid black",
                 // minWidth: "750px",
-                minWidth: isDownloading ? "750px" : "100%",
+                // minWidth: isDownloading ? "750px" : "100%",
+                minWidth: isDownloading
+                  ? "750px"
+                  : isMobileView
+                    ? "750px"
+                    : "100%",
               }}
             >
               {/* TOP ROW */}
