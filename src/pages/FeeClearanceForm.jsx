@@ -11,7 +11,9 @@ const FeeClearanceForm = () => {
     date: "",
     studentName: "",
     regNo: "",
-    yearSemester: "",
+    // yearSemester: "",
+    year: "",
+    semester: "",
     course: "",
     mobile: "",
   });
@@ -86,7 +88,9 @@ const FeeClearanceForm = () => {
         date: "",
         studentName: "",
         regNo: "",
-        yearSemester: "",
+        // yearSemester: "",
+        year: "",
+        semester: "",
         course: "",
         mobile: "",
       });
@@ -103,14 +107,20 @@ const FeeClearanceForm = () => {
     }
   };
 
+  //   const detailRow = {
+  //     display: "flex",
+  //     alignItems: "center",
+  //     gap: "18px",
+  //   };
   const detailRow = {
     display: "flex",
     alignItems: "center",
     gap: "18px",
+    minHeight: "52px",
   };
 
   const detailLabel = {
-    width: "240px",
+    width: isDownloading ? "180px" : "240px",
     fontWeight: "700",
   };
 
@@ -123,12 +133,43 @@ const FeeClearanceForm = () => {
   //   };
   const detailValue = {
     flex: 1,
-    borderBottom: "1px solid black",
+    borderBottom: isDownloading ? "none" : "1px solid black",
     minHeight: "32px",
     display: "flex",
     alignItems: "center",
     paddingBottom: "2px",
     lineHeight: "20px",
+  };
+
+  //   const inputStyle = {
+  //     flex: 1,
+  //     border: "none",
+  //     borderBottom: isDownloading ? "none" : "1px solid black",
+  //     outline: "none",
+  //     fontSize: "18px",
+  //     background: "transparent",
+  //     minHeight: window.innerWidth < 768 ? "48px" : "40px",
+  //     paddingTop: "2px",
+  //     lineHeight: "24px",
+  //   };
+
+  const inputStyle = {
+    flex: 1,
+    border: "none",
+    borderBottom: isDownloading ? "none" : "1px solid black",
+    outline: "none",
+    fontSize: "18px",
+    background: "transparent",
+    minHeight: isDownloading
+      ? "40px"
+      : window.innerWidth < 768
+        ? "48px"
+        : "40px",
+    paddingTop: "2px",
+    lineHeight: "24px",
+    display: "flex",
+    alignItems: "center",
+    paddingBottom: "2px",
   };
 
   return (
@@ -173,6 +214,16 @@ const FeeClearanceForm = () => {
       .responsive-container {
         padding: 20px !important;
       }
+        .responsive-form-row input,
+.responsive-form-row select {
+  width: 100% !important;
+  min-height: 50px !important;
+  font-size: 16px !important;
+}
+
+button {
+  width: 100%;
+}
     }
 
     /* PDF FIXED DESKTOP LAYOUT */
@@ -226,14 +277,14 @@ const FeeClearanceForm = () => {
           <button
             onClick={downloadPDF}
             style={{
-              backgroundColor: "#000",
+              backgroundColor: "#111827",
               color: "#fff",
-              padding: "12px 24px",
-              borderRadius: "8px",
+              padding: "14px 24px",
+              borderRadius: "12px",
               border: "none",
               cursor: "pointer",
               fontSize: "16px",
-              fontWeight: "600",
+              fontWeight: "700",
             }}
           >
             Fill the form to download PDF
@@ -245,18 +296,54 @@ const FeeClearanceForm = () => {
           ref={pdfRef}
           className={isDownloading ? "pdf-mode" : ""}
           style={{
+            position: "relative",
+            overflow: "hidden",
             backgroundColor: "#fff",
-            border: "1px solid #d1d5db",
+            // border: "1px solid #d1d5db",
+            border: "1px solid #e5e7eb",
+            borderRadius: "16px",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
             // padding: "40px",
-            padding: window.innerWidth < 768 ? "20px" : "40px",
+            // padding: window.innerWidth < 768 ? "20px" : "40px",
+            padding: isDownloading
+              ? "40px"
+              : window.innerWidth < 768
+                ? "20px"
+                : "40px",
             marginBottom: "40px",
           }}
         >
+          <img
+            src={slcmsLogo}
+            alt="watermark"
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              //   width: window.innerWidth < 768 ? "220px" : "420px",
+              width: isDownloading
+                ? "420px"
+                : window.innerWidth < 768
+                  ? "220px"
+                  : "420px",
+              opacity: 0.05,
+              zIndex: 0,
+              pointerEvents: "none",
+            }}
+          />
           {/* HEADER */}
           <div
             style={{
+              position: "relative",
+              zIndex: 2,
               display: "flex",
-              flexDirection: window.innerWidth < 768 ? "column" : "row",
+              //   flexDirection: window.innerWidth < 768 ? "column" : "row",
+              flexDirection: isDownloading
+                ? "row"
+                : window.innerWidth < 768
+                  ? "column"
+                  : "row",
               gap: "24px",
               alignItems: "center",
             }}
@@ -279,7 +366,12 @@ const FeeClearanceForm = () => {
             >
               <h1
                 style={{
-                  fontSize: window.innerWidth < 768 ? "16px" : "30px",
+                  //   fontSize: window.innerWidth < 768 ? "16px" : "30px",
+                  fontSize: isDownloading
+                    ? "30px"
+                    : window.innerWidth < 768
+                      ? "16px"
+                      : "30px",
                   lineHeight: "1.5",
                   fontWeight: "700",
                   margin: 0,
@@ -290,7 +382,12 @@ const FeeClearanceForm = () => {
 
               <h2
                 style={{
-                  fontSize: window.innerWidth < 768 ? "16px" : "26px",
+                  //   fontSize: window.innerWidth < 768 ? "16px" : "26px",
+                  fontSize: isDownloading
+                    ? "26px"
+                    : window.innerWidth < 768
+                      ? "16px"
+                      : "26px",
                   lineHeight: "1.4",
                   fontWeight: "700",
                   textDecoration: "underline",
@@ -315,15 +412,18 @@ const FeeClearanceForm = () => {
           {/* FORM */}
           <div
             style={{
+              position: "relative",
+              zIndex: 2,
               marginTop: "60px",
               display: "flex",
               flexDirection: "column",
-              gap: "35px",
+              //   gap: "35px",
+              gap: window.innerWidth < 768 ? "24px" : "35px",
               fontSize: "18px",
             }}
           >
             {/* DATE */}
-            <div className="responsive-form-row" style={detailRow}>
+            {/* <div className="responsive-form-row" style={detailRow}>
               <label className="responsive-label" style={detailLabel}>
                 DATE:
               </label>
@@ -375,6 +475,41 @@ const FeeClearanceForm = () => {
                   📅
                 </span>
               </div>
+            </div> */}
+
+            {/* DATE */}
+            <div className="responsive-form-row" style={detailRow}>
+              <label className="responsive-label" style={detailLabel}>
+                DATE:
+              </label>
+
+              {!isDownloading ? (
+                <input
+                  type="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                  style={{
+                    ...inputStyle,
+                    width: "100%",
+                    cursor: "pointer",
+                    paddingRight: "10px",
+                  }}
+                />
+              ) : (
+                <div
+                  style={{
+                    flex: 1,
+                    minHeight: "40px",
+                    display: "flex",
+                    alignItems: "center",
+                    paddingBottom: "2px",
+                    fontSize: "18px",
+                  }}
+                >
+                  {formatDate(formData.date)}
+                </div>
+              )}
             </div>
 
             {/* NAME */}
@@ -383,19 +518,27 @@ const FeeClearanceForm = () => {
                 STUDENT NAME:
               </label>
 
-              <input
-                type="text"
-                name="studentName"
-                value={formData.studentName}
-                onChange={handleChange}
-                style={{
-                  flex: 1,
-                  border: "none",
-                  borderBottom: "1px solid black",
-                  outline: "none",
-                  fontSize: "18px",
-                }}
-              />
+              {!isDownloading ? (
+                <input
+                  type="text"
+                  name="studentName"
+                  value={formData.studentName}
+                  onChange={handleChange}
+                  style={inputStyle}
+                />
+              ) : (
+                <div
+                  style={{
+                    flex: 1,
+                    minHeight: "40px",
+                    display: "flex",
+                    alignItems: "center",
+                    fontSize: "18px",
+                  }}
+                >
+                  {formData.studentName}
+                </div>
+              )}
             </div>
 
             {/* REG */}
@@ -405,23 +548,31 @@ const FeeClearanceForm = () => {
                 REG NO:
               </label>
 
-              <input
-                type="text"
-                name="regNo"
-                value={formData.regNo}
-                onChange={handleChange}
-                style={{
-                  flex: 1,
-                  border: "none",
-                  borderBottom: "1px solid black",
-                  outline: "none",
-                  fontSize: "18px",
-                }}
-              />
+              {!isDownloading ? (
+                <input
+                  type="text"
+                  name="regNo"
+                  value={formData.regNo}
+                  onChange={handleChange}
+                  style={inputStyle}
+                />
+              ) : (
+                <div
+                  style={{
+                    flex: 1,
+                    minHeight: "40px",
+                    display: "flex",
+                    alignItems: "center",
+                    fontSize: "18px",
+                  }}
+                >
+                  {formData.regNo}
+                </div>
+              )}
             </div>
 
             {/* YEAR */}
-            <div className="responsive-form-row" style={detailRow}>
+            {/* <div className="responsive-form-row" style={detailRow}>
               <label className="responsive-label" style={detailLabel}>
                 {" "}
                 YEAR/SEMESTER:
@@ -440,6 +591,115 @@ const FeeClearanceForm = () => {
                   fontSize: "18px",
                 }}
               />
+            </div> */}
+
+            {/* YEAR + SEMESTER */}
+            <div
+              className="responsive-form-row"
+              style={{
+                display: "grid",
+                gridTemplateColumns: isDownloading
+                  ? "1fr 1fr"
+                  : window.innerWidth < 768
+                    ? "1fr"
+                    : "1fr 1fr",
+                gap: "24px",
+                alignItems: "center",
+              }}
+            >
+              {/* YEAR */}
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "18px",
+                }}
+              >
+                <label
+                  style={{
+                    width: "160px",
+                    fontWeight: "700",
+                  }}
+                >
+                  YEAR:
+                </label>
+
+                {!isDownloading ? (
+                  <select
+                    name="year"
+                    value={formData.year}
+                    onChange={handleChange}
+                    style={{ ...inputStyle, marginLeft: "80px" }}
+                  >
+                    <option value="">Select Year</option>
+                    <option value="1st Year">1st Year</option>
+                    <option value="2nd Year">2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                  </select>
+                ) : (
+                  <div
+                    style={{
+                      flex: 1,
+                      marginLeft: "80px",
+                      minHeight: "40px",
+                      display: "flex",
+                      alignItems: "center",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {formData.year}
+                  </div>
+                )}
+              </div>
+
+              {/* SEMESTER */}
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "18px",
+                }}
+              >
+                <label
+                  style={{
+                    width: "160px",
+                    fontWeight: "700",
+                  }}
+                >
+                  SEMESTER:
+                </label>
+
+                {!isDownloading ? (
+                  <select
+                    name="semester"
+                    value={formData.semester}
+                    onChange={handleChange}
+                    style={inputStyle}
+                  >
+                    <option value="">Select Semester</option>
+                    <option value="1st">1st</option>
+                    <option value="2nd">2nd</option>
+                    <option value="3rd">3rd</option>
+                    <option value="4th">4th</option>
+                    <option value="5th">5th</option>
+                    <option value="6th">6th</option>
+                  </select>
+                ) : (
+                  <div
+                    style={{
+                      flex: 1,
+                      minHeight: "40px",
+                      display: "flex",
+                      alignItems: "center",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {formData.semester}
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="responsive-form-row" style={detailRow}>
@@ -453,16 +713,7 @@ const FeeClearanceForm = () => {
                   name="course"
                   value={formData.course}
                   onChange={handleChange}
-                  style={{
-                    flex: 1,
-                    border: "none",
-                    borderBottom: "1px solid black",
-                    outline: "none",
-                    fontSize: "18px",
-                    background: "transparent",
-                    paddingBottom: "6px",
-                    cursor: "pointer",
-                  }}
+                  style={inputStyle}
                 >
                   <option value="">Select Course</option>
 
@@ -479,7 +730,8 @@ const FeeClearanceForm = () => {
                 <div
                   style={{
                     flex: 1,
-                    borderBottom: "1px solid black",
+                    // borderBottom: "1px solid black",
+                    borderBottom: isDownloading ? "none" : "1px solid black",
                     minHeight: "32px",
                     fontSize: "18px",
                   }}
@@ -496,25 +748,35 @@ const FeeClearanceForm = () => {
                 MOBILE NO:
               </label>
 
-              <input
-                type="text"
-                name="mobile"
-                value={formData.mobile}
-                onChange={handleChange}
-                style={{
-                  flex: 1,
-                  border: "none",
-                  borderBottom: "1px solid black",
-                  outline: "none",
-                  fontSize: "18px",
-                }}
-              />
+              {!isDownloading ? (
+                <input
+                  type="text"
+                  name="mobile"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  style={inputStyle}
+                />
+              ) : (
+                <div
+                  style={{
+                    flex: 1,
+                    minHeight: "40px",
+                    display: "flex",
+                    alignItems: "center",
+                    fontSize: "18px",
+                  }}
+                >
+                  {formData.mobile}
+                </div>
+              )}
             </div>
           </div>
 
           {/* BILLING SECTION */}
           <div
             style={{
+              position: "relative",
+              zIndex: 2,
               marginTop: "70px",
               border: "1px solid black",
               maxWidth: "650px",
@@ -583,6 +845,8 @@ const FeeClearanceForm = () => {
           {/* NOTE */}
           <div
             style={{
+              position: "relative",
+              zIndex: 2,
               marginTop: "55px",
               fontSize: "18px",
               lineHeight: "34px",
@@ -599,6 +863,8 @@ const FeeClearanceForm = () => {
           {/* SIGN */}
           <div
             style={{
+              position: "relative",
+              zIndex: 2,
               marginTop: "140px",
               display: "flex",
               justifyContent: "flex-end",
@@ -636,17 +902,53 @@ const FeeClearanceForm = () => {
           ref={noDueRef}
           className={isDownloading ? "pdf-mode" : ""}
           style={{
+            position: "relative",
+            overflow: "hidden",
             backgroundColor: "#fff",
-            border: "1px solid #d1d5db",
+            // border: "1px solid #d1d5db",
+            border: "1px solid #e5e7eb",
+            borderRadius: "16px",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
             // padding: "40px",
-            padding: window.innerWidth < 768 ? "20px" : "40px",
+            // padding: window.innerWidth < 768 ? "20px" : "40px",
+            padding: isDownloading
+              ? "40px"
+              : window.innerWidth < 768
+                ? "20px"
+                : "40px",
           }}
         >
+          <img
+            src={slcmsLogo}
+            alt="watermark"
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              //   width: window.innerWidth < 768 ? "220px" : "420px",
+              width: isDownloading
+                ? "420px"
+                : window.innerWidth < 768
+                  ? "220px"
+                  : "420px",
+              opacity: 0.05,
+              zIndex: 0,
+              pointerEvents: "none",
+            }}
+          />
           {/* HEADER */}
           <div
             style={{
+              position: "relative",
+              zIndex: 2,
               display: "flex",
-              flexDirection: window.innerWidth < 768 ? "column" : "row",
+              //   flexDirection: window.innerWidth < 768 ? "column" : "row",
+              flexDirection: isDownloading
+                ? "row"
+                : window.innerWidth < 768
+                  ? "column"
+                  : "row",
               gap: "24px",
               alignItems: "center",
             }}
@@ -669,7 +971,12 @@ const FeeClearanceForm = () => {
             >
               <h1
                 style={{
-                  fontSize: window.innerWidth < 768 ? "16px" : "30px",
+                  //   fontSize: window.innerWidth < 768 ? "16px" : "30px",
+                  fontSize: isDownloading
+                    ? "30px"
+                    : window.innerWidth < 768
+                      ? "16px"
+                      : "30px",
                   lineHeight: "1.5",
                   fontWeight: "700",
                   margin: 0,
@@ -680,7 +987,12 @@ const FeeClearanceForm = () => {
 
               <h2
                 style={{
-                  fontSize: window.innerWidth < 768 ? "18px" : "28px",
+                  //   fontSize: window.innerWidth < 768 ? "18px" : "28px",
+                  fontSize: isDownloading
+                    ? "28px"
+                    : window.innerWidth < 768
+                      ? "18px"
+                      : "28px",
                   lineHeight: "1.4",
                   fontWeight: "700",
                   textDecoration: "underline",
@@ -725,7 +1037,7 @@ const FeeClearanceForm = () => {
             <div
               style={{
                 width: "220px",
-                borderBottom: "1px solid black",
+                borderBottom: isDownloading ? "none" : "1px solid black",
                 height: "32px",
                 display: "flex",
                 alignItems: "center",
@@ -749,22 +1061,76 @@ const FeeClearanceForm = () => {
             }}
           >
             <div className="responsive-form-row" style={detailRow}>
-              <span style={detailLabel}>• STUDENT NAME</span>
+              <span style={detailLabel}>• STUDENT NAME :</span>
               <span style={detailValue}>{formData.studentName}</span>
             </div>
 
             <div className="responsive-form-row" style={detailRow}>
-              <span style={detailLabel}>• UUCMS REG No</span>
+              <span style={detailLabel}>• REG No :</span>
               <span style={detailValue}>{formData.regNo}</span>
             </div>
 
-            <div className="responsive-form-row" style={detailRow}>
-              <span style={detailLabel}>• YEAR / SEMESTER</span>
-              <span style={detailValue}>{formData.yearSemester}</span>
+            {/* YEAR + SEMESTER */}
+            <div
+              className="responsive-form-row"
+              style={{
+                display: "grid",
+                gridTemplateColumns: isDownloading
+                  ? "1fr 1fr"
+                  : window.innerWidth < 768
+                    ? "1fr"
+                    : "1fr 1fr",
+                gap: "24px",
+                alignItems: "center",
+              }}
+            >
+              {/* YEAR */}
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "18px",
+                }}
+              >
+                <span
+                  style={{
+                    width: "160px",
+                    fontWeight: "700",
+                  }}
+                >
+                  • YEAR :
+                </span>
+
+                <span style={{ ...detailValue, marginLeft: "25px" }}>
+                  {formData.year}
+                </span>
+              </div>
+
+              {/* SEMESTER */}
+              <div
+                style={{
+                  flex: 1,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "18px",
+                }}
+              >
+                <span
+                  style={{
+                    width: "160px",
+                    fontWeight: "700",
+                  }}
+                >
+                  • SEMESTER :
+                </span>
+
+                <span style={detailValue}>{formData.semester}</span>
+              </div>
             </div>
 
             <div className="responsive-form-row" style={detailRow}>
-              <span style={detailLabel}>• COURSE</span>
+              <span style={detailLabel}>• COURSE :</span>
               {/* <span style={detailValue}>{formData.course}</span> */}
               <span style={detailValue}>
                 {formData.course === "" ? "" : formData.course}
@@ -772,7 +1138,7 @@ const FeeClearanceForm = () => {
             </div>
 
             <div className="responsive-form-row" style={detailRow}>
-              <span style={detailLabel}>• MOBILE No</span>
+              <span style={detailLabel}>• MOBILE No :</span>
               <span style={detailValue}>{formData.mobile}</span>
             </div>
           </div>
@@ -947,6 +1313,8 @@ const FeeClearanceForm = () => {
           {/* NOTE */}
           <div
             style={{
+              position: "relative",
+              zIndex: 2,
               marginTop: "60px",
               fontSize: "18px",
               lineHeight: "34px",
@@ -961,9 +1329,15 @@ const FeeClearanceForm = () => {
           {/* SIGN */}
           <div
             style={{
+              position: "relative",
+              zIndex: 2,
               marginTop: "80px",
               display: "flex",
-              justifyContent: window.innerWidth < 768 ? "center" : "flex-end",
+              justifyContent: isDownloading
+                ? "flex-end"
+                : window.innerWidth < 768
+                  ? "center"
+                  : "flex-end",
             }}
           >
             <div
@@ -1005,13 +1379,13 @@ const FeeClearanceForm = () => {
         <button
           onClick={downloadPDF}
           style={{
-            backgroundColor: "#000",
+            backgroundColor: "#111827",
             color: "#fff",
-            padding: "14px 28px",
-            borderRadius: "10px",
+            padding: "14px 24px",
+            borderRadius: "12px",
             border: "none",
             cursor: "pointer",
-            fontSize: "18px",
+            fontSize: "16px",
             fontWeight: "700",
           }}
         >
