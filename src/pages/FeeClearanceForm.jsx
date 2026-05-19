@@ -1175,7 +1175,7 @@ button {
                 {/* COL 1 */}
                 <div
                   style={{
-                    width: "23%",
+                    width: isMobileView ? "30%" : "23%",
                     borderRight: "1px solid black",
                     display: "flex",
                     flexDirection: "column",
@@ -1195,7 +1195,8 @@ button {
                 {/* COL 2 */}
                 <div
                   style={{
-                    width: "19%",
+                    // width: "19%",
+                    width: isMobileView ? "17%" : "19%",
                     borderRight: "1px solid black",
                     display: "flex",
                     flexDirection: "column",
@@ -1215,7 +1216,7 @@ button {
                 {/* COL 3 */}
                 <div
                   style={{
-                    width: "20%",
+                    width: isMobileView ? "18%" : "20%",
                     borderRight: "1px solid black",
                     display: "flex",
                     flexDirection: "column",
@@ -1235,7 +1236,7 @@ button {
                 {/* COL 4 */}
                 <div
                   style={{
-                    width: "17%",
+                    width: isMobileView ? "15%" : "17%",
                     borderRight: "1px solid black",
                     display: "flex",
                     justifyContent: "center",
@@ -1253,7 +1254,7 @@ button {
                 {/* COL 5 */}
                 <div
                   style={{
-                    width: "21%",
+                    width: isMobileView ? "20%" : "21%",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
@@ -1280,35 +1281,35 @@ button {
               >
                 <div
                   style={{
-                    width: "23%",
+                    width: isMobileView ? "30%" : "23%",
                     borderRight: "1px solid black",
                   }}
                 />
 
                 <div
                   style={{
-                    width: "19%",
+                    width: isMobileView ? "17%" : "19%",
                     borderRight: "1px solid black",
                   }}
                 />
 
                 <div
                   style={{
-                    width: "20%",
+                    width: isMobileView ? "18%" : "20%",
                     borderRight: "1px solid black",
                   }}
                 />
 
                 <div
                   style={{
-                    width: "17%",
+                    width: isMobileView ? "15%" : "17%",
                     borderRight: "1px solid black",
                   }}
                 />
 
                 <div
                   style={{
-                    width: "21%",
+                    width: isMobileView ? "20%" : "21%",
                   }}
                 />
               </div>
