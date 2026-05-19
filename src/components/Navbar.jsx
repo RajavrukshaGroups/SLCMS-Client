@@ -126,11 +126,12 @@ const Navbar = () => {
           className="flex items-center justify-between lg:justify-start gap-3 px-4 lg:px-8 py-3 border-b lg:border-b-0 lg:border-r border-gray-100 min-w-full lg:min-w-[320px]"
         >
           <a href="/">
-            <div className="flex items-center gap-3">
+            {/* <div className="flex items-center gap-3"> */}
+            <div className="flex items-center gap-2 min-w-0">
               <img
                 src={SlCMSLogo}
                 alt="SLCMS Logo"
-                className="w-20 h-23 object-contain"
+                className="w-14 lg:w-20 object-contain shrink-0"
               />
               <div className="flex flex-col leading-tight">
                 <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase">

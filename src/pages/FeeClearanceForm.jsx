@@ -59,6 +59,7 @@ const FeeClearanceForm = () => {
         scale: 2,
         useCORS: true,
         backgroundColor: "#ffffff",
+        windowWidth: 1400,
       });
 
       const firstImg = firstCanvas.toDataURL("image/png");
@@ -72,6 +73,7 @@ const FeeClearanceForm = () => {
         scale: 2,
         useCORS: true,
         backgroundColor: "#ffffff",
+        windowWidth: 1400,
       });
 
       const secondImg = secondCanvas.toDataURL("image/png");
@@ -148,10 +150,12 @@ const FeeClearanceForm = () => {
   //     outline: "none",
   //     fontSize: "18px",
   //     background: "transparent",
-  //     minHeight: window.innerWidth < 768 ? "48px" : "40px",
+  //     minHeight: isMobileView ? "48px" : "40px",
   //     paddingTop: "2px",
   //     lineHeight: "24px",
   //   };
+
+  const isMobileView = window.matchMedia("(max-width: 768px)").matches;
 
   const inputStyle = {
     flex: 1,
@@ -160,11 +164,7 @@ const FeeClearanceForm = () => {
     outline: "none",
     fontSize: "18px",
     background: "transparent",
-    minHeight: isDownloading
-      ? "40px"
-      : window.innerWidth < 768
-        ? "48px"
-        : "40px",
+    minHeight: isDownloading ? "40px" : isMobileView ? "48px" : "40px",
     paddingTop: "2px",
     lineHeight: "24px",
     display: "flex",
@@ -174,10 +174,17 @@ const FeeClearanceForm = () => {
 
   return (
     <div
+      //   style={{
+      //     minHeight: "100vh",
+      //     padding: "40px 16px",
+      //     backgroundColor: "#f3f4f6",
+      //   }}
       style={{
         minHeight: "100vh",
         padding: "40px 16px",
         backgroundColor: "#f3f4f6",
+        width: "100%",
+        overflowX: "hidden",
       }}
     >
       <style>
@@ -227,11 +234,13 @@ button {
     }
 
     /* PDF FIXED DESKTOP LAYOUT */
-    .pdf-mode {
-      width: 1000px !important;
-      padding: 40px !important;
-      background: white !important;
-    }
+   .pdf-mode {
+  width: 100% !important;
+  max-width: 1000px !important;
+  padding: 40px !important;
+  background: white !important;
+  margin: 0 auto !important;
+}
 
     .pdf-mode .responsive-form-row {
       flex-direction: row !important;
@@ -261,7 +270,12 @@ button {
       </style>
 
       <div
+        // style={{
+        //   maxWidth: "1000px",
+        //   margin: "0 auto",
+        // }}
         style={{
+          width: "100%",
           maxWidth: "1000px",
           margin: "0 auto",
         }}
@@ -304,12 +318,8 @@ button {
             borderRadius: "16px",
             boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
             // padding: "40px",
-            // padding: window.innerWidth < 768 ? "20px" : "40px",
-            padding: isDownloading
-              ? "40px"
-              : window.innerWidth < 768
-                ? "20px"
-                : "40px",
+            // padding: isMobileView ? "20px" : "40px",
+            padding: isDownloading ? "40px" : isMobileView ? "20px" : "40px",
             marginBottom: "40px",
           }}
         >
@@ -321,12 +331,8 @@ button {
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              //   width: window.innerWidth < 768 ? "220px" : "420px",
-              width: isDownloading
-                ? "420px"
-                : window.innerWidth < 768
-                  ? "220px"
-                  : "420px",
+              //   width: isMobileView ? "220px" : "420px",
+              width: isDownloading ? "420px" : isMobileView ? "220px" : "420px",
               opacity: 0.05,
               zIndex: 0,
               pointerEvents: "none",
@@ -338,10 +344,10 @@ button {
               position: "relative",
               zIndex: 2,
               display: "flex",
-              //   flexDirection: window.innerWidth < 768 ? "column" : "row",
+              //   flexDirection: isMobileView ? "column" : "row",
               flexDirection: isDownloading
                 ? "row"
-                : window.innerWidth < 768
+                : isMobileView
                   ? "column"
                   : "row",
               gap: "24px",
@@ -366,10 +372,10 @@ button {
             >
               <h1
                 style={{
-                  //   fontSize: window.innerWidth < 768 ? "16px" : "30px",
+                  //   fontSize: isMobileView ? "16px" : "30px",
                   fontSize: isDownloading
                     ? "30px"
-                    : window.innerWidth < 768
+                    : isMobileView
                       ? "16px"
                       : "30px",
                   lineHeight: "1.5",
@@ -382,10 +388,10 @@ button {
 
               <h2
                 style={{
-                  //   fontSize: window.innerWidth < 768 ? "16px" : "26px",
+                  //   fontSize: isMobileView ? "16px" : "26px",
                   fontSize: isDownloading
                     ? "26px"
-                    : window.innerWidth < 768
+                    : isMobileView
                       ? "16px"
                       : "26px",
                   lineHeight: "1.4",
@@ -418,7 +424,7 @@ button {
               display: "flex",
               flexDirection: "column",
               //   gap: "35px",
-              gap: window.innerWidth < 768 ? "24px" : "35px",
+              gap: isMobileView ? "24px" : "35px",
               fontSize: "18px",
             }}
           >
@@ -595,18 +601,15 @@ button {
 
             {/* YEAR + SEMESTER */}
             <div
-              className="responsive-form-row"
               style={{
                 display: "grid",
-                gridTemplateColumns: isDownloading
-                  ? "1fr 1fr"
-                  : window.innerWidth < 768
-                    ? "1fr"
-                    : "1fr 1fr",
+                gridTemplateColumns:
+                  isDownloading || !isMobileView ? "1fr 1fr" : "1fr",
                 gap: "24px",
                 alignItems: "center",
               }}
             >
+              {" "}
               {/* YEAR */}
               <div
                 style={{
@@ -630,7 +633,11 @@ button {
                     name="year"
                     value={formData.year}
                     onChange={handleChange}
-                    style={{ ...inputStyle, marginLeft: "80px" }}
+                    // style={{ ...inputStyle, marginLeft: "80px" }}
+                    style={{
+                      ...inputStyle,
+                      marginLeft: isMobileView ? "0px" : "80px",
+                    }}
                   >
                     <option value="">Select Year</option>
                     <option value="1st Year">1st Year</option>
@@ -641,7 +648,12 @@ button {
                   <div
                     style={{
                       flex: 1,
-                      marginLeft: "80px",
+                      //   marginLeft: "80px",
+                      marginLeft: isDownloading
+                        ? "80px"
+                        : isMobileView
+                          ? "0px"
+                          : "80px",
                       minHeight: "40px",
                       display: "flex",
                       alignItems: "center",
@@ -652,7 +664,6 @@ button {
                   </div>
                 )}
               </div>
-
               {/* SEMESTER */}
               <div
                 style={{
@@ -910,12 +921,8 @@ button {
             borderRadius: "16px",
             boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
             // padding: "40px",
-            // padding: window.innerWidth < 768 ? "20px" : "40px",
-            padding: isDownloading
-              ? "40px"
-              : window.innerWidth < 768
-                ? "20px"
-                : "40px",
+            // padding: isMobileView ? "20px" : "40px",
+            padding: isDownloading ? "40px" : isMobileView ? "20px" : "40px",
           }}
         >
           <img
@@ -926,12 +933,8 @@ button {
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              //   width: window.innerWidth < 768 ? "220px" : "420px",
-              width: isDownloading
-                ? "420px"
-                : window.innerWidth < 768
-                  ? "220px"
-                  : "420px",
+              //   width: isMobileView ? "220px" : "420px",
+              width: isDownloading ? "420px" : isMobileView ? "220px" : "420px",
               opacity: 0.05,
               zIndex: 0,
               pointerEvents: "none",
@@ -943,10 +946,10 @@ button {
               position: "relative",
               zIndex: 2,
               display: "flex",
-              //   flexDirection: window.innerWidth < 768 ? "column" : "row",
+              //   flexDirection: isMobileView ? "column" : "row",
               flexDirection: isDownloading
                 ? "row"
-                : window.innerWidth < 768
+                : isMobileView
                   ? "column"
                   : "row",
               gap: "24px",
@@ -971,10 +974,10 @@ button {
             >
               <h1
                 style={{
-                  //   fontSize: window.innerWidth < 768 ? "16px" : "30px",
+                  //   fontSize: isMobileView ? "16px" : "30px",
                   fontSize: isDownloading
                     ? "30px"
-                    : window.innerWidth < 768
+                    : isMobileView
                       ? "16px"
                       : "30px",
                   lineHeight: "1.5",
@@ -987,10 +990,10 @@ button {
 
               <h2
                 style={{
-                  //   fontSize: window.innerWidth < 768 ? "18px" : "28px",
+                  //   fontSize: isMobileView ? "18px" : "28px",
                   fontSize: isDownloading
                     ? "28px"
-                    : window.innerWidth < 768
+                    : isMobileView
                       ? "18px"
                       : "28px",
                   lineHeight: "1.4",
@@ -1072,14 +1075,10 @@ button {
 
             {/* YEAR + SEMESTER */}
             <div
-              className="responsive-form-row"
               style={{
                 display: "grid",
-                gridTemplateColumns: isDownloading
-                  ? "1fr 1fr"
-                  : window.innerWidth < 768
-                    ? "1fr"
-                    : "1fr 1fr",
+                gridTemplateColumns:
+                  isDownloading || !isMobileView ? "1fr 1fr" : "1fr",
                 gap: "24px",
                 alignItems: "center",
               }}
@@ -1156,7 +1155,8 @@ button {
               className="pdf-table-inner"
               style={{
                 border: "1px solid black",
-                minWidth: "750px",
+                // minWidth: "750px",
+                minWidth: isDownloading ? "750px" : "100%",
               }}
             >
               {/* TOP ROW */}
@@ -1335,7 +1335,7 @@ button {
               display: "flex",
               justifyContent: isDownloading
                 ? "flex-end"
-                : window.innerWidth < 768
+                : isMobileView
                   ? "center"
                   : "flex-end",
             }}
