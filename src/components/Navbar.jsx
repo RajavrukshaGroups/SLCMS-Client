@@ -10,6 +10,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const isFeeClearancePage = location.pathname === "/fee-clearance-form";
+
   // Helper function to determine if a nav item is active based on current path
   const isNavItemActive = (item) => {
     const currentPath = location.pathname;
@@ -119,37 +121,56 @@ const Navbar = () => {
       id="main-navbar"
       className="w-full bg-white border-b border-gray-200 font-sans sticky top-0 z-50"
     >
-      <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row h-auto lg:h-24">
+      {/* <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row h-auto lg:h-24"> */}
+      <div className="w-full max-w-[1440px] mx-auto flex flex-col lg:flex-row h-auto lg:h-24">
         {/* Logo Section */}
         <div
           id="logo-section"
-          className="flex items-center justify-between lg:justify-start gap-3 px-4 lg:px-8 py-3 border-b lg:border-b-0 lg:border-r border-gray-100 min-w-full lg:min-w-[320px]"
+          className={`flex items-center px-4 lg:px-8 py-3 border-b lg:border-b-0 lg:border-r border-gray-100 ${
+            // className={`relative w-full flex items-center px-4 lg:px-8 py-3 border-b lg:border-b-0 lg:border-r border-gray-100 ${
+            isFeeClearancePage
+              ? "justify-between lg:min-w-[320px]"
+              : "justify-between lg:justify-start min-w-full lg:min-w-[320px]"
+          }`}
         >
-          <a href="/">
-            {/* <div className="flex items-center gap-3"> */}
-            <div className="flex items-center gap-2 min-w-0">
+          {/* <a href="/"> */}
+          <a href="/" className={`${isFeeClearancePage ? "" : "flex-1"}`}>
+            {" "}
+            {/* <div className="flex items-center gap-2 min-w-0"> */}
+            {/* <div className="flex items-center gap-2 min-w-0 w-full"> */}
+            <div className="flex items-center gap-2 min-w-0 flex-1">
               <img
                 src={SlCMSLogo}
                 alt="SLCMS Logo"
                 className="w-14 lg:w-20 object-contain shrink-0"
               />
-              <div className="flex flex-col leading-tight">
-                <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase">
+              <div className="flex flex-col leading-tight flex-1 min-w-0">
+                <span className="text-[9px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase whitespace-nowrap">
                   Sri Lakshmi College of
                 </span>
-                <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase">
+
+                <span className="text-[9px] lg:text-[11px] font-bold tracking-wider text-gray-800 uppercase whitespace-nowrap">
                   Management & Science
                 </span>
-                <span className="text-[10px] lg:text-[11px] font-bold tracking-wider text-gray-500 uppercase">
+
+                <span className="text-[9px] lg:text-[11px] font-bold tracking-wider text-gray-500 uppercase whitespace-nowrap">
                   Sunkadakatte, Bangalore
                 </span>
               </div>
             </div>
           </a>
           <button
-            className="lg:hidden p-2 text-gray-600"
+            className={`lg:hidden p-2 text-gray-600 shrink-0 ${
+              isFeeClearancePage ? "ml-auto absolute left-85 top-5" : "ml-auto"
+            }`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
+            {/* <button
+            className={`lg:hidden p-2 text-gray-600 shrink-0 ${
+              isFeeClearancePage ? "absolute right-3 top-5" : "ml-auto"
+            }`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          > */}
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
