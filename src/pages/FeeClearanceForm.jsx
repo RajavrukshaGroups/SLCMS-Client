@@ -400,7 +400,8 @@ button {
                   marginTop: "20px",
                 }}
               >
-                College Fee Clearance Form
+                {/* College Fee Clearance Form  */}
+                COLLEGE FEE CLEARANCE FORM
               </h2>
 
               {/* <h3
@@ -484,12 +485,12 @@ button {
             </div> */}
 
             {/* DATE */}
-            <div className="responsive-form-row" style={detailRow}>
-              <label className="responsive-label" style={detailLabel}>
-                DATE:
-              </label>
+            {!isDownloading ? (
+              <div className="responsive-form-row" style={detailRow}>
+                <label className="responsive-label" style={detailLabel}>
+                  DATE:
+                </label>
 
-              {!isDownloading ? (
                 <input
                   type="date"
                   name="date"
@@ -502,21 +503,48 @@ button {
                     paddingRight: "10px",
                   }}
                 />
-              ) : (
+              </div>
+            ) : (
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  marginBottom: "40px",
+                }}
+              >
                 <div
                   style={{
-                    flex: 1,
-                    minHeight: "40px",
                     display: "flex",
                     alignItems: "center",
-                    paddingBottom: "2px",
-                    fontSize: "18px",
+                    gap: "16px",
+                    width: "320px",
                   }}
                 >
-                  {formatDate(formData.date)}
+                  <span
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: "700",
+                    }}
+                  >
+                    DATE:
+                  </span>
+
+                  <div
+                    style={{
+                      flex: 1,
+                      minHeight: "40px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {formatDate(formData.date)}
+                  </div>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
 
             {/* NAME */}
             <div className="responsive-form-row" style={detailRow}>
@@ -551,7 +579,7 @@ button {
             <div className="responsive-form-row" style={detailRow}>
               <label className="responsive-label" style={detailLabel}>
                 {" "}
-                REG NO:
+                UUCMS NO:
               </label>
 
               {!isDownloading ? (
@@ -690,12 +718,12 @@ button {
                     style={inputStyle}
                   >
                     <option value="">Select Semester</option>
-                    <option value="1st">1st</option>
-                    <option value="2nd">2nd</option>
-                    <option value="3rd">3rd</option>
-                    <option value="4th">4th</option>
-                    <option value="5th">5th</option>
-                    <option value="6th">6th</option>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                    <option value="V">V</option>
+                    <option value="VI">VI</option>
                   </select>
                 ) : (
                   <div
@@ -811,15 +839,82 @@ button {
               >
                 BILLING SECTION
               </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginTop: "12px",
+                  fontSize: "20px",
+                  fontWeight: "700",
+                  lineHeight: 1,
+                }}
+              >
+                <span>(</span>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    marginLeft: "10px",
+                  }}
+                >
+                  <span
+                    style={{
+                      position: "relative",
+                      top: "-3px",
+                    }}
+                  >
+                    50%
+                  </span>
+                  <div
+                    style={{
+                      width: "22px",
+                      height: "22px",
+                      border: "2px solid black",
+                      position: "relative",
+                      top: "4px",
+                    }}
+                  />
+                </div>
+                <span style={{ margin: "0 16px" }}>/</span>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                  }}
+                >
+                  <span
+                    style={{
+                      position: "relative",
+                      top: "-3px",
+                    }}
+                  >
+                    100%
+                  </span>
+                  <div
+                    style={{
+                      width: "22px",
+                      height: "22px",
+                      border: "2px solid black",
+                      position: "relative",
+                      top: "4px",
+                    }}
+                  />
+                </div>
+                <span style={{ marginLeft: "10px" }}>)</span>{" "}
+              </div>
 
               <div
                 style={{
-                  fontSize: "20px",
+                  fontSize: "18px",
                   fontWeight: "700",
                   lineHeight: "1.4",
+                  marginTop: "10px",
                 }}
               >
-                (100% OF FEES TO BE CLEARED)
+                OF FEES TO BE CLEARED
               </div>
 
               <div
@@ -834,7 +929,7 @@ button {
             </div>
 
             {/* BOTTOM */}
-            <div
+            {/* <div
               style={{
                 padding: "26px 18px",
                 minHeight: "90px",
@@ -850,6 +945,54 @@ button {
               >
                 SIGN:
               </span>
+            </div> */}
+            <div
+              style={{
+                display: "flex",
+                borderTop: "1px solid black",
+                minHeight: "90px",
+              }}
+            >
+              {/* LEFT SIDE */}
+              <div
+                style={{
+                  width: "50%",
+                  borderRight: "1px solid black",
+                  //   padding: "5px",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "center",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: "700",
+                  }}
+                >
+                  DATE
+                </span>
+              </div>
+
+              {/* RIGHT SIDE */}
+              <div
+                style={{
+                  width: "50%",
+                  //   padding: "20px",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "center",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: "700",
+                  }}
+                >
+                  SIGN
+                </span>
+              </div>
             </div>
           </div>
 
@@ -865,9 +1008,14 @@ button {
             }}
           >
             <p>
-              Note: All students are kindly requested to visit the college only
+              {/* Note: All students are kindly requested to visit the college only
               at the specified date and time to complete all clearances. Please
-              strictly adhere to the given date and time without fail.
+              strictly adhere to the given date and time without fail. */}
+              {/* Note: Students are hereby inform to strictly adhere to the given
+              date and time without fail to complete the clearance process. */}
+              Note: Students are hereby informed to strictly adhere to the given
+              date and time without fail, in order to complete the clearance
+              process.
             </p>
           </div>
 
@@ -1069,7 +1217,7 @@ button {
             </div>
 
             <div className="responsive-form-row" style={detailRow}>
-              <span style={detailLabel}>• REG No :</span>
+              <span style={detailLabel}>• UUCMS NO :</span>
               <span style={detailValue}>{formData.regNo}</span>
             </div>
 
@@ -1137,7 +1285,7 @@ button {
             </div>
 
             <div className="responsive-form-row" style={detailRow}>
-              <span style={detailLabel}>• MOBILE No :</span>
+              <span style={detailLabel}>• MOBILE NO :</span>
               <span style={detailValue}>{formData.mobile}</span>
             </div>
           </div>
@@ -1173,9 +1321,10 @@ button {
                 }}
               >
                 {/* COL 1 */}
+                {/* NEW COL - Academic Attendance */}
                 <div
                   style={{
-                    width: isMobileView ? "30%" : "23%",
+                    width: isMobileView ? "20%" : "18%",
                     borderRight: "1px solid black",
                     display: "flex",
                     flexDirection: "column",
@@ -1188,15 +1337,36 @@ button {
                     fontSize: "18px",
                   }}
                 >
-                  <div>Internals</div>
-                  <div>Attendance/Shortage</div>
+                  <div>Academic</div>
+                  <div>Attendance</div>
+                </div>
+                <div
+                  style={{
+                    // width: isMobileView ? "30%" : "23%",
+                    width: isMobileView ? "20%" : "17%",
+                    borderRight: "1px solid black",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                    padding: "12px",
+                    lineHeight: "1.8",
+                    fontWeight: "700",
+                    fontSize: "18px",
+                  }}
+                >
+                  <div>Internal</div>
+                  <div>Assessment</div>
+                  <div>Attendance</div>
                 </div>
 
                 {/* COL 2 */}
                 <div
                   style={{
                     // width: "19%",
-                    width: isMobileView ? "17%" : "19%",
+                    // width: isMobileView ? "17%" : "19%",
+                    width: isMobileView ? "16%" : "15%",
                     borderRight: "1px solid black",
                     display: "flex",
                     flexDirection: "column",
@@ -1216,7 +1386,8 @@ button {
                 {/* COL 3 */}
                 <div
                   style={{
-                    width: isMobileView ? "18%" : "20%",
+                    // width: isMobileView ? "18%" : "20%",
+                    width: isMobileView ? "18%" : "17%",
                     borderRight: "1px solid black",
                     display: "flex",
                     flexDirection: "column",
@@ -1236,7 +1407,8 @@ button {
                 {/* COL 4 */}
                 <div
                   style={{
-                    width: isMobileView ? "15%" : "17%",
+                    // width: isMobileView ? "15%" : "17%",
+                    width: isMobileView ? "12%" : "13%",
                     borderRight: "1px solid black",
                     display: "flex",
                     justifyContent: "center",
@@ -1254,7 +1426,8 @@ button {
                 {/* COL 5 */}
                 <div
                   style={{
-                    width: isMobileView ? "20%" : "21%",
+                    // width: isMobileView ? "20%" : "21%",
+                    width: isMobileView ? "14%" : "20%",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
@@ -1281,35 +1454,42 @@ button {
               >
                 <div
                   style={{
-                    width: isMobileView ? "30%" : "23%",
+                    width: isMobileView ? "20%" : "18%",
                     borderRight: "1px solid black",
                   }}
                 />
 
                 <div
                   style={{
-                    width: isMobileView ? "17%" : "19%",
+                    width: isMobileView ? "20%" : "17%",
                     borderRight: "1px solid black",
                   }}
                 />
 
                 <div
                   style={{
-                    width: isMobileView ? "18%" : "20%",
+                    width: isMobileView ? "16%" : "15%",
                     borderRight: "1px solid black",
                   }}
                 />
 
                 <div
                   style={{
-                    width: isMobileView ? "15%" : "17%",
+                    width: isMobileView ? "18%" : "17%",
                     borderRight: "1px solid black",
                   }}
                 />
 
                 <div
                   style={{
-                    width: isMobileView ? "20%" : "21%",
+                    width: isMobileView ? "12%" : "13%",
+                    borderRight: "1px solid black",
+                  }}
+                />
+
+                <div
+                  style={{
+                    width: isMobileView ? "14%" : "20%",
                   }}
                 />
               </div>
@@ -1327,8 +1507,11 @@ button {
             }}
           >
             <p>
-              Note: All students are kindly requested to visit the college only
-              at the specified date and time to complete all clearances.
+              {/* Note: All students are kindly requested to visit the college only
+              at the specified date and time to complete all clearances. */}
+              Note: Students are hereby informed to strictly adhere to the given
+              date and time without fail, in order to complete the clearance
+              process.
             </p>
           </div>
 
