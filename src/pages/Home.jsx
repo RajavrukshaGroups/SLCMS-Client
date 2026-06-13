@@ -15,6 +15,10 @@ import Carousel from '../components/Carousel'
 import PlacedStudents from '../components/PlacedStudents';
 import RecruiterLogos from '../components/RecruiterLogos'
 
+import Campus1 from "../assets/campus1.png"
+import Campus2 from "../assets/campus2.png"
+import Campus3 from "../assets/campus3.png"
+
 export default function Home() {
   return (
     <motion.div
@@ -79,12 +83,12 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=400" className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
-                <img src={classImg} className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
+                <img src={Campus1} className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
+                <img src={Campus2} className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
               </div>
               <div className="pt-12 space-y-4">
-                <img src={event1Img} className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
-                <img src={BBAImg} className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
+                <img src={Campus3} className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
+                <img src={classImg} className="rounded-2xl shadow-lg" referrerPolicy="no-referrer" />
               </div>
             </div>
           </div>
