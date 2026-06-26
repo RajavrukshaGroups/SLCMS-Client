@@ -9,20 +9,24 @@ import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
 
+import { HelmetProvider } from "react-helmet-async";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    {/* ✅ Wrap EVERYTHING inside Provider */}
-    <Provider store={store}>
-      <App />
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        pauseOnHover
-        theme="colored"
-      />
-    </Provider>
+    <HelmetProvider>
+      {/* ✅ Wrap EVERYTHING inside Provider */}
+      <Provider store={store}>
+        <App />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          pauseOnHover
+          theme="colored"
+        />
+      </Provider>
+    </HelmetProvider>
   </StrictMode>,
 );

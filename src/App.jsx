@@ -125,7 +125,10 @@ function AppContent() {
 
               <Route path="/about/college" element={<College />} />
 
-              <Route path="/iaskas" element={<IASKSPage />} />
+              <Route
+                path="/ias-kas-upsc-training-bangalore"
+                element={<IASKSPage />}
+              />
 
               <Route path="/courses" element={<CoursePage />} />
 
