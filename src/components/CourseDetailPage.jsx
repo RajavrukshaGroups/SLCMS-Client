@@ -31,7 +31,7 @@ import MCAImg from "../assets/MCA.jpg";
 import MBAImg from "../assets/MBA.webp";
 
 const courseDetailsContent = {
-  "bcom-colleges-bangalore": {
+  "bcom-colleges-in-bangalore": {
     id: "bcom",
     title: "B.Com",
     fullTitle: "Bachelor of Commerce",
@@ -46,7 +46,7 @@ const courseDetailsContent = {
         "best bcom colleges in bangalore, top bcom colleges in bangalore, bcom colleges in bangalore, bachelor of commerce colleges in bangalore, best bcom course in bangalore, sri lakshmi college of management & science",
 
       canonical:
-        "https://srilakshmimanagement.org/course/bcom-colleges-bangalore",
+        "https://srilakshmimanagement.org/course/bcom-colleges-in-bangalore",
 
       h1: "Sri Lakshmi College of Management & Science – One of the Best & Top BCom Colleges in Bangalore",
     },
@@ -109,7 +109,7 @@ After completion of B.Com, you can apply in any organization for the post of acc
       "GST & Customs Law",
     ],
   },
-  "bba-colleges-bangalore": {
+  "bba-colleges-in-bangalore": {
     id: "bba",
     title: "BBA",
     fullTitle: "Bachelor of Business Administration",
@@ -124,7 +124,7 @@ After completion of B.Com, you can apply in any organization for the post of acc
         "best bba colleges in bangalore, top bba colleges in bangalore, bba colleges in bangalore, bachelor of business administration colleges in bangalore, best bba course in bangalore, sri lakshmi college of management & science",
 
       canonical:
-        "https://srilakshmimanagement.org/course/bba-colleges-bangalore",
+        "https://srilakshmimanagement.org/course/bba-colleges-in-bangalore",
 
       h1: "Best BBA Colleges in Bangalore",
     },
@@ -256,7 +256,7 @@ With additional certifications, BCA graduates can specialize in emerging technol
       "Artificial Intelligence",
     ],
   },
-  "bsc-cbz-colleges-bangalore": {
+  "bsc-cbz-colleges-in-bangalore": {
     id: "bsc-cbz",
     title: "B.Sc (CBZ)",
     fullTitle: "Bachelor of Science in Chemistry, Botany, Zoology",
@@ -271,7 +271,7 @@ With additional certifications, BCA graduates can specialize in emerging technol
         "best bsc colleges in bangalore, top bsc colleges in bangalore, bsc colleges in bangalore, bsc cbz colleges in bangalore, bachelor of science colleges in bangalore, best bsc course in bangalore, sri lakshmi college of management & science",
 
       canonical:
-        "https://srilakshmimanagement.org/course/bsc-cbz-colleges-bangalore",
+        "https://srilakshmimanagement.org/course/bsc-cbz-colleges-in-bangalore",
 
       h1: "Study at One of the Best & Top BSC Colleges in Bangalore – Sri Lakshmi College of Management & Science",
     },
@@ -517,7 +517,7 @@ Senior roles include Financial Controller, Investment Banker, Corporate Treasure
     ],
   },
   // ----- NEW COURSES ADDED BELOW -----
-  "mba-colleges-bangalore": {
+  "mba-colleges-in-bangalore": {
     id: "mba",
     title: "MBA",
     fullTitle: "Master of Business Administration",
@@ -532,7 +532,7 @@ Senior roles include Financial Controller, Investment Banker, Corporate Treasure
         "best mba colleges in bangalore, top mba colleges in bangalore, mba colleges in bangalore, master of business administration colleges in bangalore, best mba course in bangalore, mba admissions bangalore, sri lakshmi college of management & science",
 
       canonical:
-        "https://srilakshmimanagement.org/course/mba-colleges-bangalore",
+        "https://srilakshmimanagement.org/course/mba-colleges-in-bangalore",
 
       h1: "Best & Top MBA College in Bangalore – Sri Lakshmi College of Management & Science, Sunkadakatte",
     },
@@ -602,7 +602,7 @@ Top recruiters offer roles in strategy, consulting, banking, e-commerce, and tec
       "Capstone Project",
     ],
   },
-  "mca-colleges-bangalore": {
+  "mca-colleges-in-bangalore": {
     id: "mca",
     title: "MCA",
     fullTitle: "Master of Computer Applications",
@@ -617,7 +617,7 @@ Top recruiters offer roles in strategy, consulting, banking, e-commerce, and tec
         "best mca colleges in bangalore, top mca colleges in bangalore, mca colleges in bangalore, master of computer applications colleges in bangalore, best mca course in bangalore, mca admissions bangalore, sri lakshmi college of management & science",
 
       canonical:
-        "https://srilakshmimanagement.org/course/mca-colleges-bangalore",
+        "https://srilakshmimanagement.org/course/mca-colleges-in-bangalore",
 
       h1: "Study at One of the Best & Top MCA Colleges in Bangalore – Sri Lakshmi College of Management & Science",
     },

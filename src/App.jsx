@@ -138,7 +138,7 @@ function AppContent() {
               <Route
                 path="/course/bba"
                 element={
-                  <Navigate to="/course/bba-colleges-bangalore" replace />
+                  <Navigate to="/course/bba-colleges-in-bangalore" replace />
                 }
               />
 
@@ -152,28 +152,31 @@ function AppContent() {
               <Route
                 path="/course/bcom"
                 element={
-                  <Navigate to="/course/bcom-colleges-bangalore" replace />
+                  <Navigate to="/course/bcom-colleges-in-bangalore" replace />
                 }
               />
 
               <Route
                 path="/course/bsc-cbz"
                 element={
-                  <Navigate to="/course/bsc-cbz-colleges-bangalore" replace />
+                  <Navigate
+                    to="/course/bsc-cbz-colleges-in-bangalore"
+                    replace
+                  />
                 }
               />
 
               <Route
                 path="/course/mba"
                 element={
-                  <Navigate to="/course/mba-colleges-bangalore" replace />
+                  <Navigate to="/course/mba-colleges-in-bangalore" replace />
                 }
               />
 
               <Route
                 path="/course/mca"
                 element={
-                  <Navigate to="/course/mca-colleges-bangalore" replace />
+                  <Navigate to="/course/mca-colleges-in-bangalore" replace />
                 }
               />
 

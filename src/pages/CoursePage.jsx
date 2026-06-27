@@ -1120,7 +1120,7 @@ const coursesData = [
   {
     id: 1,
     title: "B.Com",
-    slug: "bcom-colleges-bangalore",
+    slug: "bcom-colleges-in-bangalore",
     category: "ug",
     duration: "3 Years",
     creds: "180 Credits",
@@ -1135,7 +1135,7 @@ const coursesData = [
   {
     id: 2,
     title: "BBA",
-    slug: "bba-colleges-bangalore",
+    slug: "bba-colleges-in-bangalore",
     category: "ug",
     duration: "3 Years",
     creds: "180 Credits",
@@ -1167,7 +1167,7 @@ const coursesData = [
     id: 4,
     title: "B.Sc (CBZ)",
     // slug: "bsc-cbz",
-    slug: "bsc-cbz-colleges-bangalore",
+    slug: "bsc-cbz-colleges-in-bangalore",
     category: "ug",
     duration: "3 Years",
     creds: "180 Credits",
@@ -1228,7 +1228,7 @@ const coursesData = [
   {
     id: 7,
     title: "MBA",
-    slug: "mba-colleges-bangalore",
+    slug: "mba-colleges-in-bangalore",
     category: "pg",
     duration: "2 Years",
     creds: "120 Credits",
@@ -1248,7 +1248,7 @@ const coursesData = [
   {
     id: 8,
     title: "MCA",
-    slug: "mca-colleges-bangalore",
+    slug: "mca-colleges-in-bangalore",
     category: "pg",
     duration: "2 Years",
     creds: "120 Credits",
