@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
   useLocation,
+  Navigate,
 } from "react-router-dom";
 
 import { AnimatePresence } from "motion/react";
@@ -37,6 +38,7 @@ import EnquiryButton from "./components/EnquiryButton";
 
 import FeedbackPage from "./pages/FeedbackPage.jsx";
 import FeeClearanceForm from "./pages/FeeClearanceForm.jsx";
+import GoogleAnalytics from "./components/GoogleAnalytics.jsx";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -100,6 +102,7 @@ function AppContent() {
   return (
     <>
       <ScrollToTop />
+      <GoogleAnalytics />
 
       <div className="flex flex-col min-h-screen">
         <Navbar />
@@ -131,6 +134,62 @@ function AppContent() {
               />
 
               <Route path="/courses" element={<CoursePage />} />
+
+              <Route
+                path="/course/bba"
+                element={
+                  <Navigate to="/course/bba-colleges-bangalore" replace />
+                }
+              />
+
+              <Route
+                path="/course/bca"
+                element={
+                  <Navigate to="/course/bca-colleges-in-bangalore" replace />
+                }
+              />
+
+              <Route
+                path="/course/bcom"
+                element={
+                  <Navigate to="/course/bcom-colleges-bangalore" replace />
+                }
+              />
+
+              <Route
+                path="/course/bsc-cbz"
+                element={
+                  <Navigate to="/course/bsc-cbz-colleges-bangalore" replace />
+                }
+              />
+
+              <Route
+                path="/course/mba"
+                element={
+                  <Navigate to="/course/mba-colleges-bangalore" replace />
+                }
+              />
+
+              <Route
+                path="/course/mca"
+                element={
+                  <Navigate to="/course/mca-colleges-bangalore" replace />
+                }
+              />
+
+              <Route
+                path="/course/mcom"
+                element={
+                  <Navigate to="/course/mcom-colleges-in-bangalore" replace />
+                }
+              />
+
+              <Route
+                path="/course/ba-hep"
+                element={
+                  <Navigate to="/course/ba-hep-colleges-in-bangalore" replace />
+                }
+              />
 
               <Route path="/course/:courseId" element={<CourseDetailPage />} />
 

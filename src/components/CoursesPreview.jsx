@@ -10,7 +10,7 @@ const courses = [
     icon: Briefcase,
     desc: 'Master the fundamentals of management, marketing, and finance for the corporate world.',
     color: 'bg-blue-500',
-    link:'/course/bba'
+    link:'/course/bba-colleges-bangalore'
   },
   {
     title: 'Bachelor of Computer Applications',
@@ -18,7 +18,7 @@ const courses = [
     icon: Code,
     desc: 'Dive deep into software development, database management, and emerging technologies.',
     color: 'bg-emerald-500',
-    link:'/course/bca'
+    link:'/course/bca-colleges-in-bangalore'
   },
   {
     title: 'Bachelor of Commerce',
@@ -26,7 +26,7 @@ const courses = [
     icon: Book,
     desc: 'Specialized training in accounting, taxation, and financial management.',
     color: 'bg-amber-500',
-    link:'/course/bcom'
+    link:'/course/bcom-colleges-bangalore'
   },
   {
     title: 'Bachelor of Science',
@@ -34,7 +34,7 @@ const courses = [
     icon: Microscope,
     desc: 'Explore the wonders of science with our specialized programs in Physics and Chemistry.',
     color: 'bg-rose-500',
-    link:'/course/bsc-cbz'
+    link:'/course/bsc-cbz-colleges-bangalore'
   },
 ];
 
