@@ -53,26 +53,24 @@ function ScrollToTop() {
 function AppContent() {
   const location = useLocation();
 
-  const hidePopupRoutes = ["/fee-clearance-form"];
-
-  const shouldHidePopup = hidePopupRoutes.includes(location.pathname);
+  const shouldHidePopup = location.pathname !== "/";
 
   const [isOpen, setIsOpen] = useState(false);
   const [showFloating, setShowFloating] = useState(false);
 
   useEffect(() => {
+    if (location.pathname !== "/") return;
+
     const completed = localStorage.getItem("quizCompleted");
-    const minimised = localStorage.getItem("popup minimised");
+    const minimised = localStorage.getItem("popupMinimized");
+    const shown = localStorage.getItem("popupShown");
 
     // If quiz completed → no popup
     if (completed) {
       try {
         const parsed = JSON.parse(completed);
-
         const now = Date.now();
-
         const diff = now - parsed.date;
-
         const days7 = 7 * 24 * 60 * 60 * 1000;
 
         if (diff < days7) {
@@ -85,8 +83,8 @@ function AppContent() {
       }
     }
 
-    // show floating if minimized
-    if (minimised) {
+    // show floating if already shown or minimized
+    if (shown || minimised) {
       setShowFloating(true);
       return;
     }
@@ -94,10 +92,11 @@ function AppContent() {
     // otherwise show popup
     const timer = setTimeout(() => {
       setIsOpen(true);
+      localStorage.setItem("popupShown", "true");
     }, 1500);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [location.pathname]);
 
   return (
     <>
