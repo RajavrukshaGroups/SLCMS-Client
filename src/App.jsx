@@ -236,7 +236,7 @@ function AppContent() {
         </main>
 
         {/* POPUP */}
-        {!shouldHidePopup && (
+        {/* {!shouldHidePopup && (
           <CollegeConcessionPopup
             isOpen={isOpen}
             onClose={() => setIsOpen(false)}
@@ -248,10 +248,10 @@ function AppContent() {
               localStorage.setItem("popupMinimized", "true");
             }}
           />
-        )}
+        )} */}
 
         {/* FLOATING BUTTON */}
-        {showFloating && !shouldHidePopup && (
+        {/* {showFloating && !shouldHidePopup && (
           <div
             onClick={() => {
               setIsOpen(true);
@@ -265,7 +265,7 @@ function AppContent() {
               Get Fee Concession
             </span>
           </div>
-        )}
+        )} */}
 
         <WhatsAppWidget />
 
