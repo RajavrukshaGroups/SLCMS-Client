@@ -222,11 +222,11 @@ const ContactPage = () => {
                       +91 98865 97362
                     </a>
                     <a
-                      href="tel:+919535003404"
+                      href="tel:+919902627202"
                       className="block hover:underline"
                       style={{ color: "#0F766E" }}
                     >
-                      +91 95350 03404
+                      +91 9902627202
                     </a>
                   </div>
                 </div>

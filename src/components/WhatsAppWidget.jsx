@@ -10,7 +10,7 @@ const WhatsAppWidget = () => {
   const inputRef = useRef(null);
   const widgetRef = useRef(null);
 
-  const PHONE_NUMBER = "+919535003404"; // CHANGE THIS
+  const PHONE_NUMBER = "+919902627202"; // CHANGE THIS
   const GREETING = "👋 Hi there! How can we help you today?";
 
   const quickReplies = [
